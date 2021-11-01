@@ -1,18 +1,16 @@
-## Code Comparer
+# SE26 Code Tracker
 
-### Sign Up:
+## Sign Up:
 
-1. Sign up with test code and email
-1. Use test code to get access code
+[Sign up here](https://wakatime.com/oauth/authorize?client_id=EsqgZiw6kSDUlM40OntUARSy&response_type=code&scope=email,read_logged_time,read_stats,read_orgs&redirect_uri=https://wakatime.com/oauth/test)
+![sign up](/images/authorize.png)
+1. User received Test Code
+1. Register with Test Code
 	* If it fails, tell user
-	* Otherwise next check:
-1. Check if email matches one provided
-	* If email doesn't match, tell user
-1. Store access token (Json for MVP, mongodb for final)
+1. Store access token
 
-Figure out how to revoke tokens
-
-### Cron Jobs:
+Figure out how to revoke tokens later
+## Cron Jobs:
 Each day:
 1. Get array of tokens
 1. For each token, 
@@ -73,3 +71,10 @@ Each week:
 	* Returns winners.json
 * /images/*
 	* Returns editorsPie.png, languagesPie.png, osPie.png, etc
+
+## Frontend
+* Single page
+* shows chart of the week
+* chart of the day
+* pi charts for the cohort
+* Past winners

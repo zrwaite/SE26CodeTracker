@@ -1,6 +1,8 @@
 #Mac
 .DS_Store
 
+#Crappy database
+tokens.json
 # Logs
 logs
 *.log
