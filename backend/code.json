@@ -1,0 +1,175 @@
+{
+	"cummulative_total": {"decimal": "12.43", "digital": "12:26", "seconds": 44813.079614, "text": "12 hrs 26 mins"},
+	"data": [
+		{
+			"categories": [],
+			"dependencies": [],
+			"editors": [
+				{"decimal": "6.22", "digital": "6:13:52", "hours": 6, "minutes": 13, "name": "VS Code", "percent": 100.0, "seconds": 52, "text": "6 hrs 13 mins", "total_seconds": 22432.800647}
+			],
+			"grand_total": {"decimal": "6.22", "digital": "6:13", "hours": 6, "minutes": 13, "text": "6 hrs 13 mins", "total_seconds": 22432.800647},
+			"languages": [
+				{"decimal": "1.92", "digital": "1:55:48", "hours": 1, "minutes": 55, "name": "PHP", "percent": 30.97, "seconds": 48, "text": "1 hr 55 mins", "total_seconds": 6948.398277},
+				{"decimal": "1.48", "digital": "1:29:06", "hours": 1, "minutes": 29, "name": "TypeScript", "percent": 23.83, "seconds": 6, "text": "1 hr 29 mins", "total_seconds": 5346.266538},
+				{"decimal": "0.77", "digital": "0:46:34", "hours": 0, "minutes": 46, "name": "JSON", "percent": 12.46, "seconds": 34, "text": "46 mins", "total_seconds": 2794.060087},
+				{"decimal": "0.53", "digital": "0:32:50", "hours": 0, "minutes": 32, "name": "C", "percent": 8.78, "seconds": 50, "text": "32 mins", "total_seconds": 1970.165737},
+				{"decimal": "0.40", "digital": "0:24:38", "hours": 0, "minutes": 24, "name": "SQL", "percent": 6.59, "seconds": 38, "text": "24 mins", "total_seconds": 1478.195226},
+				{"decimal": "0.37", "digital": "0:22:08", "hours": 0, "minutes": 22, "name": "Bash", "percent": 5.92, "seconds": 8, "text": "22 mins", "total_seconds": 1328.340188},
+				{"decimal": "0.35", "digital": "0:21:04", "hours": 0, "minutes": 21, "name": "JavaScript", "percent": 5.63, "seconds": 4, "text": "21 mins", "total_seconds": 1264.067036},
+				{"decimal": "0.17", "digital": "0:10:55", "hours": 0, "minutes": 10, "name": "HTML", "percent": 2.92, "seconds": 55, "text": "10 mins", "total_seconds": 655.366076},
+				{"decimal": "0.08", "digital": "0:05:59", "hours": 0, "minutes": 5, "name": "Apache Config", "percent": 1.6, "seconds": 59, "text": "5 mins", "total_seconds": 359.264392},
+				{"decimal": "0.05", "digital": "0:03:36", "hours": 0, "minutes": 3, "name": "Markdown", "percent": 0.97, "seconds": 36, "text": "3 mins", "total_seconds": 216.666597},
+				{"decimal": "0.00", "digital": "0:00:29", "hours": 0, "minutes": 0, "name": "Other", "percent": 0.13, "seconds": 29, "text": "29 secs", "total_seconds": 29.455615},
+				{"decimal": "0.00", "digital": "0:00:23", "hours": 0, "minutes": 0, "name": "CSS", "percent": 0.1, "seconds": 23, "text": "23 secs", "total_seconds": 23.207334},
+				{"decimal": "0.00", "digital": "0:00:19", "hours": 0, "minutes": 0, "name": "Git Config", "percent": 0.09, "seconds": 19, "text": "19 secs", "total_seconds": 19.347544}
+			],
+			"machines": [],
+			"operating_systems": [
+				{"decimal": "6.22", "digital": "6:13:52", "hours": 6, "minutes": 13, "name": "Mac", "percent": 100.0, "seconds": 52, "text": "6 hrs 13 mins", "total_seconds": 22432.800647}
+			],
+			"projects": [],
+			"range": {"date": "2021-10-23", "end": "2021-10-24T03:59:59Z", "start": "2021-10-23T04:00:00Z", "text": "Sat Oct 23rd 2021", "timezone": "America/Toronto"}
+		},
+		{
+			"categories": [],
+
+			"dependencies": [],
+
+			"editors": [{"decimal": "0.00", "digital": "0:00:03", "hours": 0, "minutes": 0, "name": "VS Code", "percent": 100.0, "seconds": 3, "text": "3 secs", "total_seconds": 3.329092}],
+			"grand_total": {"decimal": "0.00", "digital": "0:00", "hours": 0, "minutes": 0, "text": "0 secs", "total_seconds": 3.329092},
+			"languages": [{"decimal": "0.00", "digital": "0:00:03", "hours": 0, "minutes": 0, "name": "Git Config", "percent": 100.0, "seconds": 3, "text": "3 secs", "total_seconds": 3.329092}],
+			"machines": [],
+			"operating_systems": [{"decimal": "0.00", "digital": "0:00:03", "hours": 0, "minutes": 0, "name": "Mac", "percent": 100.0, "seconds": 3, "text": "3 secs", "total_seconds": 3.329092}],
+			"projects": [],
+			"range": {"date": "2021-10-24", "end": "2021-10-25T03:59:59Z", "start": "2021-10-24T04:00:00Z", "text": "Sun Oct 24th 2021", "timezone": "America/Toronto"}
+		},
+		{
+			"categories": [],
+
+			"dependencies": [],
+
+			"editors": [{"decimal": "0.00", "digital": "0:00:46", "hours": 0, "minutes": 0, "name": "VS Code", "percent": 100.0, "seconds": 46, "text": "46 secs", "total_seconds": 46.300403}],
+			"grand_total": {"decimal": "0.00", "digital": "0:00", "hours": 0, "minutes": 0, "text": "0 secs", "total_seconds": 46.300403},
+			"languages": [
+				{"decimal": "0.00", "digital": "0:00:40", "hours": 0, "minutes": 0, "name": "C", "percent": 86.59, "seconds": 40, "text": "40 secs", "total_seconds": 40.092785},
+				{"decimal": "0.00", "digital": "0:00:06", "hours": 0, "minutes": 0, "name": "Git Config", "percent": 13.41, "seconds": 6, "text": "6 secs", "total_seconds": 6.207618}
+			],
+			"machines": [],
+			"operating_systems": [{"decimal": "0.00", "digital": "0:00:46", "hours": 0, "minutes": 0, "name": "Mac", "percent": 100.0, "seconds": 46, "text": "46 secs", "total_seconds": 46.300403}],
+			"projects": [],
+			"range": {"date": "2021-10-25", "end": "2021-10-26T03:59:59Z", "start": "2021-10-25T04:00:00Z", "text": "Mon Oct 25th 2021", "timezone": "America/Toronto"}
+		},
+		{
+			"categories": [],
+
+			"dependencies": [],
+
+			"editors": [
+				{"decimal": "2.42", "digital": "2:25:40", "hours": 2, "minutes": 25, "name": "VS Code", "percent": 100.0, "seconds": 40, "text": "2 hrs 25 mins", "total_seconds": 8740.114807}
+			],
+			"grand_total": {"decimal": "2.42", "digital": "2:25", "hours": 2, "minutes": 25, "text": "2 hrs 25 mins", "total_seconds": 8740.114807},
+			"languages": [
+				{"decimal": "1.07", "digital": "1:04:40", "hours": 1, "minutes": 4, "name": "TypeScript", "percent": 44.4, "seconds": 40, "text": "1 hr 4 mins", "total_seconds": 3880.326834},
+				{"decimal": "0.37", "digital": "0:22:09", "hours": 0, "minutes": 22, "name": "JavaScript", "percent": 15.21, "seconds": 9, "text": "22 mins", "total_seconds": 1329.458294},
+				{"decimal": "0.33", "digital": "0:20:59", "hours": 0, "minutes": 20, "name": "C", "percent": 14.42, "seconds": 59, "text": "20 mins", "total_seconds": 1259.927964},
+				{"decimal": "0.28", "digital": "0:17:05", "hours": 0, "minutes": 17, "name": "Docker", "percent": 11.73, "seconds": 5, "text": "17 mins", "total_seconds": 1025.260746},
+				{"decimal": "0.15", "digital": "0:09:13", "hours": 0, "minutes": 9, "name": "JSON", "percent": 6.33, "seconds": 13, "text": "9 mins", "total_seconds": 553.54269},
+				{"decimal": "0.10", "digital": "0:06:46", "hours": 0, "minutes": 6, "name": "Markdown", "percent": 4.65, "seconds": 46, "text": "6 mins", "total_seconds": 406.435374},
+				{"decimal": "0.07", "digital": "0:04:41", "hours": 0, "minutes": 4, "name": "HTML", "percent": 3.22, "seconds": 41, "text": "4 mins", "total_seconds": 281.06508},
+				{"decimal": "0.00", "digital": "0:00:01", "hours": 0, "minutes": 0, "name": "CSS", "percent": 0.02, "seconds": 1, "text": "1 sec", "total_seconds": 1.406962},
+				{"decimal": "0.00", "digital": "0:00:01", "hours": 0, "minutes": 0, "name": "YAML", "percent": 0.01, "seconds": 1, "text": "1 sec", "total_seconds": 1.133918},
+				{"decimal": "0.00", "digital": "0:00:01", "hours": 0, "minutes": 0, "name": "Bash", "percent": 0.01, "seconds": 1, "text": "1 sec", "total_seconds": 1.01699},
+				{"decimal": "0.00", "digital": "0:00:00", "hours": 0, "minutes": 0, "name": "Other", "percent": 0.01, "seconds": 0, "text": "0 secs", "total_seconds": 0.539955}
+			],
+			"machines": [],
+			"operating_systems": [
+				{"decimal": "2.42", "digital": "2:25:40", "hours": 2, "minutes": 25, "name": "Mac", "percent": 100.0, "seconds": 40, "text": "2 hrs 25 mins", "total_seconds": 8740.114807}
+			],
+			"projects": [],
+			"range": {"date": "2021-10-26", "end": "2021-10-27T03:59:59Z", "start": "2021-10-26T04:00:00Z", "text": "Tue Oct 26th 2021", "timezone": "America/Toronto"}
+		},
+		{
+			"categories": [],
+
+			"dependencies": [],
+
+			"editors": [{"decimal": "1.00", "digital": "1:00:10", "hours": 1, "minutes": 0, "name": "VS Code", "percent": 100.0, "seconds": 10, "text": "1 hr", "total_seconds": 3610.265522}],
+			"grand_total": {"decimal": "1.00", "digital": "1:00", "hours": 1, "minutes": 0, "text": "1 hr", "total_seconds": 3610.265522},
+			"languages": [
+				{"decimal": "0.57", "digital": "0:34:15", "hours": 0, "minutes": 34, "name": "JavaScript", "percent": 56.94, "seconds": 15, "text": "34 mins", "total_seconds": 2055.858805},
+				{"decimal": "0.23", "digital": "0:14:32", "hours": 0, "minutes": 14, "name": "Markdown", "percent": 24.15, "seconds": 32, "text": "14 mins", "total_seconds": 872.018503},
+				{"decimal": "0.12", "digital": "0:07:21", "hours": 0, "minutes": 7, "name": "YAML", "percent": 12.23, "seconds": 21, "text": "7 mins", "total_seconds": 441.422884},
+				{"decimal": "0.05", "digital": "0:03:34", "hours": 0, "minutes": 3, "name": "JSON", "percent": 5.93, "seconds": 34, "text": "3 mins", "total_seconds": 214.04722},
+				{"decimal": "0.00", "digital": "0:00:12", "hours": 0, "minutes": 0, "name": "Docker", "percent": 0.35, "seconds": 12, "text": "12 secs", "total_seconds": 12.72178},
+				{"decimal": "0.00", "digital": "0:00:10", "hours": 0, "minutes": 0, "name": "Git Config", "percent": 0.29, "seconds": 10, "text": "10 secs", "total_seconds": 10.436807},
+				{"decimal": "0.00", "digital": "0:00:03", "hours": 0, "minutes": 0, "name": "Other", "percent": 0.1, "seconds": 3, "text": "3 secs", "total_seconds": 3.759523}
+			],
+			"machines": [],
+			"operating_systems": [
+				{"decimal": "0.75", "digital": "0:45:38", "hours": 0, "minutes": 45, "name": "Linux", "percent": 75.85, "seconds": 38, "text": "45 mins", "total_seconds": 2738.247019},
+				{"decimal": "0.23", "digital": "0:14:32", "hours": 0, "minutes": 14, "name": "Mac", "percent": 24.15, "seconds": 32, "text": "14 mins", "total_seconds": 872.018503}
+			],
+			"projects": [],
+			"range": {"date": "2021-10-27", "end": "2021-10-28T03:59:59Z", "start": "2021-10-27T04:00:00Z", "text": "Wed Oct 27th 2021", "timezone": "America/Toronto"}
+		},
+		{
+			"categories": [],
+
+			"dependencies": [],
+
+			"editors": [],
+			"grand_total": {"decimal": "0.00", "digital": "0:00", "hours": 0, "minutes": 0, "text": "0 secs", "total_seconds": 0.0},
+			"languages": [],
+			"machines": [],
+			"operating_systems": [],
+			"projects": [],
+			"range": {"date": "2021-10-28", "end": "2021-10-29T03:59:59Z", "start": "2021-10-28T04:00:00Z", "text": "Thu Oct 28th 2021", "timezone": "America/Toronto"}
+		},
+		{
+			"categories": [],
+
+			"dependencies": [],
+
+			"editors": [{"decimal": "1.03", "digital": "1:02:20", "hours": 1, "minutes": 2, "name": "VS Code", "percent": 100.0, "seconds": 20, "text": "1 hr 2 mins", "total_seconds": 3740.926894}],
+			"grand_total": {"decimal": "1.03", "digital": "1:02", "hours": 1, "minutes": 2, "text": "1 hr 2 mins", "total_seconds": 3740.926894},
+			"languages": [
+				{"decimal": "0.98", "digital": "0:59:16", "hours": 0, "minutes": 59, "name": "TypeScript", "percent": 95.07, "seconds": 16, "text": "59 mins", "total_seconds": 3556.490955},
+				{"decimal": "0.03", "digital": "0:02:49", "hours": 0, "minutes": 2, "name": "Bash", "percent": 4.54, "seconds": 49, "text": "2 mins", "total_seconds": 169.704923},
+				{"decimal": "0.00", "digital": "0:00:14", "hours": 0, "minutes": 0, "name": "JSON", "percent": 0.39, "seconds": 14, "text": "14 secs", "total_seconds": 14.731016}
+			],
+			"machines": [],
+			"operating_systems": [
+				{"decimal": "1.03", "digital": "1:02:20", "hours": 1, "minutes": 2, "name": "Mac", "percent": 100.0, "seconds": 20, "text": "1 hr 2 mins", "total_seconds": 3740.926894}
+			],
+			"projects": [],
+			"range": {"date": "2021-10-29", "end": "2021-10-30T03:59:59Z", "start": "2021-10-29T04:00:00Z", "text": "Fri Oct 29th 2021", "timezone": "America/Toronto"}
+		},
+		{
+			"categories": [],
+
+			"dependencies": [],
+
+			"editors": [{"decimal": "1.72", "digital": "1:43:59", "hours": 1, "minutes": 43, "name": "VS Code", "percent": 100.0, "seconds": 59, "text": "1 hr 43 mins", "total_seconds": 6239.342249}],
+			"grand_total": {"decimal": "1.72", "digital": "1:43", "hours": 1, "minutes": 43, "text": "1 hr 43 mins", "total_seconds": 6239.342249},
+			"languages": [
+				{"decimal": "1.02", "digital": "1:01:31", "hours": 1, "minutes": 1, "name": "TypeScript", "percent": 59.17, "seconds": 31, "text": "1 hr 1 min", "total_seconds": 3691.519906},
+				{"decimal": "0.25", "digital": "0:15:40", "hours": 0, "minutes": 15, "name": "Python", "percent": 15.08, "seconds": 40, "text": "15 mins", "total_seconds": 940.607113},
+				{"decimal": "0.20", "digital": "0:12:48", "hours": 0, "minutes": 12, "name": "JavaScript", "percent": 12.32, "seconds": 48, "text": "12 mins", "total_seconds": 768.852115},
+				{"decimal": "0.17", "digital": "0:10:33", "hours": 0, "minutes": 10, "name": "JSON", "percent": 10.16, "seconds": 33, "text": "10 mins", "total_seconds": 633.769128},
+				{"decimal": "0.03", "digital": "0:02:26", "hours": 0, "minutes": 2, "name": "YAML", "percent": 2.35, "seconds": 26, "text": "2 mins", "total_seconds": 146.498004},
+				{"decimal": "0.00", "digital": "0:00:30", "hours": 0, "minutes": 0, "name": "Other", "percent": 0.49, "seconds": 30, "text": "30 secs", "total_seconds": 30.87766},
+				{"decimal": "0.00", "digital": "0:00:23", "hours": 0, "minutes": 0, "name": "HTML", "percent": 0.38, "seconds": 23, "text": "23 secs", "total_seconds": 23.578149},
+				{"decimal": "0.00", "digital": "0:00:02", "hours": 0, "minutes": 0, "name": "Docker", "percent": 0.04, "seconds": 2, "text": "2 secs", "total_seconds": 2.713801},
+				{"decimal": "0.00", "digital": "0:00:00", "hours": 0, "minutes": 0, "name": "XML", "percent": 0.01, "seconds": 0, "text": "0 secs", "total_seconds": 0.926373}
+			],
+			"machines": [],
+			"operating_systems": [
+				{"decimal": "1.72", "digital": "1:43:59", "hours": 1, "minutes": 43, "name": "Mac", "percent": 100.0, "seconds": 59, "text": "1 hr 43 mins", "total_seconds": 6239.342249}
+			],
+			"projects": [],
+			"range": {"date": "2021-10-30", "end": "2021-10-31T03:59:59Z", "start": "2021-10-30T04:00:00Z", "text": "Sat Oct 30th 2021", "timezone": "America/Toronto"}
+		}
+	],
+	"end": "2021-10-31T03:59:59Z",
+	"start": "2021-10-23T04:00:00Z"
+}

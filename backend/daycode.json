@@ -1,0 +1,160 @@
+{
+    "cummulative_total": {
+        "decimal": "1.72",
+        "digital": "1:43",
+        "seconds": 6239.342249,
+        "text": "1 hr 43 mins"
+    },
+    "data": [
+        {
+            "categories": [],
+            "dependencies": [],
+            "editors": [
+                {
+                    "decimal": "1.72",
+                    "digital": "1:43:59",
+                    "hours": 1,
+                    "minutes": 43,
+                    "name": "VS Code",
+                    "percent": 100.0,
+                    "seconds": 59,
+                    "text": "1 hr 43 mins",
+                    "total_seconds": 6239.342249
+                }
+            ],
+            "grand_total": {
+                "decimal": "1.72",
+                "digital": "1:43",
+                "hours": 1,
+                "minutes": 43,
+                "text": "1 hr 43 mins",
+                "total_seconds": 6239.342249
+            },
+            "languages": [
+                {
+                    "decimal": "1.02",
+                    "digital": "1:01:31",
+                    "hours": 1,
+                    "minutes": 1,
+                    "name": "TypeScript",
+                    "percent": 59.17,
+                    "seconds": 31,
+                    "text": "1 hr 1 min",
+                    "total_seconds": 3691.519906
+                },
+                {
+                    "decimal": "0.25",
+                    "digital": "0:15:40",
+                    "hours": 0,
+                    "minutes": 15,
+                    "name": "Python",
+                    "percent": 15.08,
+                    "seconds": 40,
+                    "text": "15 mins",
+                    "total_seconds": 940.607113
+                },
+                {
+                    "decimal": "0.20",
+                    "digital": "0:12:48",
+                    "hours": 0,
+                    "minutes": 12,
+                    "name": "JavaScript",
+                    "percent": 12.32,
+                    "seconds": 48,
+                    "text": "12 mins",
+                    "total_seconds": 768.852115
+                },
+                {
+                    "decimal": "0.17",
+                    "digital": "0:10:33",
+                    "hours": 0,
+                    "minutes": 10,
+                    "name": "JSON",
+                    "percent": 10.16,
+                    "seconds": 33,
+                    "text": "10 mins",
+                    "total_seconds": 633.769128
+                },
+                {
+                    "decimal": "0.03",
+                    "digital": "0:02:26",
+                    "hours": 0,
+                    "minutes": 2,
+                    "name": "YAML",
+                    "percent": 2.35,
+                    "seconds": 26,
+                    "text": "2 mins",
+                    "total_seconds": 146.498004
+                },
+                {
+                    "decimal": "0.00",
+                    "digital": "0:00:30",
+                    "hours": 0,
+                    "minutes": 0,
+                    "name": "Other",
+                    "percent": 0.49,
+                    "seconds": 30,
+                    "text": "30 secs",
+                    "total_seconds": 30.87766
+                },
+                {
+                    "decimal": "0.00",
+                    "digital": "0:00:23",
+                    "hours": 0,
+                    "minutes": 0,
+                    "name": "HTML",
+                    "percent": 0.38,
+                    "seconds": 23,
+                    "text": "23 secs",
+                    "total_seconds": 23.578149
+                },
+                {
+                    "decimal": "0.00",
+                    "digital": "0:00:02",
+                    "hours": 0,
+                    "minutes": 0,
+                    "name": "Docker",
+                    "percent": 0.04,
+                    "seconds": 2,
+                    "text": "2 secs",
+                    "total_seconds": 2.713801
+                },
+                {
+                    "decimal": "0.00",
+                    "digital": "0:00:00",
+                    "hours": 0,
+                    "minutes": 0,
+                    "name": "XML",
+                    "percent": 0.01,
+                    "seconds": 0,
+                    "text": "0 secs",
+                    "total_seconds": 0.926373
+                }
+            ],
+            "machines": [],
+            "operating_systems": [
+                {
+                    "decimal": "1.72",
+                    "digital": "1:43:59",
+                    "hours": 1,
+                    "minutes": 43,
+                    "name": "Mac",
+                    "percent": 100.0,
+                    "seconds": 59,
+                    "text": "1 hr 43 mins",
+                    "total_seconds": 6239.342249
+                }
+            ],
+            "projects": [],
+            "range": {
+                "date": "2021-10-30",
+                "end": "2021-10-31T03:59:59Z",
+                "start": "2021-10-30T04:00:00Z",
+                "text": "Sat Oct 30th 2021",
+                "timezone": "America/Toronto"
+            }
+        }
+    ],
+    "end": "2021-10-31T03:59:59Z",
+    "start": "2021-10-30T04:00:00Z"
+}
