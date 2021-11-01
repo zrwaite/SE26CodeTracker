@@ -4,6 +4,7 @@
 
 [Sign up here](https://wakatime.com/oauth/authorize?client_id=EsqgZiw6kSDUlM40OntUARSy&response_type=code&scope=email,read_logged_time,read_stats,read_orgs&redirect_uri=https://wakatime.com/oauth/test)
 ![sign up](/images/authorize.png)
+![token](/images/token.png)
 1. User received Test Code
 1. Register with Test Code
 	* If it fails, tell user
@@ -78,3 +79,7 @@ Each week:
 * chart of the day
 * pi charts for the cohort
 * Past winners
+
+### Add:
+* Change table time to hour format or something else nicer
+* Add daily average to weekly stats
