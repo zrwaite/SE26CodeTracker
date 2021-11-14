@@ -64,6 +64,8 @@ Each week:
 1. Discord bot send congrats 
 
 ## Endpoints;
+* /api/register
+	* Takes token and email, confirms token and adds to database
 * /api/day_chart
 	* Returns day_chart.json
 * /api/week_chart
