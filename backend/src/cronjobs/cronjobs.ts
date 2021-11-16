@@ -32,9 +32,11 @@ const parseUserData = async (token:string) => {
 			os: [],
 			stats: [],
 		}); 
-		fs.appendFile(path, 'Hello content!', function (e) {
+		fs.appendFile(path, json, function (e) {
 			if (e) console.log(e);
 		});
+		
+
 	}
 
 
