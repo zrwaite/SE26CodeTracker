@@ -1,7 +1,7 @@
 import {Request, Response, NextFunction} from "express"; //Typescript types
 import response from "../models/response"; //Created pre-formatted uniform response
 import Iresponse from "../models/responseInterface";
-import User from "../models/registerSchema";
+import User from "../models/userSchema";
 import axios from "axios";
 interface registerPostBody {
 	access_token: string;

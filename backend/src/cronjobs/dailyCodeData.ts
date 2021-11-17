@@ -3,6 +3,22 @@ import fs from "fs";
 import path from "path";
 
 /* Get Data Functions*/
+const getTokens = async () => {
+	let users:any;
+	try{
+		users = await User.find();
+		let tokens: any[] = [];
+		users.forEach((user: any)=>{
+			console.log(user);
+			if (user.access_token) tokens.push(user.access_token);
+			else console.log("Error getting access token from user");
+		})
+		return {gotTokens: true, tokens: tokens};
+	} 
+	catch (e: any) {console.log("Error getting tokens");}
+	return {gotTokens: false, tokens: []};
+}
+
 const getUserData = async (token: string) => {
 	let apiLink = "https://wakatime.com/api/v1/users/current";
 	let headers = { headers: {'Host': 'wakatime.com', 'Authorization': 'Bearer '+token}};
@@ -10,7 +26,7 @@ const getUserData = async (token: string) => {
 		const userData: any = await axios.get(apiLink,headers);
 		return userData.data.data;
 	} catch(e:any){
-		console.log("Error",e);
+		console.log("Error getting user data from wakatime api",e);
 		return false;
 	}
 }
@@ -183,7 +199,13 @@ const clearDay = () => {
 const dailyCodeData = async () => {
 	clearDay();
 	// Get tokens
-	let tokens = ["sec_1hLi4K9bNWTEgtKa5AzlfzwniQ2odEk18FFY9YgsDBHqkPRFwNwJnteRfavxpPjRmc5Dn2yY4if4JqWO"]
+	let {gotTokens, tokens} = await getTokens();
+	if (!gotTokens) return;
 	tokens.forEach((token)=>addCodeData(token));
 };
 export default dailyCodeData;
+
+
+
+import User from "../models/userSchema"; //Schema for mongodb
+/* register controller */
