@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 //user schema that defines the entity
-const registerSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     access_token: {
         type: String,
         required: true,
@@ -15,4 +15,4 @@ const registerSchema = new mongoose.Schema({
     },
 }, { timestamps: true});
 
-export default mongoose.model('Users', registerSchema); //Export data formatting
+export default mongoose.model('Users', userSchema); //Export data formatting
