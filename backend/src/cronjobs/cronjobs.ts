@@ -23,7 +23,6 @@ const getCodeData = async (token: string) => {
 	try{
 		const codeData: any = await axios.get(apiLink,headers);
 		codeData.data.data[0].dependencies={};
-		console.log(codeData);
 		return codeData.data.data[0];
 	} catch(e:any){
 		console.log("Error",e);
@@ -45,10 +44,14 @@ const addWeekData = async (username:string, time:number) => {
 	let fileName = "week_data.json";
 	let filePath = folderPath+fileName;
 	let weekData = JSON.parse(fs.readFileSync(filePath).toString());
-	for (let i=0; i<weekData.length; i++){
-		if (weekData.people[i].username == username) weekData.people[i].time += time;
-		else weekData.people.push({username: username, time: time});
+	let found = false;
+	for (let i=0; i<weekData.people.length; i++){
+		if (weekData.people[i].username != username) continue;
+		weekData.people[i].time += time;
+		found = true;
+		break;
 	}
+	if (!found) weekData.people.push({username: username, time: time});
 	fs.writeFileSync(filePath, JSON.stringify(weekData));
 }
 
@@ -99,56 +102,76 @@ const addCodeData = async (token:string) => {
 	let user = JSON.parse(fs.readFileSync(filePath).toString());
 	let cohort = await getCohortData();
 	let codeData = await getCodeData(token);
-	console.log(codeData.editors);
-	console.log(codeData.languages);
-	console.log(codeData.operating_systems);
-	return;
 	if (!codeData) {
 		console.log("error getting code data");
 		return undefined;
 	}
-	
+	let found = false;
 	codeData.editors.forEach((editor:any)=>{
 		let name = editor.name;
 		let time = editor.total_seconds;
+		found = false;
 		for (let i=0; i<user.editors.length; i++){
-			if (name == user.editors[i].name) user.editors[i].time += time;
-			else user.editors.push({name:name, time:time});
+			if (name != user.editors[i].name) continue;
+			user.editors[i].time += time;
+			found = true;
+			break;
 		} 
+		if (!found) user.editors.push({name:name, time:time});
+		found = false;
 		for (let i=0; i<cohort.editors.length; i++){
-			if (name == cohort.editors[i].name) cohort.editors[i].time += time;
-			else cohort.editors.push({name:name, time:time});
+			if (name != cohort.editors[i].name) continue;
+			cohort.editors[i].time += time;
+			found = true;
+			break;
 		}
+		if (!found) cohort.editors.push({name:name, time:time});
 	});
 	codeData.languages.forEach((language:any)=>{
 		let name = language.name;
 		let time = language.total_seconds;
+		found = false;
 		for (let i=0; i<user.languages.length; i++){
-			if (name == user.languages[i].name) user.languages[i].time += time;
-			else user.languages.push({name:name, time:time});
+			if (name != user.languages[i].name) continue;
+			user.languages[i].time += time;
+			found = true; 
+			break;
 		} 
+		if (!found) user.languages.push({name:name, time:time});
+		found = false;
 		for (let i=0; i<cohort.languages.length; i++){
-			if (name == cohort.languages[i].name) cohort.languages[i].time += time;
-			else cohort.languages.push({name:name, time:time});
+			if (name != cohort.languages[i].name) continue;
+			cohort.languages[i].time += time;
+			found = true;
+			break;
 		}
+		if (!found) cohort.languages.push({name:name, time:time});
 	});
 	codeData.operating_systems.forEach((os:any)=>{
 		let name = os.name;
 		let time = os.total_seconds;
+		found = false;
 		for (let i=0; i<user.os.length; i++){
-			if (name == user.os[i].name) user.os[i].time += time;
-			else user.os.push({name:name, time:time});
+			if (name != user.os[i].name) continue;
+			user.os[i].time += time;
+			found = true;
+			break;
 		} 
+		if (!found) user.os.push({name:name, time:time});
+		found = false;
 		for (let i=0; i<cohort.os.length; i++){
-			if (name == cohort.os[i].name) cohort.os[i].time += time;
-			else cohort.os.push({name:name, time:time});
+			if (name != cohort.os[i].name) continue;
+			cohort.os[i].time += time;
+			found = true;
+			break;
 		} 
+		if (!found) cohort.os.push({name:name, time:time});
 	});
 	user.stats.push({date: codeData.range.date, time: codeData.grand_total.total_seconds});
 	addDayData(user.username, codeData.grand_total.total_seconds);
 	addWeekData(user.username, codeData.grand_total.total_seconds);
 	addCohortData(cohort);
-	//fs.writeFileSync(filePath, JSON.stringify(user));
+	fs.writeFileSync(filePath, JSON.stringify(user));
 }
 
 const clearDay = () => {
