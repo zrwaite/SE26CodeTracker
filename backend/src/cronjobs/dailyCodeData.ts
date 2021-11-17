@@ -205,7 +205,5 @@ const dailyCodeData = async () => {
 };
 export default dailyCodeData;
 
-
-
 import User from "../models/userSchema"; //Schema for mongodb
 /* register controller */

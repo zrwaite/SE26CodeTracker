@@ -3,6 +3,7 @@ import response from "../models/response"; //Created pre-formatted uniform respo
 import Iresponse from "../models/responseInterface";
 import User from "../models/userSchema";
 import axios from "axios";
+import validator  from "email-validator";
 interface registerPostBody {
 	access_token: string;
 	refresh_token: string;
@@ -17,13 +18,17 @@ const buildPostBody = async (req:any, access_token: string, refresh_token: strin
 		if (req.body[param]==undefined) undefinedParams.push(param);
 	});
 	if (undefinedParams.length == 0) { 
-		let postBody: registerPostBody = {
-			access_token: access_token,
-			refresh_token: refresh_token,
-			email: req.body.email
-		};
-		body = postBody;
-		exists = true;
+		if (validator.validate(req.body.email)){ // true
+			let postBody: registerPostBody = {
+				access_token: access_token,
+				refresh_token: refresh_token,
+				email: req.body.email
+			};
+			body = postBody;
+			exists = true;
+		} else {
+			undefinedParams.push("Valid Email");
+		}
 	}
 	return {exists: exists, body: body, errors: undefinedParams};
 };

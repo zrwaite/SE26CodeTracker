@@ -17,16 +17,10 @@ app.use(express.json());
 
 
 // routes
-import winnersRoute from "./route/winners.route";
-import dayChartRoute from "./route/day_chart.route";
-import weekChartRoute from "./route/week_chart.route";
-import registerRoute from "./route/register.route";
+import apiRoute from "./route/api.route";
 
-// api
-app.use("/api/day_chart", dayChartRoute);
-app.use("/api/week_chart", weekChartRoute);
-app.use("/api/winners", winnersRoute);
-app.use("/api/register", registerRoute);
+// api routing
+app.use("/api", apiRoute);
 
 app.get("/test", (req, res) => {
 	let result = new response(200, [], {page: "test"}, true);
