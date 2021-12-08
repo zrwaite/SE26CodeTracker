@@ -6,8 +6,8 @@ Zac: [![wakatime](https://wakatime.com/badge/user/6c7c91d4-47e9-422d-a269-f30643
 ## Sign Up:
 
 [Sign up here](https://wakatime.com/oauth/authorize?client_id=EsqgZiw6kSDUlM40OntUARSy&response_type=code&scope=email,read_logged_time,read_stats,read_orgs&redirect_uri=https://wakatime.com/oauth/test)
-![sign up](/images/authorize.png)
-![token](/images/token.png)
+![sign up](./images/authorize.png)
+![token](./images/token.png)
 1. User received Test Code
 1. Register with Test Code
 	* If it fails, tell user

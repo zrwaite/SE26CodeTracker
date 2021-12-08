@@ -48,8 +48,7 @@ const getCohortData = async () => {
 	const folderPath = path.join(__dirname, "../../database/");
 	let fileName = "cohort.json";
 	let filePath = folderPath+fileName;
-	let cohortData = JSON.parse(fs.readFileSync(filePath).toString());
-	return cohortData;
+	return JSON.parse(fs.readFileSync(filePath).toString());
 }
 
 /* Parse Data Functions */
@@ -182,9 +181,9 @@ const addCodeData = async (token:string) => {
 		if (!found) cohort.os.push({name:name, time:time});
 	});
 	user.stats.push({date: codeData.range.date, time: codeData.grand_total.total_seconds});
-	addDayData(user.username, codeData.grand_total.total_seconds);
-	addWeekData(user.username, codeData.grand_total.total_seconds);
-	addCohortData(cohort);
+	await addDayData(user.username, codeData.grand_total.total_seconds);
+	await addWeekData(user.username, codeData.grand_total.total_seconds);
+	await addCohortData(cohort);
 	fs.writeFileSync(filePath, JSON.stringify(user));
 }
 
