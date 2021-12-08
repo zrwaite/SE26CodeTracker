@@ -1,10 +1,10 @@
 const tryRegister = async () => {
-	var res = document.getElementById("response");
-	var emailInput = document.getElementById("emailInput");
-	var codeInput = document.getElementById("codeInput");
+	let res = document.getElementById("response");
+	let emailInput = document.getElementById("emailInput");
+	let codeInput = document.getElementById("codeInput");
 
-	var email = emailInput.value;
-	var code = codeInput.value;
+	let email = emailInput.value;
+	let code = codeInput.value;
 
 	if (email===''||code==='') return;
 	if (!emailInput.checkValidity()) return;
@@ -15,7 +15,7 @@ const tryRegister = async () => {
 		email: email,
 		code: code
 	}
-	jsonResponse = await postData(url, body);
+	let jsonResponse = await postData(url, body);
 	if (jsonResponse) res.innerHTML = JSON.parse(jsonResponse);
 	else res.innerHTML = "ERROR";
 }

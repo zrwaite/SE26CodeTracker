@@ -1,5 +1,5 @@
 {
-	"cummulative_total": {"decimal": "12.43", "digital": "12:26", "seconds": 44813.079614, "text": "12 hrs 26 mins"},
+	"cumulative_total": {"decimal": "12.43", "digital": "12:26", "seconds": 44813.079614, "text": "12 hrs 26 mins"},
 	"data": [
 		{
 			"categories": [],

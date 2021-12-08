@@ -3,10 +3,11 @@ export default class response {
     status: number;
     errors: string[];
     response: object;
+    auth: object;
     constructor(status=400, errors=[], response={}, success=false, auth={}) {
         this.success = success;
         this.status = status;
-        //this.auth = auth;
+        this.auth = auth;
         this.errors = [];
         this.errors.push(...errors);
         this.response = response;

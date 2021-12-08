@@ -57,7 +57,7 @@ const getToken = async (code:string, result: Iresponse) => {
 	});
 	return {access_token: access_token, refresh_token: refresh_token};
 }
-const registerCtrl = async (req: Request, res: Response, next: NextFunction) => {
+const registerCtrl = async (req: Request, res: Response) => {
 	let result = new response();
 	let newUser;
 	if (req.body.code) {

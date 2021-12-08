@@ -1,1 +1,28 @@
-{"editors":[{"name":"VS Code","time":7159.0820969999995}],"languages":[{"name":"TypeScript","time":5008.388161000001},{"name":"JSON","time":2136.72606},{"name":"Markdown","time":13.967876}],"os":[{"name":"Mac","time":1605.468124},{"name":"Mac","time":1925.573783}]}
+{
+  "editors": [
+    {
+      "name": "VS Code",
+      "time": 21639.024612999998
+    }
+  ],
+  "languages": [
+    {
+      "name": "TypeScript",
+      "time": 16276.250423000001
+    },
+    {
+      "name": "JSON",
+      "time": 5338.3304069999995
+    },
+    {
+      "name": "Markdown",
+      "time": 24.443783000000003
+    }
+  ],
+  "os": [
+    {
+      "name": "Mac",
+      "time": 12234.263073999999
+    }
+  ]
+}
