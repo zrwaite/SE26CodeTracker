@@ -1,7 +1,8 @@
 import cron from "node-cron";
 import dailyCodeData from "./dailyCodeData";
+dailyCodeData();
 const cronjobs = () => {
-	cron.schedule('* * * * *', () => {
+	cron.schedule('1 * * * *', () => {
 		dailyCodeData();
 	});
 }
