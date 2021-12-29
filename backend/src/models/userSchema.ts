@@ -1,17 +1,58 @@
 import mongoose from 'mongoose';
+import { composeWithMongoose } from "graphql-compose-mongoose";
+const Schema = mongoose.Schema;
 //user schema that defines the entity
-const userSchema = new mongoose.Schema({
+
+const statsSchema = new Schema({
+    wins: {
+        type: Number,
+        default: 0,
+    },
+	editors: {
+        type: [{
+            name: String,
+            time: Number
+        }],
+    },
+    languages: {
+        type: [{
+            name: String,
+            time: Number
+        }],
+    },
+    os: {
+        type: [{
+            name: String,
+            time: Number
+        }],
+    },
+    days: {
+        type: [{
+            date: Date,
+            time: Number
+        }],
+    },
+}, { timestamps: false, id: false, _id: false, minimize: false});
+
+
+
+
+
+const userSchema = new Schema({
     access_token: {
         type: String,
         required: true,
+        unique: true,
     },
 	refresh_token: {
         type: String,
         required: true,
+        unique: true,
     },
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     created_at: {
         type: String,
@@ -24,7 +65,14 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
+        unique: true,
+    },
+    stats: {
+        type: statsSchema,
+        required: true,
     }
-}, { timestamps: true});
+}, { timestamps: false, minimize: false});
 
-export default mongoose.model('Users', userSchema); //Export data formatting
+const UserSchema = mongoose.model('Users', userSchema)
+const UserTC = composeWithMongoose(UserSchema);
+export {UserSchema, UserTC}
