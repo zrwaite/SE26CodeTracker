@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { composeWithMongoose } from "graphql-compose-mongoose";
 const Schema = mongoose.Schema;
 //user schema that defines the entity
 
@@ -33,9 +32,6 @@ const statsSchema = new Schema({
         }],
     },
 }, { timestamps: false, id: false, _id: false, minimize: false});
-
-
-
 
 
 const userSchema = new Schema({
@@ -73,6 +69,5 @@ const userSchema = new Schema({
     }
 }, { timestamps: false, minimize: false});
 
-const UserSchema = mongoose.model('Users', userSchema)
-const UserTC = composeWithMongoose(UserSchema);
-export {UserSchema, UserTC}
+const Users = mongoose.model('Users', userSchema)
+export {Users}

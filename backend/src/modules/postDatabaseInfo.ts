@@ -1,4 +1,4 @@
-import {UserSchema} from "../models/userSchema";
+import {Users} from "../models/userSchema";
 import {getUserData} from "./getWakatimeInfo";
 
 const postUser = async (access_token:string, refresh_token:string, email:string) => {
@@ -8,7 +8,7 @@ const postUser = async (access_token:string, refresh_token:string, email:string)
 	if (userData.email !== email) errors.push("email doesn't match");
 	if (errors.length==0) {
 		try {
-			const newUser = new UserSchema({
+			const newUser = new Users({
 				access_token: access_token, 
 				refresh_token: refresh_token,
 				email: email,
