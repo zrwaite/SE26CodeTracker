@@ -3,6 +3,7 @@
 
 #Crappy database
 tokens.json
+backend/database
 # Logs
 logs
 *.log

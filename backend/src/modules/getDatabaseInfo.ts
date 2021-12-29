@@ -1,11 +1,11 @@
-import User from "../models/userSchema"; //Schema for mongodb
+import {UserSchema} from "../models/userSchema"; //Schema for mongodb
 
 
 /* Get Data Functions*/
 const getTokens = async () => {
 	let users:any;
 	try{
-		users = await User.find();
+		users = await UserSchema.find();
 		let tokens: any[] = [];
 		users.forEach((user: any)=>{
 			console.log(user);
@@ -21,7 +21,7 @@ const getTokens = async () => {
 const getUsers = async () => {
 	let users:any;
 	try{
-		users = await User.find();
+		users = await UserSchema.find();
 		return {success: true, users: users};
 	} 
 	catch (e: any) {console.log("Error getting users");}

@@ -3,6 +3,7 @@ import {response, responseInterface} from "../models/response"; //Created pre-fo
 import {getToken} from "../modules/getWakatimeInfo";
 import validator  from "email-validator";
 import {postUser} from "../modules/postDatabaseInfo";
+import {getBodyParams} from "../modules/getParams";
 
 
 const getPostParams = async (req:any) =>{
@@ -37,9 +38,10 @@ export default class userController {
 		if (req.body.code) {
 			let {access_token, refresh_token} = await getToken(req.body.code, result);
 			if (access_token){
-				let {success, params, errors} = await getPostParams(req);
+				let {success, params, errors} = await getBodyParams(req, ["email"]);
+				const email = params[0];
 				if (success){
-					let postResult = await postUser(access_token, refresh_token, params.email);
+					let postResult = await postUser(access_token, refresh_token, email);
 					if (postResult.success) {
 						result.status = 201;
 						result.success = true;
