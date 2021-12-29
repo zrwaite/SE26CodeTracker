@@ -1,4 +1,4 @@
-import {getCodeData, getUserData} from "../modules/getWakatimeInfo";
+import {getDailyCodeData, getUserData} from "../modules/getWakatimeInfo";
 import {getTokens} from "../modules/getDatabaseInfo";
 import fs from "fs";
 import path from "path";
@@ -75,7 +75,7 @@ const addCodeData = async (token:string) => {
 	
 	let user = JSON.parse(fs.readFileSync(filePath).toString());
 	let cohort = await getCohortData();
-	let codeData = await getCodeData(token);
+	let codeData = await getDailyCodeData(token);
 	if (!codeData) {
 		console.log("error getting code data");
 		return undefined;

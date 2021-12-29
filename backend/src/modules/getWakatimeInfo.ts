@@ -36,22 +36,37 @@ const getUserData = async (token: string) => {
 		return false;
 	}
 }
-const getCodeData = async (token: string) => {
+const getCodeData = async (token: string, startDate: string, endDate: string) => {
 	let apiLink = "https://wakatime.com/api/v1/users/current/summaries?timeout=15&writes_only=true";
-	let date = new Date().toLocaleDateString().toString();
-	apiLink += "&start="+date+"&end="+date;
+	apiLink += "&start="+startDate+"&end="+endDate;
 	let headers = { headers: {'Host': 'wakatime.com', 'Authorization': 'Bearer '+token}};
 	try{
 		const codeData: any = await axios.get(apiLink,headers);
-		delete codeData.data.data[0].dependencies;
-		delete codeData.data.data[0].range;
-		delete codeData.data.data[0].machines;
-		delete codeData.data.data[0].projects;
-		return codeData.data.data[0];
+		let codeStats = codeData.data.data;
+		for (let i=0; i<codeStats.length; i++){
+			delete codeStats[i].dependencies
+			delete codeStats[i].range;
+			delete codeStats[i].machines;
+			delete codeStats[i].projects;
+		}
+		return codeStats;
 	} catch(e:any){
 		console.log("Error",e);
 		return false;
 	}
 }
+const getDailyCodeData = async (token:string) => {
+	let date = new Date().toLocaleDateString().toString();
+	let codeData = await getCodeData(token, date, date)
+	if (codeData) return codeData[0];
+	else return false;
+}
 
-export {getUserData, getCodeData, getToken};
+const getAllCodeData = async (token:string) => {
+	let endDate = new Date().toLocaleDateString().toString();
+	let userData = await getUserData(token);
+	let startDate = userData.created_at;
+	return await getCodeData(token, startDate, endDate)
+}
+
+export {getUserData, getDailyCodeData, getAllCodeData, getToken};
