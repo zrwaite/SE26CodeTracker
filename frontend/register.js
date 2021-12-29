@@ -14,6 +14,6 @@ const tryRegister = async () => {
 		email: email,
 		code: code
 	});
-	if (jsonResponse) res.innerHTML = JSON.parse(jsonResponse);
+	if (jsonResponse) res.innerHTML = jsonResponse;
 	else res.innerHTML = "ERROR";
 }
