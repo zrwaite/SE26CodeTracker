@@ -147,17 +147,7 @@ const addCodeData = async (token:string) => {
 	await addCohortData(cohort);
 	fs.writeFileSync(filePath, JSON.stringify(user));
 }
-
-const clearDay = () => {
-	const folderPath = path.join(__dirname, "../../database/");
-	let fileName = "day_data.json";
-	let filePath = folderPath+fileName;
-	let newData = {"people": []};
-	fs.writeFileSync(filePath, JSON.stringify(newData));
-}
-
 const dailyCodeData = async () => {
-	clearDay();
 	// Get tokens
 	let {gotTokens, tokens} = await getTokens();
 	if (!gotTokens) return;
