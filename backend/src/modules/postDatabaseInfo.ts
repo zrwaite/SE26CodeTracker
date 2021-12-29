@@ -1,4 +1,4 @@
-import User from "../models/userSchema2";
+import User from "../models/userSchema";
 import {getUserData} from "./getWakatimeInfo";
 
 const postUser = async (access_token:string, refresh_token:string, email:string) => {

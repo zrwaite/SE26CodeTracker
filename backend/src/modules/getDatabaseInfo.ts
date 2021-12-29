@@ -28,4 +28,4 @@ const getUsers = async () => {
 	return {success: false, users: []};
 }
 
-export {getTokens};
+export {getTokens, getUsers};

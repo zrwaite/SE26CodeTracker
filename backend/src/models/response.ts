@@ -1,4 +1,4 @@
-export default class response {
+class response {
     success: boolean;
     status: number;
     errors: string[];
@@ -13,3 +13,11 @@ export default class response {
         this.response = response;
     }
 }
+interface responseInterface {
+    success: boolean;
+    status: number;
+    errors: string[];
+    response: object;
+}
+
+export {responseInterface, response}

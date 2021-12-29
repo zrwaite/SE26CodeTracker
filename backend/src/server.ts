@@ -4,7 +4,7 @@ import env from "dotenv";
 // import path from "path";
 //import jwt from 'express-jwt';
 //import jwks from 'jwks-rsa';
-import response from "./models/response"; //Created pre-formatted uniform response
+import {response} from "./models/response"; //Created pre-formatted uniform response
 
 const app = express();
 

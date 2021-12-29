@@ -13,6 +13,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    created_at: {
+        type: String,
+        required: true,
+    },
+    display_name: {
+        type: String,
+        required: true,
+    },
+    username: {
+        type: String,
+        required: true,
+    }
 }, { timestamps: true});
 
 export default mongoose.model('Users', userSchema); //Export data formatting
