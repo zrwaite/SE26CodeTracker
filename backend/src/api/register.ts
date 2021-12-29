@@ -1,5 +1,6 @@
 import {Request, Response, NextFunction} from "express"; //Typescript types
 import response from "../models/response"; //Created pre-formatted uniform response
+import {getToken} from "../modules/getWakatimeInfo";
 import Iresponse from "../models/responseInterface";
 import User from "../models/userSchema";
 import axios from "axios";
@@ -32,37 +33,12 @@ const buildPostBody = async (req:any, access_token: string, refresh_token: strin
 	}
 	return {exists: exists, body: body, errors: undefinedParams};
 };
-const getToken = async (code:string, result: Iresponse) => {
-	let link = "https://wakatime.com/oauth/token";
-	let tokenPostBody = "";
-	tokenPostBody += "grant_type=authorization_code"
-	tokenPostBody += "&redirect_uri=https://wakatime.com/oauth/test"
-	tokenPostBody += `&client_id=${process.env.CLIENT_ID}`;
-	tokenPostBody += `&client_secret=${process.env.CLIENT_SECRET}`;
-	tokenPostBody += `&code=${code}`;
-	let access_token:string = "";
-	let refresh_token:string = "";
-	await axios.post(link, tokenPostBody)
-	.then((tokenJson) => {
-		console.log(tokenJson.data.access_token);
-		access_token = tokenJson.data.access_token;
-		refresh_token = tokenJson.data.refresh_token;
-	}).catch((e) =>{
-		if (e.response.status==400){
-			console.log(e.response.data);
-			console.log(e.response.status);
-			result.status = 400;
-			result.errors.push("Invalid Code");
-		}
-	});
-	return {access_token: access_token, refresh_token: refresh_token};
-}
+
 const registerCtrl = async (req: Request, res: Response) => {
 	let result = new response();
 	let newUser;
 	if (req.body.code) {
 		let {access_token, refresh_token} = await getToken(req.body.code, result);
-		console.log(access_token);
 		if (access_token){
 			let {exists, body, errors} = await buildPostBody(req, access_token, refresh_token);
 			if (exists){
@@ -73,17 +49,11 @@ const registerCtrl = async (req: Request, res: Response) => {
 					result.success = true;
 					result.response = newUser;
 				} catch (e) {
-					console.log("error adding to database");
+					errors.push("error adding to database");
 				}
-			} else {
-				errors.forEach((param)=>{result.errors.push("missing "+param)});
-			}
-		} else {
-			result.errors.push("invalid code");
-		}
-	} else {
-		result.errors.push("missing code")
-	}
+			} else errors.forEach((param)=>{result.errors.push("missing "+param)});
+		} else result.errors.push("Invalid Code");
+	} else result.errors.push("missing code")
 	res.status(result.status).json(result);
 }
 export default registerCtrl;
