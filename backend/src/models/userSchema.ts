@@ -1,9 +1,20 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 //user schema that defines the entity
-
 const statsSchema = new Schema({
     wins: {
+        type: Number,
+        default: 0,
+    },
+    total_time: {
+        type: Number,
+        default: 0,
+    },
+    day_time: {
+        type: Number,
+        default: 0,
+    },
+    week_time: {
         type: Number,
         default: 0,
     },
