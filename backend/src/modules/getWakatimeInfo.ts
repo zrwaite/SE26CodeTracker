@@ -45,7 +45,6 @@ const getCodeData = async (token: string, startDate: string, endDate: string) =>
 		let codeStats = codeData.data.data;
 		for (let i=0; i<codeStats.length; i++){
 			delete codeStats[i].dependencies
-			delete codeStats[i].range;
 			delete codeStats[i].machines;
 			delete codeStats[i].projects;
 		}
