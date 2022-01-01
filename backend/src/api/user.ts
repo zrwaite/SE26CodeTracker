@@ -1,36 +1,29 @@
 import {Request, Response, NextFunction} from "express"; //Typescript types
 import {response, responseInterface} from "../models/response"; //Created pre-formatted uniform response
 import {getToken} from "../modules/getWakatimeInfo";
-import validator  from "email-validator";
 import {postUser} from "../modules/postDatabaseInfo";
-import {getBodyParams} from "../modules/getParams";
+import {getBodyParams, getQueryParams} from "../modules/getParams";
+import {Users} from "../models/userSchema";
 
-
-const getPostParams = async (req:any) =>{
-	//Create the post request
-	let success = false;
-	let email = '';
-	let undefinedParams: string[] = [];
-	let params: any = {};
-	["email"].forEach((param) => {
-		if (req.body[param]==undefined) undefinedParams.push(param);
-	});
-	if (undefinedParams.length == 0) { 
-		if (validator.validate(req.body.email)){ // true
-			params.email = req.body.email;
-			success = true;
-		} else {
-			undefinedParams.push("Valid Email");
-		}
-	}
-	return {success: success, params: params, errors: undefinedParams};
-};
 
 /* register controller */
 export default class userController {
 	static async getUser(req: Request, res: Response, next: NextFunction) {
 		let result:responseInterface = new response(); //Create new standardized response
-		//Get request code
+		let {success, params, errors} = await getQueryParams(req, ["username"]);
+		if (success) {
+			const username = params[0];
+			const query = { username: username };
+			let user = await Users.findOne(query);
+			if (user) {
+				result.success = true;
+				result.status = 200;
+				result.response = user;
+			} else {
+				result.status = 404;
+				result.errors.push("user not found");
+			}
+		} else errors.forEach((error) => result.errors.push(error));
 		res.status(result.status).json(result); //Return whatever result remains
 	}
 	static async postUser(req: Request, res: Response, next: NextFunction) {
