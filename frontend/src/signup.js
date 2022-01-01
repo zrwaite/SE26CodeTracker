@@ -1,4 +1,4 @@
-const tryRegister = async () => {
+const trySignUp = async () => {
 	let res = document.getElementById("response");
 	let emailInput = document.getElementById("email");
 	let codeInput = document.getElementById("code");
