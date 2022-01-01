@@ -1,14 +1,22 @@
-const getBodyParams = async (req:any, params:string[]) =>{
-	//Create the post request
+const getParams = async (req:any, params:string[], type:string) =>{
 	let success = true;
 	let undefinedParams: string[] = [];
 	let definedParams: any[] = [];
 	params.forEach((param) => {
-		if (req.body[param]==undefined) {
+		if (req[type][param]==undefined) {
 			success = false;	
 			undefinedParams.push(param);
-		} else definedParams.push(req.body[param]);
+		} else definedParams.push(req[type][param]);
 	});
 	return {success: success, params: definedParams, errors: undefinedParams};
+}
+
+const getBodyParams = async (req:any, params:string[]) =>{
+	return getParams(req, params, "body");
 };
-export {getBodyParams}
+
+const getQueryParams = async (req:any, params:string[]) =>{
+	return getParams(req, params, "query");
+};
+
+export {getBodyParams, getQueryParams}
