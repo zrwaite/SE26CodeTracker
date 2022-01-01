@@ -1,11 +1,15 @@
 import {Users} from "../models/userSchema";
+import {getDailyCodeData} from "../modules/getWakatimeInfo";
+import {parseDayStats} from "../modules/parseData";
 
-const putUserStats = async (username:string, stats:any) => {
+const updateUserStats = async (username:string) => {
 	const query = { username: username };
 	let user = await Users.findOne(query);
 	if (user) {
 		try {
-			user.stats = stats;
+			let newCodeData = await getDailyCodeData(user.access_token)
+			let updatedStats = await parseDayStats(newCodeData, user.stats, true, true);
+			user.stats = updatedStats;
 			await user.save();
 			return 201;
 		} catch (_) {
@@ -14,4 +18,4 @@ const putUserStats = async (username:string, stats:any) => {
 	} else return 404;
 }
 
-export {putUserStats}
+export {updateUserStats}
