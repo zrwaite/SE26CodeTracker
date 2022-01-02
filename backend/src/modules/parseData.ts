@@ -14,7 +14,7 @@ const parseDayStats = async (day:any, startingStats:stats = {
 	languages: [],
 	os: [],
 	days: []
-}, addDay:boolean = false, addWeek:boolean = false) => {
+}, addDay:boolean = false, addWeek:boolean = false, removeWeek:boolean) => {
 	const currentDate:string = day.range.date;
 	const dayStats:dayObject = {
 		time: 0,
@@ -62,6 +62,7 @@ const parseDayStats = async (day:any, startingStats:stats = {
 	startingStats.days.push(dayStats);
 	if (addDay) startingStats.day_time = dayStats.time;
 	if (addWeek) startingStats.week_time += dayStats.time;
+	if (removeWeek && startingStats.days.length>7) startingStats.week_time -= startingStats.days[startingStats.days.length-7].time
 	return startingStats;
 }
 const createCodeStats = async (allStats:any[]) =>{
@@ -77,7 +78,7 @@ const createCodeStats = async (allStats:any[]) =>{
 	}
 	for (let numDay=0; numDay<allStats.length; numDay++){
 		const day = allStats[numDay];
-		codeStats = await parseDayStats(day, codeStats, (allStats.length-1 <= numDay), (allStats.length-7 <= numDay));
+		codeStats = await parseDayStats(day, codeStats, (allStats.length-1 <= numDay), (allStats.length-7 <= numDay), false);
 	}
 	return codeStats;
 }
