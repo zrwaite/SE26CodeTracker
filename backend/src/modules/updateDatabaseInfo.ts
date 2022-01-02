@@ -1,6 +1,6 @@
 import {Users} from "../models/userSchema";
-import {getDailyCodeData} from "../modules/getWakatimeInfo";
-import {parseDayStats} from "../modules/parseData";
+import {getDailyCodeData, getAllCodeData} from "../modules/getWakatimeInfo";
+import {parseDayStats, createCodeStats} from "../modules/parseData";
 
 const updateUserStats = async (username:string) => {
 	const query = { username: username };
@@ -18,4 +18,21 @@ const updateUserStats = async (username:string) => {
 	} else return 404;
 }
 
-export {updateUserStats}
+const initializeUser = async (username: string) => {
+	const query = { username: username };
+	let user = await Users.findOne(query);
+	if (user) {
+		try {
+			let codeData = await getAllCodeData(user.access_token);
+			let parsedCodeData = await createCodeStats(codeData);
+			user.stats = parsedCodeData;
+			user.initialized = true;
+			await user.save();
+			return 201;
+		} catch (_) {
+			return 400;
+		}
+	} else return 404;
+}
+
+export {updateUserStats, initializeUser}
