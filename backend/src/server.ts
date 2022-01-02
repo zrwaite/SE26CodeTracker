@@ -19,9 +19,11 @@ app.use(express.json());
 
 // routes
 import apiRoute from "./routes/api.route";
+import authRoute from "./routes/auth.route";
 
 // api routing
 app.use("/api", apiRoute);
+app.use("/auth", authRoute);
 
 app.get("/test", (req, res) => {
 	let result = new response(200, [], {page: "test"}, true);

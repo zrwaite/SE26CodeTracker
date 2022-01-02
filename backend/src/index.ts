@@ -2,6 +2,7 @@ import env from "dotenv";
 import mongoose from "mongoose";
 import app from "./server";
 import cronjobs from "./cronjobs/cronjobs";
+import {initializeDatabaseInfo} from "./modules/initializeDatabaseInfo";
 
 // Configs
 env.config();
@@ -19,6 +20,7 @@ mongoose
 		console.log("Database connected");
 		app.listen(port, () => {
 			console.log(`listening on port ${port}`);
+			initializeDatabaseInfo();
 			cronjobs();
 		});
 	});
