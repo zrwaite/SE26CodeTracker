@@ -1,17 +1,20 @@
 const trySignUp = async () => {
 	let res = document.getElementById("response");
-	let emailInput = document.getElementById("email");
-	let codeInput = document.getElementById("code");
+	const usernameInput = document.getElementById("username");
+	const passwordInput = document.getElementById("password");
+	const codeInput = document.getElementById("code");
 
-	let email = emailInput.value;
-	let code = codeInput.value;
+	const username = usernameInput.value;
+	const code = codeInput.value;
+	const password = passwordInput.value;
 
-	if (email===''||code==='') return;
-	if (!emailInput.checkValidity()) return;
+	if (username===''||code===''||password=='') return;
+	if (!usernameInput.checkValidity()) return;
+	if (!passwordInput.checkValidity()) return;
 	if (!codeInput.checkValidity()) return;
-
 	let jsonResponse = await httpReq("/api/user", "POST", {
-		email: email,
+		username: username,
+		password: password,
 		code: code
 	});
 	if (jsonResponse) res.innerHTML = jsonResponse;
