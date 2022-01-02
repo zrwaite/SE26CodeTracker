@@ -74,6 +74,14 @@ const userSchema = new Schema({
         required: true,
         unique: true,
     },
+    initialized: {
+        type: Boolean,
+        default: false,
+    },
+    hash: {
+        type: String,
+        required: true,
+    },
     stats: {
         type: statsSchema,
         required: true,
