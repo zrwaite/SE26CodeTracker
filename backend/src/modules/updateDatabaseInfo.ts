@@ -8,7 +8,9 @@ const updateUserStats = async (username:string) => {
 	if (user) {
 		try {
 			let newCodeData = await getDailyCodeData(user.access_token)
-			let updatedStats = await parseDayStats(newCodeData, user.stats, true, true);
+			let removeWeekData = false;
+			if (user.stats.days.length >= 7) removeWeekData = true;
+			let updatedStats = await parseDayStats(newCodeData, user.stats, true, true, removeWeekData);
 			user.stats = updatedStats;
 			await user.save();
 			return 201;
