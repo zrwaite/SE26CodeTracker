@@ -1,3 +1,35 @@
 .wakatime {
 	font-family: 'Rubik';
 }
+.stepTitle{
+	display:grid;
+	justify-content: center;
+	align-items: center;
+	grid-template-columns: auto auto auto;
+	gap: 1rem;
+}
+.wakatimeLogo{
+	display: flex;
+}
+.wakatimeLogo>img {
+	height: 2rem;
+	width: auto;
+}
+.stepSection{
+	display:none;
+}
+.stepSection>img{
+	width: 100%;
+	height: auto;
+}
+.stepSection>div{
+	display:flex;
+}	
+.expandButton {
+	justify-self: right;
+	margin: auto;
+}
+.expandButton>img {
+	transition: transform 300ms;
+	margin: 0;
+}
