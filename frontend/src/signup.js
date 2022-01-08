@@ -20,3 +20,19 @@ const trySignUp = async () => {
 	if (jsonResponse) res.innerHTML = jsonResponse;
 	else res.innerHTML = "ERROR";
 }
+
+const expand = (index) => {
+	let sectionId = `stepSection${index}`;
+	let iconId = `stepIcon${index}`;
+	let section = document.getElementById(sectionId);
+	let icon = document.getElementById(iconId);
+	if (icon.flipped) {
+		icon.style.transform = "rotate(0deg)"
+		icon.flipped = false;
+		section.style.display = "none"
+	} else {
+		icon.flipped = true;
+		icon.style.transform = "rotate(180deg)"
+		section.style.display = "block";
+	}
+}
