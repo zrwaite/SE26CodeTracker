@@ -27,24 +27,19 @@ main {
 a{
 	text-decoration: none;
 }
-@media only screen and (max-width: 40rem) {
-	main{
-		margin: 0 2rem;
-		padding: 0 2rem 7.4rem;
-	}
-	:root{
-		font-size:14px;
-	}
-}
 h1, h2{
 	font-family: titleFont;
-	text-align: center;
 }
-h1, h2, h3, h4, h5, h6, p {margin: 0;}
+h1, h2, h3, h4, h5, h6, p {
+	text-align: center;
+	margin: 0;
+}
 h1{font-size:4rem;}
 h2{font-size:3.5rem;}
 h3{font-size:3rem;}
 h4{font-size:2.5rem;}
+h5{font-size:2rem;}
+h6{font-size:1.5rem;}
 p{font-size: 1rem;}
 @font-face {
 	font-family: mainFont;
@@ -85,7 +80,69 @@ section {
 	border: 0.3rem solid black;
 	border-radius: 2rem;
 	padding: 1rem;
+	margin: 1rem 0;
+	/* overflow: hidden; */
 }
 .whiteShift {
 	filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(305deg) brightness(103%) contrast(103%);
+}
+input{
+	border-radius: 0.5rem;
+	border: 0.2rem solid black;
+}
+hr {
+	border-top: 0.2rem solid black;
+	width: 100%;
+}
+
+.standardHeader{
+	display: flex;
+	flex-direction: row;
+	align-items:center;
+	justify-content: center;
+}
+.standardHeader>img{
+	height: 3rem;
+	width: auto;
+	margin: 1rem;
+}	
+
+.form {
+	display: grid;
+	gap: 0.5rem;
+	justify-items: center;
+	align-items: center;
+	grid-template-columns: 1fr 3fr;
+}
+.form>*{
+	grid-column: span 2;
+}
+.form>p{
+	font-size: 1.5rem;
+	grid-column: span 1;
+	justify-self: left;
+}
+.form>input {
+	width: 100%;
+	font-size: 1.5rem;
+	grid-column: span 1;
+	justify-self: left;
+}
+
+
+@media only screen and (max-width: 40rem) {
+	main{
+		margin: 0 2rem;
+		padding: 0 2rem 7.4rem;
+	}
+	:root{
+		font-size:14px;
+	}
+	.form {
+		grid-template-columns: auto;
+	}
+	.form>*, .form>p, .form>input {
+		grid-column: span 1;
+		justify-self: center;
+	}
 }
