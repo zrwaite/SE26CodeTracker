@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../src/modules/http_request.js"></script>
 	<link href="../styles/styles.css" rel="stylesheet" type="text/css" />
-	<link href="../styles/signin.css" rel="stylesheet" type="text/css" />
+	<link href="../styles/signup.css" rel="stylesheet" type="text/css" />
 	<link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	<script src="../components/navbar.jsx"></script>
 	<script src="../components/footer.jsx"></script>
@@ -16,13 +16,29 @@
 <body>
 	<nav id="navbar"></nav>
 	<script>Navbar("navbar", "home")</script>
-	<label for="userame">Username: </label><input id="username" name="username" type="text"/>
-	<label for="password">Password: </label><input id="password" name="password" type="password"/>
-	<label for="code">Access Code:</label><input id="code" name="code" type="text"/>
-	<button type="button" onclick="trySignUp()">Submit</button>
-	<div>
-		<p id="response"></p>
-	</div>
+	<main>
+		<header class="standardHeader">
+			<img src="../images/logo.svg"/>
+			<h1>Sign Up</h1>
+			<img src="../images/add_account.svg"/>
+		</header>
+		<section class="form signinForm"> 
+			<h3>title</h3>
+			<hr>
+			<p>Username:</p>
+			<input id="username" type="text"/>
+			<p>Password:</p>
+			<input id="password" type="password"/>
+			<p>Email:</p>
+			<input id="email" type="email"/>
+			<p>Access Code:</p>
+			<input id="code" type="text"/>
+			<button type="button" onclick="trySignUp()">Submit</button>
+		</section>
+		<div>
+			<p id="response"></p>
+		</div>
+	</main>
 	<footer id="footer"></footer>
 	<script>Footer("footer")</script>
 </body>

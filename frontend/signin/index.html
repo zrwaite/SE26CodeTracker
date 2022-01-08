@@ -16,21 +16,30 @@
 	<nav id="navbar"></nav>
 	<script>Navbar("navbar", "home")</script>
 	<main>
-		<header class="signinHeader">
+		<header class="standardHeader">
 			<img src="../images/logo.svg"/>
 			<h1>Sign In</h1>
 			<img src="../images/login.svg"/>
 		</header>
-		<section class="signinForm"> 
-			<p for="username">Username: </p>
-			<input id="username" name="username" type="text"/>
-			<p for="password">Password:</p>
-			<input id="password" name="password" type="password"/>
+		<section class="form signinForm"> 
+			<p>Username: </p>
+			<input id="username" type="text"/>
+			<p>Password:</p>
+			<input id="password" type="password"/>
 			<button type="button" onclick="trySignIn()">Submit</button>
 		</section>
 		<div>
 			<p id="response"></p>
 		</div>
+		<section class="alternateLogin">
+			<h6>Don't have an account?</h6>
+			<a href="../signup">
+				<button class="registerButton">
+					<img class="buttonIcon whiteShift" src="../images/add_account.svg"/>
+					<h6>Sign Up</h6>
+				</button>
+			</a>
+		</section>
 	</main>
 	<footer id="footer"></footer>
 	<script>Footer("footer")</script>
