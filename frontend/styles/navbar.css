@@ -1,0 +1,16 @@
+.nav {
+	display:flex;
+	flex-direction: row;
+	background-color: var(--light2-col);
+}
+.navItem {
+	display: flex;
+	flex-direction: row;
+	background-color: var(--secondary-col);
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	margin: 1rem;
+}
+.navItemText {
+	margin: 0;
+}

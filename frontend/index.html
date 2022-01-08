@@ -5,12 +5,19 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Code Tracker</title>
+	<link href="./styles/styles.css" rel="stylesheet" type="text/css" />
+	<link href="./styles/navbar.css" rel="stylesheet" type="text/css" />
+	<script src="components/navbar.jsx"></script>
 </head>
 <body>
-	<div>
-		<h1>Code Tracker</h1>
-	</div>
-	<a href="signup"><button>Sign Up</button></a>
-	<a href="signin"><button>Sign In</button></a>
+	<nav id="navbar"></nav>
+	<script>Navbar("navbar")</script>
+	<main>
+		<div>
+			<h1>Code Tracker</h1>
+		</div>
+		<a href="signup"><button>Sign Up</button></a>
+		<a href="signin"><button>Sign In</button></a>
+	</main>
 </body>
 </html>
