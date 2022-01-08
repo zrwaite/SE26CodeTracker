@@ -1,0 +1,36 @@
+.homePageDescription{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	border: 0.3rem solid black;
+	background-color: white;
+	border-radius: 2rem;
+	padding: 1rem;
+}
+.descriptionLogo{
+	width: 10rem;
+	height: auto;
+	margin: 1rem;
+}
+
+.registerSection{
+	display: flex;
+	flex-direction: row;
+	align-items:center;
+	justify-content:space-around;
+}
+.registerButton{
+	margin: 1rem;
+	font-size: 2rem;
+	padding: 0.5rem 1.5rem;
+}
+
+@media only screen and (max-width: 40rem) {
+	.homePageDescription{
+		flex-direction: column;
+	}	
+	.registerSection{
+		flex-direction: column;
+	}
+}	
