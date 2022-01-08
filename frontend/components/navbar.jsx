@@ -2,20 +2,31 @@ const Navbar = (id) => {
 	const navbar = document.getElementById(id);
 	if (!navbar) return;
 	navbar.innerHTML = 
-	`
+	`	
 	<div class="nav">
-		<div class="navItem">
-			<p class="navItemText">Stats</p>
-		</div>
-		<div class="navItem">
-			<p class="navItemText">Cohort</p>
-		</div>
-		<div class="navItem">
-			<p class="navItemText">Compete</p>
-		</div>
-		<div class="navItem">
-			<p class="navItemText">Settings</p>
-		</div>
+		<a href="./stats">
+			<div class="navItem">
+				<img src="images/graph.svg"></img>
+				<p class="navItemText">Stats</p>
+			</div>
+		</a>
+		<a href="./cohort">
+			<div class="navItem">
+				<img src="images/group.svg"></img>
+				<p class="navItemText">Cohort</p>
+			</div>
+		</a>
+		<a href="./competitions">
+			<div class="navItem">
+				<img src="images/trophy.svg"></img>
+				<p class="navItemText">Compete</p>
+			</div>
+		</a>
+		<a class="navItemRight" href="./settings">
+			<div class="navItem">
+				<img src="images/settings.svg"></img>
+			</div>
+		</a>
 	</div>
 	`
 }
