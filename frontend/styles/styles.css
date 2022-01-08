@@ -1,3 +1,6 @@
+@import "navbar.css";
+@import "footer.css";
+
 :root {
 	font-size :16px;
 	font-family: mainFont;
@@ -8,15 +11,40 @@
 	--light1-col: #93FFD8;
 	--light2-col: #CFFFDC;
 }
-html, body {
+html{
+	min-height: 100%;
+}
+body {
 	margin: 0;
+	background-color: var(--primary-col);
+	position: relative;
+  	min-height: 100vh;
 }
 main {
 	margin: 0 5rem;
+	padding: 0 2rem 7.4rem;
+}
+a{
+	text-decoration: none;
+}
+@media only screen and (max-width: 40rem) {
+	main{
+		margin: 0 2rem;
+		padding: 0 2rem 7.4rem;
+	}
+	:root{
+		font-size:14px;
+	}
 }
 h1, h2, h3, h4, h5 {
 	font-family: titleFont;
+	text-align: center;
 }
+h1{font-size:3rem;}
+h2{font-size:2.5rem;}
+h3{font-size:2rem;}
+h4{font-size:1.5rem;}
+p{font-size: 1rem;}
 @font-face {
 	font-family: mainFont;
 	src: url(../assets/Fonts/Aldrich-Regular.ttf);
@@ -25,10 +53,9 @@ h1, h2, h3, h4, h5 {
 	font-family: titleFont;
 	src: url(../assets/Fonts/Omicron.ttf);
 }
-
-
 button {
 	font-family: mainFont;
+	color:white;
 	font-weight: bolder;
 	padding: 0.5rem;
 	border-radius: 0.5rem;
@@ -37,6 +64,7 @@ button {
 }
 button:hover {
 	border: 0.2rem solid var(--secondary-col-dark);
+	cursor: pointer;
 }
 button:active {
 	border: 0.2rem solid var(--secondary-col);
