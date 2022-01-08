@@ -3,10 +3,6 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	border: 0.3rem solid black;
-	background-color: white;
-	border-radius: 2rem;
-	padding: 1rem;
 }
 .descriptionLogo{
 	width: 10rem;

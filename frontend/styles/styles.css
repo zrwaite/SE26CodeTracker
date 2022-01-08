@@ -80,6 +80,12 @@ button>img{
 	height: 2rem;
 	width: auto;
 }
+section {
+	background-color: white;
+	border: 0.3rem solid black;
+	border-radius: 2rem;
+	padding: 1rem;
+}
 .whiteShift {
 	filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(305deg) brightness(103%) contrast(103%);
 }
