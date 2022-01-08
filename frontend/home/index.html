@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Code Tracker</title>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="../styles/styles.css" rel="stylesheet" type="text/css" />
-	<link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-	<link href="../styles/home.css" rel="stylesheet" type="text/css" />
-	<script src="../components/navbar.jsx"></script>
-	<script src="../components/footer.jsx"></script>
-</head>
-<body>
-	<nav id="navbar"></nav>
-	<script>Navbar("navbar")</script>
-	<main>
-		<header>
-			<h1>SE 26 Code Tracker</h1>
-		</header>
-		<section class="homePageDescription">
-			<img class="descriptionLogo" src="../images/logo.svg"/>
-			<p>
-				This software will allow you to connect your wakatime code tracker 
-				to our Software Engineering Cohort, which will allow you to view 
-				more of your statistics than the standard plan allows you to, and 
-				will allow everyone to compare their stats to the average in the cohort, 
-				to learn more about operating systems, languages, editors, and time spent coding. 
-			</p>
-		</section>
-		<section class="registerSection">
-			<a href="../signup"><button class="registerButton">Sign Up</button></a>
-			<a href="../signin"><button class="registerButton">Sign In</button></a>
-		</section>
-	</main>
-	<footer id="footer"></footer>
-	<script>Footer("footer")</script>
-</body>
+	<head>
+		<title>Code Tracker</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="../styles/styles.css" rel="stylesheet" type="text/css" />
+		<link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<link href="../styles/home.css" rel="stylesheet" type="text/css" />
+		<script src="../components/navbar.jsx"></script>
+		<script src="../components/footer.jsx"></script>
+	</head>
+	<body>
+		<nav id="navbar"></nav>
+		<script>
+			Navbar("navbar", "home");
+		</script>
+		<main>
+			<header>
+				<h1>SE 26 Code Tracker</h1>
+			</header>
+			<section class="homePageDescription">
+				<img class="descriptionLogo" src="../images/logo.svg" />
+				<p>
+					This software will allow you to connect your wakatime code tracker to our Software Engineering Cohort, which will allow you to view more of your statistics than the standard plan
+					allows you to, and will allow everyone to compare their stats to the average in the cohort, to learn more about operating systems, languages, editors, and time spent coding.
+				</p>
+			</section>
+			<section class="registerSection">
+				<a href="../signup">
+					<button class="registerButton">
+						<img class="buttonIcon whiteShift" src="../images/add_account.svg"/>
+						<h5>Sign Up</h5>
+					</button>
+				</a>
+				<a href="../signin">
+					<button class="registerButton">
+						<img class="buttonIcon whiteShift" src="../images/login.svg"/>
+						<h5>Sign In</h5>
+					</button>
+				</a>
+			</section>
+		</main>
+		<footer id="footer"></footer>
+		<script>
+			Footer("footer");
+		</script>
+	</body>
 </html>

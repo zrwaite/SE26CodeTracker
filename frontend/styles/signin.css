@@ -1,0 +1,11 @@
+.signinHeader{
+	display: flex;
+	flex-direction: row;
+	align-items:center;
+	justify-content: center;
+}
+.signinHeader>img{
+	height: 3rem;
+	width: auto;
+	margin: 1rem;
+}	
