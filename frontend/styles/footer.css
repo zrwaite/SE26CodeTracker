@@ -16,9 +16,16 @@ footer{
 	justify-content: space-around;
 	padding: 0.5rem;
 }
+.footer>a{
+	flex-grow: 5;
+	margin: 0 1rem;	
+}
 .footerLogo {
 	height: 3rem;
 	margin: 1rem;
+}
+.footerButton {
+	width: 100%;
 }
 .footerButton>img{
 	margin: 0.3rem;

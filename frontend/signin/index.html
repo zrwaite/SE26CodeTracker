@@ -21,9 +21,13 @@
 			<h1>Sign In</h1>
 			<img src="../images/login.svg"/>
 		</header>
-		<label for="username">Username: </label><input id="username" name="username" type="text"/>
-		<label for="password">Password:</label><input id="password" name="password" type="password"/>
-		<button type="button" onclick="trySignIn()">Submit</button>
+		<section class="signinForm"> 
+			<p for="username">Username: </p>
+			<input id="username" name="username" type="text"/>
+			<p for="password">Password:</p>
+			<input id="password" name="password" type="password"/>
+			<button type="button" onclick="trySignIn()">Submit</button>
+		</section>
 		<div>
 			<p id="response"></p>
 		</div>
