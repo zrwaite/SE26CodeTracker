@@ -1,15 +1,23 @@
+nav {
+	padding: 0.5rem 0.5rem 0;
+	background-color: var(--primary-col);
+	position: sticky;
+	top: 0;
+}
 .nav {
 	display:flex;
 	flex-direction: row;
-	background-color: var(--light2-col);
-	width: 100%;
+	background-color: var(--light1-col);
+	width: auto;
+	border: 0.2rem solid black;
+	border-radius: 1rem;
 }
 .nav>a{
 	display:block;
 	text-decoration: none;
 }
 .navItem {
-	border: 0.2rem solid transparent;
+	/* border: 0.2rem solid transparent; */
 	display: flex;
 	flex-direction: row;
 	background-color: var(--secondary-col);
@@ -22,13 +30,11 @@
 .navItemRight{
 	margin-left: auto;
 }
-.navItem:hover{
-	border: 0.2rem solid blue;
-}
 .navItem>img{
 	margin: 0.1rem;
 	height: 2rem;
 	width: auto;
+	filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(305deg) brightness(103%) contrast(103%);
 }
 .navItemText {
 	font-size: 2rem;

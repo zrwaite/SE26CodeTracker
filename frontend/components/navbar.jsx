@@ -4,28 +4,28 @@ const Navbar = (id) => {
 	navbar.innerHTML = 
 	`	
 	<div class="nav">
-		<a href="./stats">
-			<div class="navItem">
-				<img src="images/graph.svg"></img>
+		<a href="../stats">
+			<button class="navItem">
+				<img src="../images/graph.svg"></img>
 				<p class="navItemText">Stats</p>
-			</div>
+			</button>
 		</a>
-		<a href="./cohort">
-			<div class="navItem">
-				<img src="images/group.svg"></img>
+		<a href="../cohort">
+			<button class="navItem">
+				<img src="../images/group.svg"></img>
 				<p class="navItemText">Cohort</p>
-			</div>
+			</button>
 		</a>
-		<a href="./competitions">
-			<div class="navItem">
-				<img src="images/trophy.svg"></img>
+		<a href="../competitions">
+			<button class="navItem">
+				<img src="../images/trophy.svg"></img>
 				<p class="navItemText">Compete</p>
-			</div>
+			</button>
 		</a>
-		<a class="navItemRight" href="./settings">
-			<div class="navItem">
-				<img src="images/settings.svg"></img>
-			</div>
+		<a class="navItemRight" href="../settings">
+			<button class="navItem">
+				<img src="../images/settings.svg"></img>
+			</button>
 		</a>
 	</div>
 	`
