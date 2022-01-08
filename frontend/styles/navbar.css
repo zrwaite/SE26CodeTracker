@@ -2,15 +2,42 @@
 	display:flex;
 	flex-direction: row;
 	background-color: var(--light2-col);
+	width: 100%;
+}
+.nav>a{
+	display:block;
+	text-decoration: none;
 }
 .navItem {
+	border: 0.2rem solid transparent;
 	display: flex;
 	flex-direction: row;
 	background-color: var(--secondary-col);
+	align-items: center;
+	justify-content: center;
 	border-radius: 0.5rem;
 	padding: 0.5rem;
-	margin: 1rem;
+	margin: 0.5rem;
+}
+.navItemRight{
+	margin-left: auto;
+}
+.navItem:hover{
+	border: 0.2rem solid blue;
+}
+.navItem>img{
+	margin: 0.1rem;
+	height: 2rem;
+	width: auto;
 }
 .navItemText {
-	margin: 0;
+	font-size: 2rem;
+	margin: 0.1rem;
+	color: white;
+}
+
+@media only screen and (max-width: 40rem) {
+	.navItemText{
+		display:none
+	}
 }
