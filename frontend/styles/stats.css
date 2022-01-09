@@ -1,0 +1,45 @@
+.numberStats{
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+	align-items:center;
+	justify-content:center;
+}
+.numberStats>div{
+	display:flex;
+}
+.numberStats * {
+	margin: 0.3rem;
+}	
+.allDaysHeader{
+	display:flex;
+	justify-content: space-between;
+}
+.allDaysGraph{
+	display:flex;
+	height: 10rem;
+}
+.rotate{
+	transform: rotate(-90deg);
+}
+.yAxis{
+	display:flex;
+	flex-direction: column;
+	height: 100%;
+	align-items: space-between;
+	justify-content: space-between;
+}
+#barGraph{
+	display:flex;
+	align-items:flex-end;
+	border-left: 0.4rem solid black;
+	border-bottom: 0.4rem solid black;
+	height: 93%;
+	width: 100%;
+}
+#barGraph>div{
+	display:flex;
+	align-items:flex-end;
+}
+#barGraph div{
+	width: 100%;
+}
