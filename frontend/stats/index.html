@@ -6,8 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../src/modules/http_request.js"></script>
+    <script src="../src/stats.js"></script>
 	<link href="../styles/styles.css" rel="stylesheet" type="text/css" />
-	<link href="../styles/signin.css" rel="stylesheet" type="text/css" />
+	<link href="../styles/stats.css" rel="stylesheet" type="text/css" />
 	<link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	<script src="../components/navbar.jsx"></script>
 	<script src="../components/footer.jsx"></script>
@@ -15,9 +16,42 @@
 <body>
 	<nav id="navbar"></nav>
 	<script>Navbar("navbar")</script>
-	<div>
-		<h1>Code Tracker Stats</h1>
-	</div>
+	<main>
+		<header class="standardHeader">
+			<img src="../images/logo.svg"/>
+			<h1>Stats</h1>
+			<img src="../images/graph.svg"/>
+		</header>
+		<section class="numberStats">
+			<h5>Total Time: </h5>
+			<h5><span id="totalTime">--</span>hours</h5>
+			<h5>Average Day: </h5>
+			<h5><span id="averageDay">--</span>hours</h5>
+			<h5>Highest Day: </h5>
+			<h5><span id="highestDay">--</span>hours</h5>
+		</section>
+		<section>
+			<div class="allDaysHeader">
+				<h3>All Days</h3>
+				<button>
+					<img src="../images/chart.svg"/>
+				</button>
+			</div>
+			<hr>
+			<div class="allDaysGraph">
+				<div class="yAxis">
+					<p id="maxDay">--</p>
+					<p class="rotate">Hours</p>
+					<p>0</p>
+				</div>
+				<div id="barGraph"></div>
+				<script>setTimeout(()=>allDaysGraph(), 1000)</script>
+			</div>
+			<div id="dayStatDetails">
+				<h6>Hover above for more info^</h6>
+			</div>
+		</section>
+	</main>
 	<footer id="footer"></footer>
 	<script>Footer("footer")</script>
 </body>
