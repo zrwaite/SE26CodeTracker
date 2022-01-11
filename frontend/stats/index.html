@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../src/modules/http_request.js"></script>
     <script src="../src/stats.js"></script>
+	<script src="../src/pigraph.js"></script>
 	<link href="../styles/styles.css" rel="stylesheet" type="text/css" />
 	<link href="../styles/stats.css" rel="stylesheet" type="text/css" />
 	<link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -45,14 +46,30 @@
 					<p>0</p>
 				</div>
 				<div id="barGraph"></div>
-				<script>setTimeout(()=>allDaysGraph(), 1000)</script>
 			</div>
 			<div id="dayStatDetails">
 				<h6>Hover above for more info^</h6>
 			</div>
 		</section>
+		<section>
+			<h3>Languages</h3>
+			<hr/>
+			<div class="statsSection">
+				<div class="piGraphContainer">
+					<div class="piGraph" id="languageGraph"></div>
+				</div>
+				<div class="piGraphTable" id="languageTable"></div>
+			</div>
+		</section>
 	</main>
 	<footer id="footer"></footer>
 	<script>Footer("footer")</script>
+	<script></script>
+	<script>setTimeout(()=>{
+		allDaysGraph()
+		renderPiGraph('languageGraph');
+		renderPiGraphTable('languageTable');
+	}, 1000)</script>
+
 </body>
 </html>

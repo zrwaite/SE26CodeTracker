@@ -43,3 +43,47 @@
 #barGraph div{
 	width: 100%;
 }
+
+.statsSection {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	justify-content:space-around;
+}
+.piGraphContainer{
+	padding: 1rem;
+	height: 100%; 
+	width: 100%;
+	
+}
+  
+.piGraph{
+	border-radius: 50%;
+	width:80%;
+	padding-bottom:80%;
+	height: 0;
+	background-color: grey;
+}
+.piGraphTable{
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	justify-content:flex-start;
+	height: 100%;
+	border-left: 0.2rem solid black;
+	max-height: 10rem;
+	border: 0.1rem solid grey;
+	overflow:scroll;
+	padding: 0.5rem;
+}
+.piGraphTable>* {
+	margin: 0.1rem;
+}
+.colorIcon {
+	display: inline-block;
+	height: 1rem; 
+	width: 1rem; 
+	background-color: white;
+	border: 0.05rem solid black;
+	margin-right: 0.2rem;
+}
