@@ -3,13 +3,14 @@
 
 :root {
 	font-size :16px;
+	color: white;
 	font-family: mainFont;
-	--primary-col: #7900FF;
-	--primary-col-dark: #31006a;
-	--secondary-col: #548CFF;
-	--secondary-col-dark: #1f489a;
-	--light1-col: #93FFD8;
-	--light2-col: #CFFFDC;
+	--primary-col: #041C32; /*#CFFFDC;*/
+	--primary-col-light: #0c4b87;
+	--secondary-col: #114757;
+	--secondary-col-light: #196e88;
+	--light1-col: #3E8E7E;
+	--light2-col: #56cab3; /*#93FFD8;*/
 }
 html{
 	min-height: 100%;
@@ -63,12 +64,12 @@ button {
 	border: 0.2rem solid var(--secondary-col);
 }
 button:hover {
-	border: 0.2rem solid var(--secondary-col-dark);
+	border: 0.2rem solid var(--secondary-col-light);
 	cursor: pointer;
 }
 button:active {
 	border: 0.2rem solid var(--secondary-col);
-	background-color: var(--secondary-col-dark);
+	background-color: var(--secondary-col-light);
 }
 button>img{
 	margin-right: 0.6rem;
@@ -76,7 +77,7 @@ button>img{
 	width: auto;
 }
 section {
-	background-color: white;
+	background-color: var(--primary-col-light);
 	border: 0.3rem solid black;
 	border-radius: 2rem;
 	padding: 1rem;
@@ -89,6 +90,8 @@ section {
 input{
 	border-radius: 0.5rem;
 	border: 0.2rem solid black;
+	text-align:center;
+	font-family: mainFont;
 }
 hr {
 	border-top: 0.2rem solid black;
