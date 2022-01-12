@@ -7,7 +7,7 @@ nav {
 .nav {
 	display:flex;
 	flex-direction: row;
-	background-color: var(--light1-col);
+	background-color: var(--primary-col-light);
 	width: auto;
 	border: 0.2rem solid black;
 	border-radius: 1rem;
@@ -35,7 +35,6 @@ nav {
 .navItemText {
 	font-size: 2rem;
 	margin: 0.1rem;
-	color: white;
 }
 
 @media only screen and (max-width: 40rem) {

@@ -7,7 +7,7 @@ footer{
 .footer {
 	display:flex;
 	flex-direction: row;
-	background-color: grey;
+	background-color: var(--primary-col-light);
 	width: auto;
 	margin: 0.5rem;
 	border: 0.2rem solid black;
