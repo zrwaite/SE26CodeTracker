@@ -61,15 +61,30 @@
 				<div class="piGraphTable" id="languageTable"></div>
 			</div>
 		</section>
+		<section>
+			<h3>Code Editors</h3>
+			<hr/>
+			<div class="statsSection">
+				<div class="piGraphContainer">
+					<div class="piGraph" id="codeEditorsGraph"></div>
+				</div>
+				<div class="piGraphTable" id="codeEditorsTable"></div>
+			</div>
+		</section>
+		<section>
+			<h3>Operating Systems</h3>
+			<hr/>
+			<div class="statsSection">
+				<div class="piGraphContainer">
+					<div class="piGraph" id="osGraph"></div>
+				</div>
+				<div class="piGraphTable" id="osTable"></div>
+			</div>
+		</section>
 	</main>
 	<footer id="footer"></footer>
 	<script>Footer("footer")</script>
-	<script></script>
-	<script>setTimeout(()=>{
-		allDaysGraph()
-		renderPiGraph('languageGraph');
-		renderPiGraphTable('languageTable');
-	}, 1000)</script>
+	<script>renderStats();</script>
 
 </body>
 </html>
