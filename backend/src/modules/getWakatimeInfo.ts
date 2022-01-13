@@ -1,7 +1,7 @@
 import axios from "axios";
 import { responseInterface} from "../models/response"; //Created pre-formatted uniform response
 
-const getToken = async (code:string, result: responseInterface) => {
+const getToken = async (code:string) => {
 	let link = "https://wakatime.com/oauth/token";
 	let tokenPostBody = "";
 	tokenPostBody += "grant_type=authorization_code"

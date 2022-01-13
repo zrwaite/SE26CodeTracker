@@ -1,35 +1,59 @@
 import {Users} from "../models/userSchema";
 import {getUserData} from "./getWakatimeInfo";
 import bcrypt from "bcrypt";
+import {emailConfirmation} from "./sendMail";
+import {getToken} from "../modules/getWakatimeInfo";
 
-const postUser = async (access_token:string, refresh_token:string, username:string, password:string) => {
+const postUser = async (code:string, username:string, password:string, email:string) => {
 	const errors = [];
-	const userData = await getUserData(access_token);
-	if (!userData) errors.push("invalid token");
-	if (userData.username !== username) errors.push("email doesn't match token");
+	if (!code) errors.push("missing code");
+	if (!username) errors.push("missing username");
+	if (!password) errors.push("missing password");
+	if (!email) errors.push("missing email");
+	else if (!validateEmail(email)) errors.push("not a uwaterloo email");
+	else if (!emailConfirmation(createConfirmationCode(), email)) errors.push("email confirmation failed");
 	const hash = bcrypt.hashSync(password, 10);
 	if (hash=="0") errors.push("invalid hashing");
 	if (errors.length==0) {
-		try {
-			const newUser = new Users({
-				access_token: access_token, 
-				refresh_token: refresh_token,
-				username: username,
-				created_at: userData.created_at,
-				display_name: userData.display_name,
-				email: userData.email,
-				hash: hash,
-				initialized: false,
-				stats: {}
-			});
-			await newUser.save(); //Saves branch to mongodb
-			return {success: true, response: newUser, errors: []};
-		} catch (e){
-			console.log(e);
-			errors.push("error adding to database");
-		}
+		let {access_token, refresh_token} = await getToken(code);
+		if (access_token) {
+			const userData = await getUserData(access_token);
+			if (!userData) errors.push("invalid token");
+			else if (userData.username !== username) errors.push("username doesn't match token");
+			else {
+				try {
+					const newUser = new Users({
+						access_token: access_token, 
+						refresh_token: refresh_token,
+						username: username,
+						created_at: userData.created_at,
+						display_name: userData.display_name,
+						email: email,
+						hash: hash,
+						initialized: false,
+						stats: {}
+					});
+					await newUser.save(); //Saves branch to mongodb
+					return {success: true, response: newUser, errors: []};
+				} catch (e:any){
+					console.log(e);
+					if (e.code == 11000) errors.push("Username or email already in use");
+					else errors.push("error adding to database");
+				}
+			}
+		} else errors.push("invalid code");	
 	} 
 	return {success: false, response: {}, errors: errors};	
+}
+
+const validateEmail = (email:string) => {
+	return email.trim().endsWith("@uwaterloo.ca");
+}
+
+const createConfirmationCode = () => {
+	let code = '';
+	for (let i=0; i<6; i++) code+=(Math.round(Math.random()*8)+1).toString();
+	return code;
 }
 
 export {postUser};
