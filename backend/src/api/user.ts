@@ -1,4 +1,4 @@
-import {Request, Response, NextFunction} from "express"; //Typescript types
+import {Request, Response} from "express"; //Typescript types
 import {response, responseInterface} from "../models/response"; //Created pre-formatted uniform response
 import {postUser} from "../modules/postDatabaseInfo";
 import {emailConfirmation} from "../modules/sendMail";
@@ -10,7 +10,7 @@ import {createToken} from "../auth/tokenFunctions";
 
 /* register controller */
 export default class userController {
-	static async getUser(req: Request, res: Response, next: NextFunction) {
+	static async getUser(req: Request, res: Response) {
 		let result:responseInterface = new response(); //Create new standardized response
 		let {success, params, errors} = await getQueryParams(req, ["username"]);
 		if (success) {
@@ -25,7 +25,7 @@ export default class userController {
 		} else errors.forEach((error) => result.errors.push(error));
 		res.status(result.status).json(result); //Return whatever result remains
 	}
-	static async postUser(req: Request, res: Response, next: NextFunction) {
+	static async postUser(req: Request, res: Response) {
 		let result:responseInterface = new response(); //Create new standardized response
 		let {success, params, errors} = await getBodyParams(req, ["username", "password", "email", "code"]);
 		const username = params[0];
@@ -47,12 +47,12 @@ export default class userController {
 		} else errors.forEach((param)=>{result.errors.push("missing "+param)});
 		res.status(result.status).json(result); //Return whatever result remains
 	}
-	static async putUser(req: Request, res: Response, next: NextFunction) {
+	static async putUser(req: Request, res: Response) {
 		let result:responseInterface = new response(); //Create new standardized response
 		//Put request code
 		res.status(result.status).json(result); //Return whatever result remains
 	}
-	static async deleteUser(req: Request, res: Response, next: NextFunction) {
+	static async deleteUser(req: Request, res: Response) {
 		let result:responseInterface = new response(); //Create new standardized response
 		//Delete request code
 		res.status(result.status).json(result); //Return whatever result remains

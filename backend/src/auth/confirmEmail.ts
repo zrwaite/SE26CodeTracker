@@ -1,9 +1,9 @@
-import {Request, Response, NextFunction} from "express"; //Typescript types
+import {Request, Response} from "express"; //Typescript types
 import {response, responseInterface} from "../models/response"; //Created pre-formatted uniform response
 import {getBodyParams} from "../modules/getParams";
 import {Users} from "../models/userSchema";
 
-const confirmEmail = async (req: Request, res: Response, next: NextFunction) => {
+const confirmEmail = async (req: Request, res: Response) => {
 	let result:responseInterface = new response();
 	let {success, params, errors} = await getBodyParams(req, ["username", "confirmation_code"]);
 	if (success) {

@@ -1,6 +1,6 @@
 import {Users} from "../models/userSchema";
-import {getDailyCodeData, getAllCodeData} from "../modules/getWakatimeInfo";
-import {parseDayStats, createCodeStats} from "../modules/parseData";
+import {getDailyCodeData, getAllCodeData} from "./getWakatimeInfo";
+import {parseDayStats, createCodeStats} from "./parseData";
 
 const updateUserStats = async (username:string) => {
 	const query = { username: username };
@@ -10,8 +10,7 @@ const updateUserStats = async (username:string) => {
 			let newCodeData = await getDailyCodeData(user.access_token)
 			let removeWeekData = false;
 			if (user.stats.days.length >= 7) removeWeekData = true;
-			let updatedStats = await parseDayStats(newCodeData, user.stats, true, true, removeWeekData);
-			user.stats = updatedStats;
+			user.stats = await parseDayStats(newCodeData, user.stats, true, true, removeWeekData);
 			await user.save();
 			return 201;
 		} catch (_) {
@@ -26,8 +25,7 @@ const initializeUser = async (username: string) => {
 	if (user) {
 		try {
 			let codeData = await getAllCodeData(user.access_token);
-			let parsedCodeData = await createCodeStats(codeData);
-			user.stats = parsedCodeData;
+			user.stats = await createCodeStats(codeData);
 			user.initialized = true;
 			await user.save();
 			return 201;

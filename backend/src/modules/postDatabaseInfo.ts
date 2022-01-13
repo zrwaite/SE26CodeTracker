@@ -1,7 +1,7 @@
 import {Users} from "../models/userSchema";
 import {getUserData} from "./getWakatimeInfo";
 import bcrypt from "bcrypt";
-import {getToken} from "../modules/getWakatimeInfo";
+import {getToken} from "./getWakatimeInfo";
 
 const postUser = async (code:string, username:string, password:string, email:string) => {
 	const errors = [];

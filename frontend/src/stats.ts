@@ -80,14 +80,14 @@ const allDaysGraph = (days:any[], totalSeconds:number) => {
 		fullBar.onmouseover=function() {
 			let details = document.getElementById("dayStatDetails");
 			if (!details) return;
-			var dateText = document.createElement("h6");
-			var timeText = document.createElement("h6");
+			let dateText = document.createElement("h6");
+			let timeText = document.createElement("h6");
 			dateText.innerText = `Date: ${this.date}`;
 			timeText.innerText = `Time: ${this.time} hours`;
 			details.innerHTML = '';
 			details.appendChild(dateText);
 			details.appendChild(timeText);
-		}; ;		
+		};
 
 		let newBar = document.createElement("div");
 		let ratio = Math.round(1000*fullBar.time/maxTime)/1000;
@@ -137,7 +137,7 @@ const renderPiGraphTable = (id:string, list:any[]) => {
 	list.forEach((elem) => {
 		colour = getColour(elem.name);
 		let timePerc = Math.round(10000*elem.time/totalTime)/100;
-		if (timePerc>=0.1) totalHtml += `<h7><span class="colorIcon" style="background-color: ${colour}"></span>${elem.name} ${timePerc}%</h7>`
+		if (timePerc>=0.1) totalHtml += `<p><span class="colorIcon" style="background-color: ${colour}"></span>${elem.name} ${timePerc}%</p>`
 	})
 	table.innerHTML = totalHtml;
 }
