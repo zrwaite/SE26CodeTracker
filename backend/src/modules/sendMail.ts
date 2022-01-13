@@ -30,7 +30,7 @@ async function sendMail(toEmails:[string], subject:string, html:string, text:str
 const emailConfirmation = async (confirmationCode:string, toEmail: string) => {
     const mailHtml = `
                 <h1>Validate your email <a href='http://localhost:3000/confirmEmail?email=${toEmail}'>here</a></h1>
-                <p>Confirmation Code: "${confirmationCode}"</p>`;
+                <p>Confirmation Code: ${confirmationCode}</p>`;
     const mailText = `
                 Validate your email here: http://localhost:3000/confirmEmail?email="${toEmail}"
                 Confirmation Code: ${confirmationCode}`;

@@ -6,29 +6,31 @@ import {getToken} from "../modules/getWakatimeInfo";
 
 const postUser = async (code:string, username:string, password:string, email:string) => {
 	const errors = [];
+	const confirmationCode = createConfirmationCode();
 	if (!code) errors.push("missing code");
 	if (!username) errors.push("missing username");
 	if (!password) errors.push("missing password");
 	if (!email) errors.push("missing email");
 	else if (!validateEmail(email)) errors.push("not a uwaterloo email");
-	else if (!emailConfirmation(createConfirmationCode(), email)) errors.push("email confirmation failed");
+	else if (!emailConfirmation(confirmationCode, email)) errors.push("email confirmation failed");
 	const hash = bcrypt.hashSync(password, 10);
 	if (hash=="0") errors.push("invalid hashing");
 	if (errors.length==0) {
-		let {access_token, refresh_token} = await getToken(code);
-		if (access_token) {
-			const userData = await getUserData(access_token);
+		let {accessToken, refreshToken} = await getToken(code);
+		if (accessToken) {
+			const userData = await getUserData(accessToken);
 			if (!userData) errors.push("invalid token");
 			else if (userData.username !== username) errors.push("username doesn't match token");
 			else {
 				try {
 					const newUser = new Users({
-						access_token: access_token, 
-						refresh_token: refresh_token,
+						access_token: accessToken, 
+						refresh_token: refreshToken,
 						username: username,
 						created_at: userData.created_at,
 						display_name: userData.display_name,
 						email: email,
+						confirmation_code: confirmationCode,
 						hash: hash,
 						initialized: false,
 						stats: {}

@@ -3,17 +3,14 @@ import {response, responseInterface} from "../models/response"; //Created pre-fo
 import {createToken} from "./tokenFunctions";
 import {getUser} from "../modules/getDatabaseInfo";
 import bcrypt from "bcrypt";
-import axios from "axios";
+import {getBodyParams} from "../modules/getParams";
 
 const signInController = async (req: Request, res: Response, next: NextFunction) => {
 	let result:responseInterface = new response();
-	//Get home data, confirming it exists
-	let password = req.body.password;
-	let username = req.body.username;
-	//The following statements should be refactored to push all missing params
-	if (username==undefined) result.errors.push("Missing username");
-	else if (password==undefined) result.errors.push("Missing password");
-	else {
+	let {success, params, errors} = await getBodyParams(req, ["username", "password"]);
+	if (success) {
+		const username = params[0];
+		const password = params[1];
 		let token = await createToken({username: username, authorized: true})
 		const getUserResult = await getUser(username);
 		result.status = getUserResult.status;
@@ -29,7 +26,7 @@ const signInController = async (req: Request, res: Response, next: NextFunction)
 				result.success = false;
 			}
 		} else if (result.status==404) result.errors.push("user not found");
-	}
+	} else errors.forEach((error) => result.errors.push(`missing ${error}`));
 	res.status(result.status).json(result);
 };
 
