@@ -1,42 +1,71 @@
-const trySignUp = async () => {
-	let res = document.getElementById("response");
-	const usernameInput = document.getElementById("username");
-	const emailInput = document.getElementById("email");
-	const passwordInput = document.getElementById("password");
-	const codeInput = document.getElementById("code");
-
-	const username = usernameInput.value;
-	const email = emailInput.value;
-	const code = codeInput.value;
-	const password = passwordInput.value;
-
-	if (username===''||code===''||password==''||email=='') return;
-	if (!usernameInput.checkValidity()) return;
-	if (!emailInput.checkValidity()) return;
-	if (!passwordInput.checkValidity()) return;
-	if (!codeInput.checkValidity()) return;
-	let jsonResponse = await httpReq("/api/user", "POST", {
-		username: username,
-		password: password,
-		email: email,
-		code: code
-	});
-	if (jsonResponse) res.innerHTML = jsonResponse;
-	else res.innerHTML = "ERROR";
-}
-
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+const trySignUp = () => __awaiter(void 0, void 0, void 0, function* () {
+    const usernameInput = document.querySelector("#username");
+    const emailInput = document.querySelector("#email");
+    const passwordInput = document.querySelector("#password");
+    const codeInput = document.querySelector("#code");
+    let username, email, code, password;
+    if (usernameInput) {
+        username = usernameInput.value;
+        if (!usernameInput.checkValidity())
+            return;
+    }
+    if (emailInput) {
+        email = emailInput.value;
+        if (!emailInput.checkValidity())
+            return;
+    }
+    if (codeInput) {
+        code = codeInput.value;
+        if (!codeInput.checkValidity())
+            return;
+    }
+    if (passwordInput) {
+        password = passwordInput.value;
+        if (!passwordInput.checkValidity())
+            return;
+    }
+    if (username === '' || code === '' || password == '' || email == '')
+        return;
+    let json = yield httpReq("/api/user", "POST", {
+        username: username,
+        password: password,
+        email: email,
+        code: code
+    });
+    let res = document.getElementById("response");
+    if (!res)
+        return;
+    if (json) {
+        res.innerHTML = json;
+    }
+    else
+        res.innerHTML = "ERROR";
+});
 const expand = (index) => {
-	let sectionId = `stepSection${index}`;
-	let iconId = `stepIcon${index}`;
-	let section = document.getElementById(sectionId);
-	let icon = document.getElementById(iconId);
-	if (icon.flipped) {
-		icon.style.transform = "rotate(0deg)"
-		icon.flipped = false;
-		section.style.display = "none"
-	} else {
-		icon.flipped = true;
-		icon.style.transform = "rotate(180deg)"
-		section.style.display = "block";
-	}
-}
+    let sectionId = `stepSection${index}`;
+    let iconId = `stepIcon${index}`;
+    let section = document.getElementById(sectionId);
+    let icon = document.getElementById(iconId);
+    if (!section || !icon)
+        return;
+    if (icon.flipped) {
+        icon.style.transform = "rotate(0deg)";
+        icon.flipped = false;
+        section.style.display = "none";
+    }
+    else {
+        icon.flipped = true;
+        icon.style.transform = "rotate(180deg)";
+        section.style.display = "block";
+    }
+};
