@@ -1,7 +1,6 @@
 import {Users} from "../models/userSchema";
 import {getUserData} from "./getWakatimeInfo";
 import bcrypt from "bcrypt";
-import {emailConfirmation} from "./sendMail";
 import {getToken} from "../modules/getWakatimeInfo";
 
 const postUser = async (code:string, username:string, password:string, email:string) => {
@@ -12,7 +11,6 @@ const postUser = async (code:string, username:string, password:string, email:str
 	if (!password) errors.push("missing password");
 	if (!email) errors.push("missing email");
 	else if (!validateEmail(email)) errors.push("not a uwaterloo email");
-	else if (!emailConfirmation(confirmationCode, email)) errors.push("email confirmation failed");
 	const hash = bcrypt.hashSync(password, 10);
 	if (hash=="0") errors.push("invalid hashing");
 	if (errors.length==0) {
@@ -38,9 +36,11 @@ const postUser = async (code:string, username:string, password:string, email:str
 					await newUser.save(); //Saves branch to mongodb
 					return {success: true, response: newUser, errors: []};
 				} catch (e:any){
-					console.log(e);
 					if (e.code == 11000) errors.push("Username or email already in use");
-					else errors.push("error adding to database");
+					else {
+						errors.push("error adding to database");
+						console.log(e);
+					}
 				}
 			}
 		} else errors.push("invalid code");	

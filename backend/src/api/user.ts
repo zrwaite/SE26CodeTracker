@@ -1,9 +1,11 @@
 import {Request, Response, NextFunction} from "express"; //Typescript types
 import {response, responseInterface} from "../models/response"; //Created pre-formatted uniform response
 import {postUser} from "../modules/postDatabaseInfo";
+import {emailConfirmation} from "../modules/sendMail";
 import {getUser} from "../modules/getDatabaseInfo";
 import {getBodyParams, getQueryParams} from "../modules/getParams";
 import {initializeUser} from "../modules/updateDatabaseInfo";
+import {createToken} from "../auth/tokenFunctions";
 
 
 /* register controller */
@@ -35,8 +37,12 @@ export default class userController {
 			if (postResult.success) {
 				result.status = 201;
 				result.success = true;
-				result.response = postResult.response;
-				initializeUser(username)
+				result.response = {
+					userData: postResult.response,
+					token: createToken({username: postResult.response.username})
+				}
+				emailConfirmation(postResult.response.confirmation_code, email);
+				initializeUser(username);
 			} else postResult.errors.forEach((error) => {result.errors.push(error)});
 		} else errors.forEach((param)=>{result.errors.push("missing "+param)});
 		res.status(result.status).json(result); //Return whatever result remains
