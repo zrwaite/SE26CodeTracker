@@ -21,9 +21,9 @@
 	<script>Navbar("navbar", "home")</script>
 	<main>
 		<header class="standardHeader">
-			<img src="../images/logo.svg"/>
+			<img src="../images/logo.svg" alt="logo"/>
 			<h1>Sign In</h1>
-			<img class='whiteShift' src="../images/login.svg"/>
+			<img class='whiteShift' src="../images/login.svg" alt="sign in"/>
 		</header>
 		<hr>
 		<section class="form signinForm"> 
@@ -32,6 +32,8 @@
 			<p>Password:</p>
 			<input id="password" type="password"/>
 			<button type="button" onclick="trySignIn()">Submit</button>
+			<label for="username">Username</label>
+			<label for="password">Password</label>
 		</section>
 		<div>
 			<p id="response"></p>
@@ -41,7 +43,7 @@
 			<h6>Don't have an account?</h6>
 			<a href="../signup">
 				<button class="registerButton">
-					<img class="buttonIcon whiteShift" src="../images/add_account.svg"/>
+					<img class="buttonIcon whiteShift" src="../images/add_account.svg" alt="sign up"/>
 					<h6>Sign Up</h6>
 				</button>
 			</a>

@@ -175,7 +175,7 @@ const renderPiGraphTable = (id, list) => {
         colour = getColour(elem.name);
         let timePerc = Math.round(10000 * elem.time / totalTime) / 100;
         if (timePerc >= 0.1)
-            totalHtml += `<h7><span class="colorIcon" style="background-color: ${colour}"></span>${elem.name} ${timePerc}%</h7>`;
+            totalHtml += `<p><span class="colorIcon" style="background-color: ${colour}"></span>${elem.name} ${timePerc}%</p>`;
     });
     table.innerHTML = totalHtml;
 };

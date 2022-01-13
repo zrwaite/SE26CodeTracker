@@ -18,7 +18,7 @@ const Navbar = (id, type) => {
 			text: "Compete"
 		},
 	]
-	if (type=="home"){
+	if (type==="home"){
 		navVar = [
 			{
 				link: "../home",
@@ -43,7 +43,7 @@ const Navbar = (id, type) => {
 		innerHtml+=`
 			<a href=${button.link}>
 				<button class="navItem">
-					<img class="navIcon ${button.color || "whiteShift"}" src=${button.image}></img>
+					<img class="navIcon ${button.color || "whiteShift"}" src=${button.image} alt="icon">
 					<p class="navItemText">${button.text}</p>
 				</button>
 			</a>
@@ -52,7 +52,7 @@ const Navbar = (id, type) => {
 	innerHtml += `
 		<a class="navItemRight" href="../settings">
 			<button class="navItem">
-				<img class="navIcon whiteShift" src="../images/settings.svg"></img>
+				<img class="navIcon whiteShift" src="../images/settings.svg" alt="icon">
 			</button>
 		</a>
 	</div>

@@ -4,7 +4,7 @@
 :root {
 	font-size :16px;
 	color: white;
-	font-family: mainFont;
+	font-family: mainFont, serif;
 	--primary-col: #041C32; /*#CFFFDC;*/
 	--primary-col-light: #0c4b87;
 	--secondary-col: #114757;
@@ -25,11 +25,14 @@ main {
 	margin: 0 5rem;
 	padding: 0 2rem 7.4rem;
 }
+label {
+	display:none;
+}
 a{
 	text-decoration: none;
 }
 h1, h2{
-	font-family: titleFont;
+	font-family: titleFont, serif;
 }
 h1, h2, h3, h4, h5, h6, p {
 	text-align: center;
@@ -55,7 +58,7 @@ button {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	font-family: mainFont;
+	font-family: mainFont, serif;
 	color:white;
 	font-weight: bolder;
 	padding: 0.5rem;
@@ -91,7 +94,7 @@ input{
 	border-radius: 0.5rem;
 	border: 0.2rem solid black;
 	text-align:center;
-	font-family: mainFont;
+	font-family: mainFont, serif;
 }
 hr {
 	border-top: 0.2rem solid black;
