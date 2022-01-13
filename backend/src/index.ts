@@ -20,7 +20,7 @@ mongoose
 		console.log("Database connected");
 		app.listen(port, () => {
 			console.log(`listening on port ${port}`);
-			initializeDatabase();
+			// initializeDatabase();
 			cronjobs();
 		});
 	});
