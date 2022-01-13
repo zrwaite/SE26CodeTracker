@@ -82,6 +82,14 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    confirmation_code: {
+        type: String,
+        required: true,
+    },
+    email_confirmed: {
+        type: Boolean,
+        default: false,
+    },
     stats: {
         type: statsSchema,
         required: true,

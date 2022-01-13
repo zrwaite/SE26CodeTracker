@@ -9,19 +9,19 @@ const getToken = async (code:string) => {
 	tokenPostBody += `&client_id=${process.env.CLIENT_ID}`;
 	tokenPostBody += `&client_secret=${process.env.CLIENT_SECRET}`;
 	tokenPostBody += `&code=${code}`;
-	let access_token:string = "";
-	let refresh_token:string = "";
+	let accessToken:string = "";
+	let refreshToken:string = "";
 	await axios.post(link, tokenPostBody)
 	.then((tokenJson) => {
-		access_token = tokenJson.data.access_token;
-		refresh_token = tokenJson.data.refresh_token;
+		accessToken = tokenJson.data.access_token;
+		refreshToken = tokenJson.data.refresh_token;
 	}).catch((e) =>{
 		if (e.response.status==400){
 			console.log(e.response.data);
 			console.log(e.response.status);
 		}
 	});
-	return {access_token: access_token, refresh_token: refresh_token};
+	return {accessToken: accessToken, refreshToken: refreshToken};
 }
 
 

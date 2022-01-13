@@ -3,9 +3,7 @@ import {response, responseInterface} from "../models/response"; //Created pre-fo
 import {postUser} from "../modules/postDatabaseInfo";
 import {getUser} from "../modules/getDatabaseInfo";
 import {getBodyParams, getQueryParams} from "../modules/getParams";
-import {Users} from "../models/userSchema";
 import {initializeUser} from "../modules/updateDatabaseInfo";
-import bcrypt from "bcrypt";
 
 
 /* register controller */
