@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "onchange": "onchange '**/*.ts' -- npm run compile",
     "compile": "cd src; tsc;"
   },
   "keywords": [],
