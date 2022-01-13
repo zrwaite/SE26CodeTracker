@@ -33,3 +33,10 @@
 	transition: transform 300ms;
 	margin: 0;
 }
+.alternateLogin {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+}
