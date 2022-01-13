@@ -7,20 +7,24 @@ const trySignUp = async () => {
 	if (usernameInput) {
 		username = usernameInput.value;
 		if (!usernameInput.checkValidity()) return;
-	}
+	} else {console.error("username element not found"); return;}
 	if (emailInput) {
 		email = emailInput.value;
 		if (!emailInput.checkValidity()) return;
-	}
+	} else {console.error("email element not found"); return;}
 	if (codeInput) {
 		code = codeInput.value;
 		if (!codeInput.checkValidity()) return;
-	} 
+	} else {console.error("code element not found"); return;}
 	if (passwordInput) {
 		password = passwordInput.value;
 		if (!passwordInput.checkValidity()) return;
-	}
+	} else {console.error("password element not found"); return;}
 	if (username===''||code===''||password==''||email=='') return;
+	usernameInput.readOnly = true;
+	emailInput.readOnly = true;
+	codeInput.readOnly = true;
+	passwordInput.readOnly = true;
 	let json = await httpReq("/api/user", "POST", {
 		username: username,
 		password: password,
@@ -30,9 +34,19 @@ const trySignUp = async () => {
 	let res = document.getElementById("response");
 	if (!res) return;
 	if (json) {
+		const data = JSON.parse(json);
+		if (data.success) {
+			setCookie("username", data.response.userData.username);
+			setCookie("token", data.response.token);
+		} else {
+			alert(data.errors);
+		}
 		res.innerHTML = json;
-	}
-	else res.innerHTML = "ERROR";
+	} else res.innerHTML = "SIGN IN ERROR";
+	usernameInput.readOnly = false;
+	emailInput.readOnly = false;
+	codeInput.readOnly = false;
+	passwordInput.readOnly = false;
 }
 
 const expand = (index:number) => {

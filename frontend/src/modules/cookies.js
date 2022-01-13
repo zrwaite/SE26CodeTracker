@@ -1,5 +1,5 @@
 "use strict";
-const createCookie = (name, value) => {
+const setCookie = (name, value) => {
     document.cookie = name + "=" + value + "; path=/";
 };
 const deleteCookie = (name) => {

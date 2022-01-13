@@ -8,12 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const trySignUp = () => __awaiter(void 0, void 0, void 0, function* () {
+const trySignIn = () => __awaiter(void 0, void 0, void 0, function* () {
     const usernameInput = document.querySelector("#username");
-    const emailInput = document.querySelector("#email");
     const passwordInput = document.querySelector("#password");
-    const codeInput = document.querySelector("#code");
-    let username, email, code, password;
+    let username, password;
     if (usernameInput) {
         username = usernameInput.value;
         if (!usernameInput.checkValidity())
@@ -21,24 +19,6 @@ const trySignUp = () => __awaiter(void 0, void 0, void 0, function* () {
     }
     else {
         console.error("username element not found");
-        return;
-    }
-    if (emailInput) {
-        email = emailInput.value;
-        if (!emailInput.checkValidity())
-            return;
-    }
-    else {
-        console.error("email element not found");
-        return;
-    }
-    if (codeInput) {
-        code = codeInput.value;
-        if (!codeInput.checkValidity())
-            return;
-    }
-    else {
-        console.error("code element not found");
         return;
     }
     if (passwordInput) {
@@ -50,17 +30,13 @@ const trySignUp = () => __awaiter(void 0, void 0, void 0, function* () {
         console.error("password element not found");
         return;
     }
-    if (username === '' || code === '' || password == '' || email == '')
+    if (username === '' || password == '')
         return;
     usernameInput.readOnly = true;
-    emailInput.readOnly = true;
-    codeInput.readOnly = true;
     passwordInput.readOnly = true;
-    let json = yield httpReq("/api/user", "POST", {
+    let json = yield httpReq("/auth/signin", "POST", {
         username: username,
         password: password,
-        email: email,
-        code: code
     });
     let res = document.getElementById("response");
     if (!res)
@@ -68,8 +44,9 @@ const trySignUp = () => __awaiter(void 0, void 0, void 0, function* () {
     if (json) {
         const data = JSON.parse(json);
         if (data.success) {
-            setCookie("username", data.response.userData.username);
+            setCookie("username", username);
             setCookie("token", data.response.token);
+            window.location.href = "../stats";
         }
         else {
             alert(data.errors);
@@ -79,25 +56,5 @@ const trySignUp = () => __awaiter(void 0, void 0, void 0, function* () {
     else
         res.innerHTML = "SIGN IN ERROR";
     usernameInput.readOnly = false;
-    emailInput.readOnly = false;
-    codeInput.readOnly = false;
     passwordInput.readOnly = false;
 });
-const expand = (index) => {
-    let sectionId = `stepSection${index}`;
-    let iconId = `stepIcon${index}`;
-    let section = document.getElementById(sectionId);
-    let icon = document.getElementById(iconId);
-    if (!section || !icon)
-        return;
-    if (icon.flipped) {
-        icon.style.transform = "rotate(0deg)";
-        icon.flipped = false;
-        section.style.display = "none";
-    }
-    else {
-        icon.flipped = true;
-        icon.style.transform = "rotate(180deg)";
-        section.style.display = "block";
-    }
-};
