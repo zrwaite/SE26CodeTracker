@@ -1,4 +1,4 @@
-const createCookie = (name:string, value:string) => {
+const setCookie = (name:string, value:string) => {
     document.cookie = name + "=" + value + "; path=/";
 }
 const deleteCookie = (name:string) => {

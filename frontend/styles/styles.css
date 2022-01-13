@@ -149,3 +149,30 @@ hr {
 		justify-self: center;
 	}
 }
+
+@media only screen and (max-width: 40rem) {
+	main{
+		margin: 0 2rem;
+		padding: 0 2rem 7.4rem;
+	}
+	:root{
+		font-size:14px;
+	}
+	.form {
+		grid-template-columns: auto;
+	}
+	.form>*, .form>p, .form>input {
+		grid-column: span 1;
+		justify-self: center;
+	}
+}
+
+@media only screen and (max-width: 30rem) {
+	main{
+		margin: 0 1rem;
+		padding: 0 1rem 7.4rem;
+	}
+	:root{
+		font-size:12px;
+	}
+}
