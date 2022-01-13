@@ -1,6 +1,6 @@
 const renderStats = async () => {
 	try {
-		const json = await httpReq("/api/user?username=Insomnizac");
+		const json = await httpReq(`/api/user?username=${getCookie("username")}`);
 		if (!json) return;
 		const data = JSON.parse(json);
 		if (data.success) {
@@ -156,12 +156,16 @@ const getColour = (name:string) => {
 		case "Java": return "#e60000";
 		case "Rust": return "#ff5c33";
 		case "Markdown": return "#333333";
+		case "C++": return "rgb(83, 136, 200)";
 		case "Git Config": return "red";
 		case "VS Code": return "#0099ff";
 		case "WebStorm": return "rgb(26, 197, 207)";
 		case "PhpStorm": return "rgb(182, 25, 183)";
+		case "CLion": return "rgb(32, 210, 110)";
+		case "PyCharm": return "rgb(70, 220, 90)";
 		case "Mac": return "rgb(150, 0, 167)";
 		case "Linux": return "rgb(223, 167, 20)";
+		case "Windows": return "#0099ff";
 		default: return "white";
 	}
 }

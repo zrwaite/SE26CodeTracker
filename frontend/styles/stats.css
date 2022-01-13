@@ -100,4 +100,7 @@
 	.numberStats{
 		grid-template-columns: 1fr;
 	}
+	.piGraphTable>* {
+		font-size: 1.5rem;
+	}
 }
