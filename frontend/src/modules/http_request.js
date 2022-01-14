@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const baseURL = "http://localhost:2000";
+const baseURL = "http://insomnizac.xyz:8002";
 const httpReq = (url, method = "GET", params = {}) => __awaiter(void 0, void 0, void 0, function* () {
     url = baseURL + url;
     if (method !== "GET" && method !== "POST" && method !== "PUT" && method !== "DELETE") {

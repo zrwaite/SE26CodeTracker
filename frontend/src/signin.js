@@ -48,10 +48,8 @@ const trySignIn = () => __awaiter(void 0, void 0, void 0, function* () {
             setCookie("token", data.response.token);
             window.location.href = "../stats";
         }
-        else {
+        else
             alert(data.errors);
-        }
-        res.innerHTML = json;
     }
     else
         res.innerHTML = "SIGN IN ERROR";

@@ -109,15 +109,14 @@ const allDaysGraph = (days, totalSeconds) => {
             let details = document.getElementById("dayStatDetails");
             if (!details)
                 return;
-            var dateText = document.createElement("h6");
-            var timeText = document.createElement("h6");
+            let dateText = document.createElement("h6");
+            let timeText = document.createElement("h6");
             dateText.innerText = `Date: ${this.date}`;
             timeText.innerText = `Time: ${this.time} hours`;
             details.innerHTML = '';
             details.appendChild(dateText);
             details.appendChild(timeText);
         };
-        ;
         let newBar = document.createElement("div");
         let ratio = Math.round(1000 * fullBar.time / maxTime) / 1000;
         newBar.style.height = `${9 * ratio}rem`;

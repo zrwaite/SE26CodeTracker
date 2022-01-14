@@ -1,0 +1,9 @@
+version: '3'
+services: 
+  server: 
+    env_file: "./.env"
+    build: ./
+    image: "zrwaite/codetracker"
+    ports: 
+      - "8002:8002"
+    

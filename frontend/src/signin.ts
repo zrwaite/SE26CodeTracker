@@ -25,10 +25,7 @@ const trySignIn = async () => {
 			setCookie("username", username);
 			setCookie("token", data.response.token);
 			window.location.href= "../stats";
-		} else {
-			alert(data.errors);
-		}
-		res.innerHTML = json;
+		} else alert(data.errors);
 	} else res.innerHTML = "SIGN IN ERROR";
 	usernameInput.readOnly = false;
 	passwordInput.readOnly = false;
