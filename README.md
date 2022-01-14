@@ -3,16 +3,26 @@
 <hr>
 
 ## Screenshots
-<img float="left" width="40%" src="./github/stats.png"/> 
-<img float="left" width="40%" src="./github/signup.png"/>
+<table>
+<tr>
+	<td width="40%">
+		<img src="./github/stats.png"/> 
+	</td>
+	<td width="40%">
+		<img float="left"  src="./github/signup.png"/>
+	</td>
+</tr>
+</table>
 
 ---
 
 ## Tech Stack
 <table width="100%">
 	<tr>
-		<td width="50%">Frontend</td>
-		<td width="50%">Backend</td>
+		<td width="5%"></td>
+		<td width="42%">Frontend</td>
+		<td width="42%">Backend</td>
+		<td width="5%"></td>
 	</tr>
 	<tr>
 		<td>
