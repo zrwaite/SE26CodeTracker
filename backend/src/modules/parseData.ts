@@ -1,11 +1,11 @@
-import {stats, dayObject} from "../models/codeStatsInterface"
+import {userStats, groupStats, dayObject} from "../models/codeStatsInterface"
 interface apiStats {
 	name:string;
 	total_seconds: number
 }
 
 // const parseDayStats = async (all
-const parseDayStats = async (day:any, startingStats:stats = {
+const parseDayStats = async (day:any, startingStats:userStats = {
 	wins: 0,
 	total_time: 0,
 	day_time: 0,
@@ -66,7 +66,7 @@ const parseDayStats = async (day:any, startingStats:stats = {
 	return startingStats;
 }
 const createCodeStats = async (allStats:any[]) =>{
-	let codeStats:stats = {
+	let codeStats:userStats = {
 		wins: 0,
 		total_time: 0,
 		day_time: 0,
@@ -83,4 +83,17 @@ const createCodeStats = async (allStats:any[]) =>{
 	return codeStats;
 }
 
-export {createCodeStats, parseDayStats};
+const mergeGroupData = async (users:any[]) => {
+	let mergedStats:groupStats = {
+		week_winners: [],
+		day_order: [],
+		total_day_time: 0,
+		total_week_time: 0,
+		editors: [],
+		languages: [],
+		os: [],
+		days: [],
+	}
+}
+
+export {createCodeStats, parseDayStats, mergeGroupData};

@@ -1,6 +1,8 @@
 import {Users} from "../models/userSchema";
+import {Groups} from "../models/groupSchema";
 import {getDailyCodeData, getAllCodeData} from "./getWakatimeInfo";
-import {parseDayStats, createCodeStats} from "./parseData";
+import {parseDayStats, createCodeStats, mergeGroupData} from "./parseData";
+import {getUser, getGroup} from "./getDatabaseInfo";
 
 const updateUserStats = async (username:string) => {
 	const query = { username: username };
@@ -35,4 +37,25 @@ const initializeUser = async (username: string) => {
 	} else return 404;
 }
 
-export {updateUserStats, initializeUser}
+
+const initializeGroup = async (id: string, users:any[]) => {
+	let group = await Groups.findOne({ _id: id });
+	if (group) {
+		try {
+			let userList:any[] = [];
+			group.users.forEach((username:string) => {
+				let result = users.find((user) => {
+					return user.username === username
+				})
+				if (result) userList.push(result);
+			})
+			group.stats = await mergeGroupData(userList);
+			group.initialized = true;
+			await group.save();
+			return 201;
+		} catch (_) {
+			return 400;
+		}
+	} else return 404;
+}
+export {updateUserStats, initializeUser, initializeGroup}
