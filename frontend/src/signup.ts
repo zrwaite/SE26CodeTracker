@@ -38,10 +38,8 @@ const trySignUp = async () => {
 		if (data.success) {
 			setCookie("username", data.response.userData.username);
 			setCookie("token", data.response.token);
-		} else {
-			alert(data.errors);
-		}
-		res.innerHTML = json;
+			window.location.href= "../stats";
+		} else alert(data.errors);
 	} else res.innerHTML = "SIGN IN ERROR";
 	usernameInput.readOnly = false;
 	emailInput.readOnly = false;
