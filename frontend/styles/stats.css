@@ -73,7 +73,6 @@
 	justify-content:flex-start;
 	min-height: 80%;
 	border: 0.1rem solid grey;
-	border-left: 0.2rem solid black;
 	max-height: 10rem;
 	overflow:scroll;
 	padding: 0.5rem;

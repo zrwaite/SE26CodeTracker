@@ -3,8 +3,8 @@
 <hr>
 
 ## Screenshots
-<img width="45%" src="./github/stats.png"/> 
-<img width="45%" src="./github/signup.png"/>
+<img float="left" width="40%" src="./github/stats.png"/> 
+<img float="left" width="40%" src="./github/signup.png"/>
 
 ---
 
@@ -28,11 +28,7 @@
 	</tr>
 </table>
 
-<hr>
-
-## Design
-
-<iframe width="100%" height="auto" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FLbJmkRBhRqiKp3AddW6eMr%2FSE26-Code-Tracker%3Fnode-id%3D0%253A1"></iframe>
+<a href="https://www.figma.com/file/LbJmkRBhRqiKp3AddW6eMr/SE26-Code-Tracker?node-id=0%3A1">Figma Design Link</a>
 
 <hr>
 
