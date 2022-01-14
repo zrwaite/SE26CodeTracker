@@ -1,8 +1,9 @@
-import {getUsers} from "./getDatabaseInfo";
-import {initializeUser} from "./updateDatabaseInfo";
+import {getUsers, getGroups} from "./getDatabaseInfo";
+import {initializeUser, initializeGroup} from "./updateDatabaseInfo";
 
 const initializeDatabase = async () => {
-	await initializeUserStats();
+	const users = await initializeUserStats();
+	await initializeGroupStats(users);
 	console.log(`database initialized`);
 }
 
@@ -12,6 +13,15 @@ const initializeUserStats = async () => {
 	if (!success) return;
 	users.forEach((user:any) => {
 		initializeUser(user.username);
+	})
+	return users;
+}
+
+const initializeGroupStats = async (users:any) => {
+	const {success, groups} = await getGroups();
+	if (!success) return;
+	groups.forEach((group:any) => {
+		initializeGroup(group._id, users);
 	})
 }
 
