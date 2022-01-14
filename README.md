@@ -3,8 +3,8 @@
 <hr>
 
 ## Screenshots
-<img width="49%" src="./github/stats.png"/> 
-<img width="49%" src="./github/signup.png"/>
+<img width="45%" src="./github/stats.png"/> 
+<img width="45%" src="./github/signup.png"/>
 
 ---
 
@@ -32,7 +32,7 @@
 
 ## Design
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FLbJmkRBhRqiKp3AddW6eMr%2FSE26-Code-Tracker%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
+<iframe width="100%" height="auto" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FLbJmkRBhRqiKp3AddW6eMr%2FSE26-Code-Tracker%3Fnode-id%3D0%253A1"></iframe>
 
 <hr>
 
