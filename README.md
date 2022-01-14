@@ -18,13 +18,13 @@
 
 ## Tech Stack
 <table width="100%">
-	<tr>
+	<tr width="100%">
 		<td width="5%"></td>
 		<td width="42%">Frontend</td>
 		<td width="42%">Backend</td>
 		<td width="5%"></td>
 	</tr>
-	<tr>
+	<tr width="100%">
 		<td></td>
 		<td>
 			<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="25" height="25" />
