@@ -1,0 +1,12 @@
+frontend/node_modules
+frontend/src
+frontend/public
+frontend/package.json
+frontend/package-lock.json
+backend/node_modules
+README.md
+frontend/README.md
+backend/README.md
+_config.yml
+github
+.git
