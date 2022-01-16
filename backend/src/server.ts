@@ -46,12 +46,11 @@ app.get("/", (req, res) => {
 app.get("*", (req, res) => {
 	if (fs.existsSync(folderPath + req.url + "/index.html")) {
 		res.status(200).sendFile(req.url  + "/index.html", {root: folderPath});
-		console.log(folderPath + req.url + "/index.html");
 	} else if (fs.existsSync(folderPath + req.url)) {
 		res.status(200).sendFile(req.url, {root: folderPath});
-		console.log(folderPath + req.url);
+	} else { 
+		res.status(404).json("404 File not found");
 	}
-	else res.status(404).json("404 File not found");
 })
 
 export default app; //Export server for use in index.ts
