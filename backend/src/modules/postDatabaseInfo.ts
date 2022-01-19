@@ -1,5 +1,7 @@
 import {Users} from "../models/userSchema";
+import {Groups} from "../models/groupSchema";
 import {getUserData} from "./getWakatimeInfo";
+import {getUser} from "./getDatabaseInfo";
 import bcrypt from "bcrypt";
 import {getToken} from "./getWakatimeInfo";
 
@@ -48,6 +50,39 @@ const postUser = async (code:string, username:string, password:string, email:str
 	return {success: false, response: {}, errors: errors};	
 }
 
+
+const postGroup = async (displayName: string, ownerUsername:string) => {
+	const errors = [];
+	if (!displayName) errors.push("missing display_name");
+	if (!ownerUsername) errors.push("missing owner_username");
+	const owner = await getUser(ownerUsername);
+	if (errors.length==0) {
+		try {
+			const newGroup = new Groups({
+				display_name: displayName, 
+				owner: ownerUsername,
+				stats: {
+					week_winners: [],
+					day_order: [],
+					total_day_time: owner.user.stats.day_time,
+					total_week_time: owner.user.stats.week_time,
+					editors: owner.user.stats.editors,
+					languages: owner.user.stats.languages,
+					os: owner.user.stats.os,
+					days: owner.user.stats.days,
+				},
+				users: [ownerUsername],
+			});
+			await newGroup.save(); //Saves branch to mongodb
+			return {success: true, response: newGroup, errors: []};
+		} catch (e:any){
+			errors.push("error adding to database");
+			console.log(e);
+		}
+	} 
+	return {success: false, response: {}, errors: errors};	
+}
+
 const validateEmail = (email:string) => {
 	return email.trim().endsWith("@uwaterloo.ca");
 }
@@ -58,4 +93,4 @@ const createConfirmationCode = () => {
 	return code;
 }
 
-export {postUser};
+export {postUser, postGroup};
