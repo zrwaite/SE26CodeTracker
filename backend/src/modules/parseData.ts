@@ -94,6 +94,10 @@ const mergeGroupData = async (users:any[]) => {
 		os: [],
 		days: [],
 	}
+	users.forEach((user) => {
+		mergedStats.total_day_time += user.stats.day_time;
+		mergedStats.total_week_time += user.stats.week_time;
+	});
 }
 
 export {createCodeStats, parseDayStats, mergeGroupData};

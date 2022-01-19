@@ -58,10 +58,6 @@ const groupSchema = new Schema({
         type: String,
         required: true,
     },
-    initialized: {
-        type: Boolean,
-        default: false,
-    },
     stats: {
         type: statsSchema,
         required: true,
