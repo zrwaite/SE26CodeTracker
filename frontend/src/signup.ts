@@ -2,7 +2,8 @@ const signUpUserError = (error:string):false => {
 	const errorsSection = document.getElementById('signUpErrors');
 	if (!errorsSection) {console.error("error element not found"); return false;}
 	errorsSection.style.backgroundColor = "red";
-	const errorElem = document.createElement("p");
+	const errorElem = document.createElement("li");
+	errorElem.style.padding = "5rem auto";
 	errorElem.innerText = error;
 	errorsSection.appendChild(errorElem);
 	return false;
@@ -33,33 +34,26 @@ const checkEmail = (email:string):string|false => {//Taken from stack overflow
 	if (!email.match(
 		/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 	)) return "Invalid Email";
-	else if (!email.trim().endsWith("@uwaterloo.ca")) return "Not a uwaterloo email";
+	else if (!email.trim().endsWith("@uwaterloo.ca")) return "Email must be uwaterloo email";
 	else return false;
 };
 
 const trySignUp = async () => {
+	clearSignUpUserError();
 	let success = true;
 	const usernameInput:HTMLInputElement|null = document.querySelector("#username");
 	const emailInput:HTMLInputElement|null = document.querySelector("#email");
 	const passwordInput:HTMLInputElement|null = document.querySelector("#password");
 	const codeInput:HTMLInputElement|null = document.querySelector("#code");
 	let [username, email, code, password] = ["","","",""];
-	if (usernameInput) {
-		if (!usernameInput.checkValidity()) success = signUpZacError("invalid username input element");
-		else username = usernameInput.value;
-	} else success = signUpZacError("username element not found");
-	if (emailInput) {
-		if (!emailInput.checkValidity()) success = signUpZacError("invalid email input element");
-		else email = emailInput.value;
-	} else success = signUpZacError("email element not found");
-	if (codeInput) {
-		if (!codeInput.checkValidity()) success = signUpZacError("invalid code input element");
-		else code = codeInput.value;
-	} else success = signUpZacError("code element not found");
-	if (passwordInput) {
-		if (!passwordInput.checkValidity()) success = signUpZacError("invalid password input element");
-		else password = passwordInput.value;
-	} else success = signUpZacError("password element not found");
+	if (usernameInput) username = usernameInput.value;
+	else success = signUpZacError("username element not found");
+	if (emailInput) email = emailInput.value;
+	else success = signUpZacError("email element not found");
+	if (codeInput) code = codeInput.value;
+	else success = signUpZacError("code element not found");
+	if (passwordInput) password = passwordInput.value;
+	else success = signUpZacError("password element not found");
 
 	if (!success) return; //First success check
 	if (!usernameInput || !emailInput || !codeInput || !passwordInput) return; //Addition typescript satisfying
@@ -78,6 +72,7 @@ const trySignUp = async () => {
 		if (emailError) success = signUpUserError(emailError);
 	}
 
+	if (!success) return; //Final pre-request success verification
 	usernameInput.readOnly = true;
 	emailInput.readOnly = true;
 	codeInput.readOnly = true;
@@ -88,16 +83,18 @@ const trySignUp = async () => {
 		email: email,
 		code: code
 	});
-	let res = document.getElementById("response");
-	if (!res) return;
 	if (json) {
 		const data = JSON.parse(json);
 		if (data.success) {
 			setCookie("username", data.response.userData.username);
 			setCookie("token", data.response.token);
 			window.location.href= "../stats";
-		} else alert(data.errors);
-	} else res.innerHTML = "SIGN IN ERROR";
+		} else {
+			data.errors.forEach((error:string) => {
+				signUpUserError(error);
+			});
+		};
+	} else signUpUserError("SIGN IN ERROR");
 	usernameInput.readOnly = false;
 	emailInput.readOnly = false;
 	codeInput.readOnly = false;
@@ -108,8 +105,9 @@ const expand = (index:number) => {
 	let sectionId = `stepSection${index}`;
 	let iconId = `stepIcon${index}`;
 	let section = document.getElementById(sectionId);
+	let errorsSection = document.getElementById('signUpErrors');
 	let icon:any = document.getElementById(iconId);
-	if (!section || !icon) return;
+	if (!section || !icon || !errorsSection) return;
 	if (icon.flipped) {
 		icon.style.transform = "rotate(0deg)"
 		icon.flipped = false;
