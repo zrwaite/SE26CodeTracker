@@ -3,6 +3,7 @@
 
 #Bootstrap
 frontend/src/bootstrap
+frontend/**/*.js
 
 #Crappy database
 tokens.json
