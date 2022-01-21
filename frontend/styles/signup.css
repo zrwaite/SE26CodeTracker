@@ -43,4 +43,6 @@
 #signUpErrors {
 	margin: auto;
 	border-radius: 0.5rem;
+	display:none;
+	background-color: red;
 }
