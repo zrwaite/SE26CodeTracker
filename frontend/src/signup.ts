@@ -1,26 +1,83 @@
+const signUpUserError = (error:string):false => {
+	const errorsSection = document.getElementById('signUpErrors');
+	if (!errorsSection) {console.error("error element not found"); return false;}
+	errorsSection.style.backgroundColor = "red";
+	const errorElem = document.createElement("p");
+	errorElem.innerText = error;
+	errorsSection.appendChild(errorElem);
+	return false;
+}
+const clearSignUpUserError = ():void => {
+	const errorsSection = document.getElementById('signUpErrors');
+	if (!errorsSection) {console.error("error element not found"); return;}
+	errorsSection.innerHTML = "";
+	errorsSection.style.backgroundColor = "transparent";
+}
+const signUpZacError = (error:string):false => {
+	console.error(error);
+	signUpUserError("Zac messed something up. Try again or report bug");
+	return false;
+}
+const checkPassword = (password:string):string[] => {
+	let errors = [];
+	const lowerCaseLetters = /[a-z]/g;
+	if(!password.match(lowerCaseLetters)) errors.push("Password should include a lowercase letter");
+	const upperCaseLetters = /[A-Z]/g;
+	if(!password.match(upperCaseLetters)) errors.push("Password should contain an upercase letter");
+	const numbers = /[0-9]/g;
+	if(!password.match(numbers)) errors.push("Password should contain a number");
+	if(password.length < 8) errors.push("Password should be 8 characters long");
+	return errors;
+}
+const checkEmail = (email:string):string|false => {//Taken from stack overflow
+	if (!email.match(
+		/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+	)) return "Invalid Email";
+	else if (!email.trim().endsWith("@uwaterloo.ca")) return "Not a uwaterloo email";
+	else return false;
+};
+
 const trySignUp = async () => {
+	let success = true;
 	const usernameInput:HTMLInputElement|null = document.querySelector("#username");
 	const emailInput:HTMLInputElement|null = document.querySelector("#email");
 	const passwordInput:HTMLInputElement|null = document.querySelector("#password");
 	const codeInput:HTMLInputElement|null = document.querySelector("#code");
-	let username, email, code, password;
+	let [username, email, code, password] = ["","","",""];
 	if (usernameInput) {
-		username = usernameInput.value;
-		if (!usernameInput.checkValidity()) return;
-	} else {console.error("username element not found"); return;}
+		if (!usernameInput.checkValidity()) success = signUpZacError("invalid username input element");
+		else username = usernameInput.value;
+	} else success = signUpZacError("username element not found");
 	if (emailInput) {
-		email = emailInput.value;
-		if (!emailInput.checkValidity()) return;
-	} else {console.error("email element not found"); return;}
+		if (!emailInput.checkValidity()) success = signUpZacError("invalid email input element");
+		else email = emailInput.value;
+	} else success = signUpZacError("email element not found");
 	if (codeInput) {
-		code = codeInput.value;
-		if (!codeInput.checkValidity()) return;
-	} else {console.error("code element not found"); return;}
+		if (!codeInput.checkValidity()) success = signUpZacError("invalid code input element");
+		else code = codeInput.value;
+	} else success = signUpZacError("code element not found");
 	if (passwordInput) {
-		password = passwordInput.value;
-		if (!passwordInput.checkValidity()) return;
-	} else {console.error("password element not found"); return;}
-	if (username===''||code===''||password==''||email=='') return;
+		if (!passwordInput.checkValidity()) success = signUpZacError("invalid password input element");
+		else password = passwordInput.value;
+	} else success = signUpZacError("password element not found");
+
+	if (!success) return; //First success check
+	if (!usernameInput || !emailInput || !codeInput || !passwordInput) return; //Addition typescript satisfying
+	 
+	if (username==='') success = signUpUserError("Must include username");
+	if (code==='') success = signUpUserError("Must include code");
+	else if (code.length!==84) success = signUpUserError("The code seems invalid - try removing whitespace or getting a new code.");
+	if (password==='') success = signUpUserError("Must include password");
+	else {
+		const passwordErrors = checkPassword(password);
+		passwordErrors.forEach((error) => success = signUpUserError(error));
+	}
+	if (email==='') success = signUpUserError("Must include email");
+	else {
+		const emailError = checkEmail(email);
+		if (emailError) success = signUpUserError(emailError);
+	}
+
 	usernameInput.readOnly = true;
 	emailInput.readOnly = true;
 	codeInput.readOnly = true;
