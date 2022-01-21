@@ -90,6 +90,14 @@ const userSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    anonymous: {
+        type: Boolean,
+        default: false,
+    },
+    email_notifications: {
+        type: Boolean,
+        default: true,
+    },
     stats: {
         type: statsSchema,
         required: true,

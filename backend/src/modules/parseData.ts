@@ -97,6 +97,54 @@ const mergeGroupData = async (users:any[]) => {
 	users.forEach((user) => {
 		mergedStats.total_day_time += user.stats.day_time;
 		mergedStats.total_week_time += user.stats.week_time;
+		user.editors.forEach((editor:apiStats)=>{
+			let name = editor.name;
+			let time = editor.total_seconds;
+			let found = false;
+			for (let i=0; i<mergedStats.editors.length; i++){
+				if (name != mergedStats.editors[i].name) continue;
+				mergedStats.editors[i].time += time;
+				found = true;
+				break;
+			} 
+			if (!found) mergedStats.editors.push({name:name, time:time});
+		})
+		user.languages.forEach((language:apiStats)=>{
+			let name = language.name;
+			let time = language.total_seconds;
+			let found = false;
+			for (let i=0; i<mergedStats.languages.length; i++){
+				if (name != mergedStats.languages[i].name) continue;
+				mergedStats.languages[i].time += time;
+				found = true;
+				break;
+			} 
+			if (!found) mergedStats.languages.push({name:name, time:time});
+		})
+		user.operating_systems.forEach((os:apiStats)=>{
+			let name = os.name;
+			let time = os.total_seconds;
+			let found = false;
+			for (let i=0; i<mergedStats.os.length; i++){
+				if (name != mergedStats.os[i].name) continue;
+				mergedStats.os[i].time += time;
+				found = true;
+				break;
+			} 
+			if (!found) mergedStats.os.push({name:name, time:time});
+		})
+		user.days.forEach((day:dayObject) => {
+			let date = day.date;
+			let time = day.time;
+			let found = false;
+			for (let i=0; i<mergedStats.days.length; i++){
+				if (date != mergedStats.days[i].date) continue;
+				mergedStats.days[i].time += time;
+				found = true;
+				break;
+			} 
+			if (!found) mergedStats.days.push({date:date, time:time});
+		})
 	});
 }
 

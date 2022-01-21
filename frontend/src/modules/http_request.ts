@@ -1,4 +1,4 @@
-const baseURL = "http://insomnizac.xyz:8002";
+const baseURL = "http://localhost:2000";
 const httpReq = async (url:string, method:string = "GET", params:object = {}) => {
     url = baseURL + url;
     if (method !== "GET" && method !== "POST" && method !== "PUT" && method !== "DELETE") {
