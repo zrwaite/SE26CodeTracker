@@ -8,3 +8,9 @@
 	justify-content: center;
 	width: auto;
 }
+#signInErrors {
+	margin: auto;
+	border-radius: 0.5rem;
+	display:none;
+	background-color: red;
+}

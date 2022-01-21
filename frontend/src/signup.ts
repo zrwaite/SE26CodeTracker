@@ -1,7 +1,7 @@
 const signUpUserError = (error:string):false => {
 	const errorsSection = document.getElementById('signUpErrors');
 	if (!errorsSection) {console.error("error element not found"); return false;}
-	errorsSection.style.backgroundColor = "red";
+	errorsSection.style.display = "block";
 	const errorElem = document.createElement("li");
 	errorElem.style.padding = "5rem auto";
 	errorElem.innerText = error;
@@ -12,7 +12,7 @@ const clearSignUpUserError = ():void => {
 	const errorsSection = document.getElementById('signUpErrors');
 	if (!errorsSection) {console.error("error element not found"); return;}
 	errorsSection.innerHTML = "";
-	errorsSection.style.backgroundColor = "transparent";
+	errorsSection.style.display = "none";
 }
 const signUpZacError = (error:string):false => {
 	console.error(error);
