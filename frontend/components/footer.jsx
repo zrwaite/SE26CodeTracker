@@ -17,6 +17,12 @@ const Footer = (id) => {
 				<p>Zac <br/> Waite</p>
 			</button>
 		</a>
+		<a href="../contact">
+			<button class="footerButton">
+				<img src="../images/bug.svg" alt="mail"/>
+				<p>Report <br/> Bug</p>
+			</button>
+		</a>
 	</div>
 	`
 }
