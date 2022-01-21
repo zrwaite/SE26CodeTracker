@@ -20,12 +20,15 @@ const httpReq = async (url:string, method:string = "GET", params:object = {}) =>
                 body: JSON.stringify(params) // body data type must match "Content-Type" header
             });
         }
-        const data = await response.json();
         if (!response.ok) {
+            const data = await response.json();
+            return Promise.resolve(JSON.stringify(data));
+        } else {
+            const data = await response.json();
             return Promise.resolve(JSON.stringify(data));
         }
-        return Promise.resolve(JSON.stringify(data));
     } catch (error) {
+        console.log(JSON.stringify(error));
         console.error(error);
         return Promise.reject(JSON.stringify(error));
     }
