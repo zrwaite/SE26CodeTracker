@@ -20,9 +20,16 @@
 	if (!getCookie("username") || !getCookie("token")) Navbar("navbar", "home");
 	else Navbar("navbar")
 	</script>
-	<div>
-		<h1>Code Tracker Settings</h1>
-	</div>
+	<main>
+		<header class="standardHeader">
+			<img src="../images/logo.svg" alt="logo"/>
+			<h1>Settings</h1>
+			<img class='whiteShift' src="../images/settings.svg" alt="sign in"/>
+		</header>
+		<section>
+			<button onclick="logout()">Logout</button>
+		</section>
+	</main>
 	<footer id="footer"></footer>
 	<script>Footer("footer")</script>
 </body>
