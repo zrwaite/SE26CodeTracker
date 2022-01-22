@@ -9,17 +9,17 @@ import {getBodyParams, getQueryParams} from "../modules/getParams";
 export default class groupController {
 	static async getGroup(req: Request, res: Response) {
 		let result:responseInterface = new response(); //Create new standardized response
-		let {success, params, errors} = await getQueryParams(req, ["group_name"]);
+		let {success, params, errors} = await getQueryParams(req, ["id"]);
 		if (success) {
-			const groupname = params[0];
-			const getGroupResponse = await getGroup(groupname);
+			const id = params[0];
+			const getGroupResponse = await getGroup(id);
 			result.status = getGroupResponse.status;
 			if (result.status == 200) {
 				result.success = true;
 				result.response = getGroupResponse.group;
 			}
 			else if (result.status == 404) result.errors.push("group not found");
-		} else errors.forEach((error) => result.errors.push(error));
+		} else errors.forEach((error) => result.errors.push("missing " + error));
 		res.status(result.status).json(result); //Return whatever result remains
 	}
 	static async postGroup(req: Request, res: Response) {
