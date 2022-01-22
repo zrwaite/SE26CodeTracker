@@ -1,0 +1,17 @@
+.contactForm {
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+}
+.contactForm>textarea {
+	grid-column: 1/span 2;
+}
+.contactForm>select {
+	background-color: var(--primary-col);
+	color: white;
+	border-radius: 0.5rem;
+}
+.contactTypeDropdown {
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}

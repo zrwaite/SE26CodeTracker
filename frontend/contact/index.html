@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Code Tracker - Contact</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../src/modules/http_request.js"></script>
+	<script src="../src/modules/redirect.js"></script>
+	<script src="../src/modules/cookies.js"></script>
+	<script src="../src/contact.js"></script>
+	<link href="../styles/styles.css" rel="stylesheet" type="text/css" />
+	<link href="../styles/contact.css" rel="stylesheet" type="text/css" />
+	<link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<script src="../components/navbar.jsx"></script>
+	<script src="../components/footer.jsx"></script>
+</head>
+<body>
+	<nav id="navbar"></nav>
+	<script>
+	if (!getCookie("username") || !getCookie("token")) Navbar("navbar", "home");
+	else Navbar("navbar")
+	</script>
+	<main>
+		<header class="standardHeader">
+			<img src="../images/logo.svg" alt="logo"/>
+			<h1>Contact</h1>
+			<img class='whiteShift' src="../images/mail.svg" alt="sign in"/>
+		</header>
+		<section>
+			<div class="contactForm">
+				<div class="contactTypeDropdown">
+					<select id="contactType" name="contactType" value="bug" onchange="displayIcon()">
+						<option value="bug">Report Bug </option>
+						<option value="zac">Contact Zac</option>
+					</select>
+					<img id="contactTypeIcon" class="whiteShift" src="../images/bug.svg"/>
+				</div>
+				<div>
+					<p>Email:</p>
+					<label for="email">Email</label>
+					<input style="width: 90%" id="email" type="email"/>
+				</div>
+				<textarea rows="5" style="resize: vertical;">Message</textarea>
+				<button>Submit</button>
+			</div>
+			<ul id="contactErrors">
+
+			</ul>
+		</section>
+	</main>
+	<footer id="footer"></footer>
+	<script>Footer("footer")</script>
+	<script>displayIcon()</script>
+</body>
+</html>
