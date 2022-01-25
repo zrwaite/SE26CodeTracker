@@ -28,8 +28,17 @@ const httpReq = async (url:string, method:string = "GET", params:object = {}) =>
             return Promise.resolve(JSON.stringify(data));
         }
     } catch (error) {
+        console.log(error);
         console.log(JSON.stringify(error));
         console.error(error);
-        return Promise.reject(JSON.stringify(error));
+        return Promise.reject(error);
     }
-}  
+}
+
+const checkEmail = (email:string, waterloo: boolean):string|false => {//Taken from stack overflow
+	if (!email.match(
+		/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+	)) return "Invalid Email";
+	else if (waterloo && !email.trim().endsWith("@uwaterloo.ca")) return "Email must be uwaterloo email";
+	else return false;
+};
