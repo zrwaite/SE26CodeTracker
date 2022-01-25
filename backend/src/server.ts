@@ -21,10 +21,12 @@ app.use(express.json());
 // routes
 import apiRoute from "./routes/api.route";
 import authRoute from "./routes/auth.route";
+import functionRoute from "./routes/function.route";
 
 // api routing
 app.use("/api", apiRoute);
 app.use("/auth", authRoute);
+app.use("/function", functionRoute);
 
 app.get("/test", (req, res) => {
 	let result = new response(200, [], {page: "test"}, true);
