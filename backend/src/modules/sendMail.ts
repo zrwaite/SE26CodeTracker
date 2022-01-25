@@ -2,7 +2,28 @@ import nodemailer from "nodemailer";
 import env from "dotenv";
 env.config();
 
-async function sendMail(toEmails:[string], subject:string, html:string, text:string) {
+const contactFormEmail = async (email:string, message:string, contactType:string) => {
+	let errors:string[] = [];
+	const zacEmail = process.env.ZAC_EMAIL;
+	if (!zacEmail) return {success: false, errors: errors};
+	let html = "<h1>Code Tracker Contact Form</h1>";
+	let text = "Code Tracker Contact Form\n";
+	if (contactType === "bug") {
+		html += "<h2>Bug Report</h2>"
+		text += "Bug Report\n"
+	} else if (contactType === "zac") {
+		html += "<h2>Contact Zac</h2>"
+		text += "Contact Zac\n"
+	} else errors.push("invalid contactForm");
+	if (errors.length === 0) {
+		let sendMailSuccess = await sendMail([zacEmail], "Code Tracker Contact Form", html, text);
+		if (sendMailSuccess) return {success: true, errors: errors};	
+		errors.push("mail couldn't send");
+	}
+	return {success: false, errors: errors};	
+}
+
+const sendMail = async (toEmails:[string], subject:string, html:string, text:string) => {
 	let transporter = nodemailer.createTransport({
 		host: "smtp.gmail.com",
 		port: 587,
@@ -38,4 +59,4 @@ const emailConfirmation = async (confirmationCode:string, toEmail: string) => {
 	.then((success) => {return success}).catch((_) => {return false});
 }
 
-export {emailConfirmation};
+export {emailConfirmation, contactFormEmail};
