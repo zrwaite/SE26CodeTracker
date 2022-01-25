@@ -76,18 +76,20 @@ const trySignUp = async () => {
 		email: email,
 		code: code
 	});
-	if (json) {
+
+	if (!json) signUpZacError("invalid request");
+	else {
 		const data = JSON.parse(json);
 		if (data.success) {
 			setCookie("username", data.response.userData.username);
 			setCookie("token", data.response.token);
 			window.location.href= "../stats";
-		} else {
+		} else if (data.success===false) {
 			data.errors.forEach((error:string) => {
 				signUpUserError(error);
 			});
-		};
-	} else signUpUserError("SIGN IN ERROR");
+		} else signUpZacError(json);
+	}
 	usernameInput.readOnly = false;
 	emailInput.readOnly = false;
 	codeInput.readOnly = false;

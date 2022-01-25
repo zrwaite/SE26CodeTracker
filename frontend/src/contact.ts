@@ -33,8 +33,6 @@ const displayIcon = () => {
 	else alert('aaahhh');
 }
 
-
-
 const tryContact = async () => {
 	clearContactUserError();
 	let success = true;
@@ -69,16 +67,18 @@ const tryContact = async () => {
 		message: message,
 		contact_type: contactType
 	});
-	if (json) {
+	if (!json) contactZacError("invalid request");
+	else {
 		const data = JSON.parse(json);
+		console.log(data);
 		if (data.success) {
 			console.log(data);
-		} else {
+		} else if (data.success===false) {
 			data.errors.forEach((error:string) => {
 				contactUserError(error);
 			});
-		};
-	} else contactUserError("CONTACT ERROR");
+		} else contactZacError(json);
+	}
 	contactTypeInput.readOnly = false;
 	emailInput.readOnly = false;
 	messageInput.readOnly = false;
