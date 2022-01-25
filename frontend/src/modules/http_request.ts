@@ -22,16 +22,14 @@ const httpReq = async (url:string, method:string = "GET", params:object = {}) =>
         }
         if (!response.ok) {
             const data = await response.json();
-            return Promise.resolve(JSON.stringify(data));
+            return JSON.stringify(data);
         } else {
             const data = await response.json();
-            return Promise.resolve(JSON.stringify(data));
+            return JSON.stringify(data);
         }
     } catch (error) {
-        console.log(error);
-        console.log(JSON.stringify(error));
         console.error(error);
-        return Promise.reject(error);
+        return JSON.stringify(error);
     }
 }
 

@@ -45,18 +45,19 @@ const trySignIn = async () => {
 		username: username,
 		password: password,
 	});
-	if (json) {
+	if (!json) signInZacError("invalid request");
+	else {
 		const data = JSON.parse(json);
 		if (data.success) {
 			setCookie("username", username);
 			setCookie("token", data.response.token);
 			window.location.href= "../stats";
-		} else {
+		} else if (data.success===false) {
 			data.errors.forEach((error:string) => {
 				signInUserError(error);
 			});
-		};
-	} else signInUserError("SIGN IN ERROR");
+		} else signInZacError(json);
+	}
 	usernameInput.readOnly = false;
 	passwordInput.readOnly = false;
 }

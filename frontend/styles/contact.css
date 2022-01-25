@@ -1,6 +1,7 @@
 .contactForm {
 	display:grid;
 	grid-template-columns: 1fr 1fr;
+	gap:0.5rem;
 }
 .contactForm>textarea {
 	grid-column: 1/span 2;
@@ -14,4 +15,19 @@
 	display:flex;
 	align-items: center;
 	justify-content: center;
+}
+.submitButton {
+	grid-column: 1/span 2;
+}
+
+@media only screen and (max-width: 40rem) {
+	.submitButton {
+		grid-column: 1;
+	}
+	.contactForm>textarea {
+		grid-column: 1;
+	}
+	.contactForm {
+		grid-template-columns: 1fr;
+	}
 }
