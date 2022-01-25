@@ -30,13 +30,6 @@ const checkPassword = (password:string):string[] => {
 	if(password.length < 8) errors.push("Password should be 8 characters long");
 	return errors;
 }
-const checkEmail = (email:string):string|false => {//Taken from stack overflow
-	if (!email.match(
-		/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-	)) return "Invalid Email";
-	else if (!email.trim().endsWith("@uwaterloo.ca")) return "Email must be uwaterloo email";
-	else return false;
-};
 
 const trySignUp = async () => {
 	clearSignUpUserError();
@@ -68,7 +61,7 @@ const trySignUp = async () => {
 	}
 	if (email==='') success = signUpUserError("Must include email");
 	else {
-		const emailError = checkEmail(email);
+		const emailError = checkEmail(email, true);
 		if (emailError) success = signUpUserError(emailError);
 	}
 
