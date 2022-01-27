@@ -37,6 +37,51 @@ const initializeUser = async (username: string) => {
 	} else return 404;
 }
 
+const updateEntry = async (schema: any, query:object, update:object): Promise<{status: number, entry: any}> => {
+	let entry:any;
+	let status = 404;
+	try {
+		entry = await schema.findOneAndUpdate(query, update, {new:true});
+		if (entry) status = 201;
+	} catch (_) {
+		status = 400;
+	}
+	return {status: status, entry: entry}
+}
+
+const filterObj = (obj:any):boolean => {
+	let defined = false;
+	for (const [key, value] of Object.entries(obj)) {
+		if (value === undefined) delete obj[key];
+		else defined = true;
+	}
+	return defined;
+}
+
+const updateUser = async (username:string, anonymous:boolean|undefined, emailNotifications: boolean|undefined):Promise<{ errors: string[]; user:any, status:number }> => {
+	let update = {
+		anonymous: anonymous,
+		email_notifications: emailNotifications
+	}
+	if (!filterObj(update)) return {errors: ["no updates specified"], user:{}, status: 400}
+	let errors = [];
+	let {entry, status} = await updateEntry(Users, {username: username}, update);
+	if (status===400) errors.push("error updating user");
+	else if (status===404) errors.push("user not found");
+	return 	{errors: errors, user: entry, status:status}
+}
+
+const updateGroup = async (id:string, displayName:string|undefined):Promise<{ errors: string[]; user:any, status:number }> => {
+	let update = {
+		display_name: displayName
+	}
+	if (!filterObj(update)) return {errors: ["no updates specified"], user:{}, status: 400}
+	let errors = [];
+	let {entry, status} = await updateEntry(Groups, {id: id}, update);
+	if (status===400) errors.push("error updating group");
+	else if (status===404) errors.push("group not found");
+	return 	{errors: errors, user: entry, status:status}
+}
 
 // const initializeGroup = async (id: string, users:any[]) => {
 // 	let group = await Groups.findOne({ _id: id });
@@ -58,4 +103,4 @@ const initializeUser = async (username: string) => {
 // 		}
 // 	} else return 404;
 // }
-export {updateUserStats, initializeUser}
+export {updateUserStats, initializeUser, updateUser, updateGroup}

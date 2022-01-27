@@ -2,6 +2,7 @@ import {Request, Response} from "express"; //Typescript types
 import {response, responseInterface} from "../models/response"; //Created pre-formatted uniform response
 import {postGroup} from "../modules/postDatabaseInfo";
 import {getGroup} from "../modules/getDatabaseInfo";
+import {updateGroup} from "../modules/updateDatabaseInfo";
 import {deleteGroup} from "../modules/deleteDatabaseInfo";
 import {getBodyParams, getQueryParams} from "../modules/getParams";
 
@@ -40,7 +41,17 @@ export default class groupController {
 	}
 	static async putGroup(req: Request, res: Response) {
 		let result:responseInterface = new response(); //Create new standardized response
-		//Put request code
+		let {success, params, errors} = await getQueryParams(req, ["id"]);
+		if (success) {
+			const id = params[0];
+			const updateGroupResponse = await updateGroup(id, req.body.display_name);
+			result.status = updateGroupResponse.status;
+			if (result.status == 201) {
+				result.success = true;
+				result.response = updateGroupResponse.user;
+			}
+			else updateGroupResponse.errors.forEach((error) => result.errors.push(error));
+		} else errors.forEach((error) => result.errors.push(error));
 		res.status(result.status).json(result); //Return whatever result remains
 	}
 	static async deleteGroup(req: Request, res: Response) {
