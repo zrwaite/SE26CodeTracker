@@ -5,6 +5,7 @@ import {emailConfirmation} from "../modules/sendMail";
 import {getUser} from "../modules/getDatabaseInfo";
 import {getBodyParams, getQueryParams} from "../modules/getParams";
 import {initializeUser} from "../modules/updateDatabaseInfo";
+import {deleteUser} from "../modules/deleteDatabaseInfo";
 import {createToken} from "../auth/tokenFunctions";
 
 
@@ -54,7 +55,14 @@ export default class userController {
 	}
 	static async deleteUser(req: Request, res: Response) {
 		let result:responseInterface = new response(); //Create new standardized response
-		//Delete request code
+		let {success, params, errors} = await getQueryParams(req, ["username"]);
+		if (success) {
+			const username = params[0];
+			result.status = await deleteUser(username);
+			if (result.status == 200) result.success = true;
+			else if (result.status == 404) result.errors.push("user not found");
+			else result.errors.push("deletion failed");
+		} else errors.forEach((error) => result.errors.push(error));
 		res.status(result.status).json(result); //Return whatever result remains
 	}
 }

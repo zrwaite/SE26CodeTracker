@@ -2,6 +2,7 @@ import {Request, Response} from "express"; //Typescript types
 import {response, responseInterface} from "../models/response"; //Created pre-formatted uniform response
 import {postGroup} from "../modules/postDatabaseInfo";
 import {getGroup} from "../modules/getDatabaseInfo";
+import {deleteGroup} from "../modules/deleteDatabaseInfo";
 import {getBodyParams, getQueryParams} from "../modules/getParams";
 
 
@@ -44,7 +45,14 @@ export default class groupController {
 	}
 	static async deleteGroup(req: Request, res: Response) {
 		let result:responseInterface = new response(); //Create new standardized response
-		//Delete request code
+		let {success, params, errors} = await getQueryParams(req, ["id"]);
+		if (success) {
+			const id = params[0];
+			result.status = await deleteGroup(id);
+			if (result.status == 200) result.success = true;
+			else if (result.status == 404) result.errors.push("group not found");
+			else result.errors.push("deletion failed");
+		} else errors.forEach((error) => result.errors.push(error));
 		res.status(result.status).json(result); //Return whatever result remains
 	}
 }
