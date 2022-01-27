@@ -4,7 +4,7 @@ import {postUser} from "../modules/postDatabaseInfo";
 import {emailConfirmation} from "../modules/sendMail";
 import {getUser} from "../modules/getDatabaseInfo";
 import {getBodyParams, getQueryParams} from "../modules/getParams";
-import {initializeUser} from "../modules/updateDatabaseInfo";
+import {initializeUser, updateUser} from "../modules/updateDatabaseInfo";
 import {deleteUser} from "../modules/deleteDatabaseInfo";
 import {createToken} from "../auth/tokenFunctions";
 
@@ -50,7 +50,17 @@ export default class userController {
 	}
 	static async putUser(req: Request, res: Response) {
 		let result:responseInterface = new response(); //Create new standardized response
-		//Put request code
+		let {success, params, errors} = await getQueryParams(req, ["username"]);
+		if (success) {
+			const username = params[0];
+			const updateUserResponse = await updateUser(username, req.body.anonymous, req.body.email_notifications);
+			result.status = updateUserResponse.status;
+			if (result.status == 201) {
+				result.success = true;
+				result.response = updateUserResponse.user;
+			}
+			else updateUserResponse.errors.forEach((error) => result.errors.push(error));
+		} else errors.forEach((error) => result.errors.push(error));
 		res.status(result.status).json(result); //Return whatever result remains
 	}
 	static async deleteUser(req: Request, res: Response) {
