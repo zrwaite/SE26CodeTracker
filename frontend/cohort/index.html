@@ -6,10 +6,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../src/modules/http_request.js"></script>
+    <script src="../src/group.js"></script>
+	<script src="../src/modules/graphs.js"></script>
 	<script src="../src/modules/redirect.js"></script>
 	<script src="../src/modules/cookies.js"></script>
 	<link href="../styles/styles.css" rel="stylesheet" type="text/css" />
-	<link href="../styles/signin.css" rel="stylesheet" type="text/css" />
+	<link href="../styles/graphs.css" rel="stylesheet" type="text/css" />
 	<link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	<script src="../components/navbar.jsx"></script>
 	<script src="../components/footer.jsx"></script>
@@ -18,10 +20,72 @@
 <body>
 	<nav id="navbar"></nav>
 	<script>Navbar("navbar")</script>
-	<div>
-		<h1>Code Tracker Cohort</h1>
-	</div>
+	<main>
+		<header class="standardHeader">
+			<img src="../images/logo.svg" alt="logo"/>
+			<h1>Cohort</h1>
+			<img class='whiteShift' src="../images/group.svg" alt="graph"/>
+		</header>
+		<section class="numberStats">
+			<h5>Total Day Time: </h5>
+			<h5><span id="totalDayTime">--</span>hours</h5>
+			<h5>Total Week Time: </h5>
+			<h5><span id="totalWeekTime">--</span>hours</h5>
+		</section>
+		<section>
+			<div class="allDaysHeader">
+				<h3>All Days</h3>
+				<button>
+					<img src="../images/chart.svg" alt="chart"/>
+				</button>
+			</div>
+			<hr>
+			<div class="allDaysGraph">
+				<div class="yAxis">
+					<p id="maxDay">--</p>
+					<p class="rotate">Hours</p>
+					<p>0</p>
+				</div>
+				<div id="barGraph"></div>
+			</div>
+			<div id="dayStatDetails">
+				<h6>Hover above for more info^</h6>
+			</div>
+		</section>
+		<section>
+			<h3>Languages</h3>
+			<hr/>
+			<div class="statsSection">
+				<div class="piGraphContainer">
+					<div class="piGraph" id="languageGraph"></div>
+				</div>
+				<div class="piGraphTable" id="languageTable"></div>
+			</div>
+		</section>
+		<section>
+			<h3>Code Editors</h3>
+			<hr/>
+			<div class="statsSection">
+				<div class="piGraphContainer">
+					<div class="piGraph" id="codeEditorsGraph"></div>
+				</div>
+				<div class="piGraphTable" id="codeEditorsTable"></div>
+			</div>
+		</section>
+		<section>
+			<h3>Operating Systems</h3>
+			<hr/>
+			<div class="statsSection">
+				<div class="piGraphContainer">
+					<div class="piGraph" id="osGraph"></div>
+				</div>
+				<div class="piGraphTable" id="osTable"></div>
+			</div>
+		</section>
+	</main>
 	<footer id="footer"></footer>
 	<script>Footer("footer")</script>
+	<script>renderGroupStats();</script>
+
 </body>
 </html>
