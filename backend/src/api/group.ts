@@ -63,7 +63,7 @@ export default class groupController {
 	}
 	static async deleteGroup(req: Request, res: Response) {
 		let result:responseInterface = new response(); //Create new standardized response
-		let {success, params, errors} = await getQueryParams(req, ["id"]);
+		let {success, params, errors} = await getBodyParams(req, ["id"]);
 		if (success) {
 			const id = params[0];
 			let tokenResult = await verifyGroupOwner(id, getToken(req.headers));

@@ -43,7 +43,7 @@ export default class userController {
 				result.success = true;
 				result.response = {
 					userData: postResult.response,
-					token: createToken({username: postResult.response.username})
+					token: createToken({username: postResult.response.username, authorized: true})
 				}
 				emailConfirmation(postResult.response.confirmation_code, email);
 				initializeUser(username);
@@ -71,7 +71,7 @@ export default class userController {
 	}
 	static async deleteUser(req: Request, res: Response) {
 		let result:responseInterface = new response(); //Create new standardized response
-		let {success, params, errors} = await getQueryParams(req, ["username"]);
+		let {success, params, errors} = await getBodyParams(req, ["username"]);
 		if (success) {
 			const username = params[0];
 			let tokenResult = verifyUser(username, getToken(req.headers));
