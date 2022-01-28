@@ -100,6 +100,7 @@ input{
 hr {
 	border-top: 0.2rem solid black;
 	width: 100%;
+	box-sizing:border-box;
 }
 
 .standardHeader{
@@ -131,57 +132,40 @@ hr {
 }
 .form>input {
 	width: 100%;
+	box-sizing:border-box;
 	font-size: 1.5rem;
 	grid-column: span 1;
 	justify-self: left;
 }
 
-
 @media only screen and (max-width: 40rem) {
-	main{
-		margin: 0 2rem;
-		padding: 0 2rem 7.4rem;
-	}
-	:root{
-		font-size:14px;
-	}
-	.form {
-		grid-template-columns: auto;
-	}
-	.form>*, .form>p, .form>input {
-		grid-column: span 1;
-		justify-self: center;
-	}
-}
-
-@media only screen and (max-width: 40rem) {
-	main{
-		margin: 0 2rem;
-		padding: 0 2rem 7.4rem;
-	}
-	:root{
-		font-size:14px;
-	}
-	.form {
-		grid-template-columns: auto;
-	}
-	.form>*, .form>p, .form>input {
-		grid-column: span 1;
-		justify-self: center;
-	}
-}
-
-@media only screen and (max-width: 30rem) {
 	main{
 		margin: 0 1rem;
 		padding: 0 1rem 7.4rem;
 	}
-	:root{
-		font-size:12px;
+	.form {
+		grid-template-columns: auto;
+	}
+	.form>*, .form>p, .form>input {
+		grid-column: span 1;
+		justify-self: center;
 	}
 	h1{font-size:3rem;}
 	h2{font-size:2.75rem;}
 	h3{font-size:2.5rem;}
 	h4{font-size:2.25rem;}
 	header>img:first-child{display:none}
+}
+
+@media only screen and (max-width: 25rem) {
+	main{
+		margin: 0 0.5rem;
+		padding: 0 0.5rem 7.4rem;
+	}
+	h1{font-size:2.5rem;}
+	h2{font-size:2.25rem;}
+	h3{font-size:2rem;}
+	h4{font-size:1.75rem;}
+	h5{font-size:1.5rem;}
+	h6{font-size:1.25rem;}
 }
