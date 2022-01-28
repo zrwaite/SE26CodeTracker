@@ -82,6 +82,37 @@ const updateGroup = async (id:string, displayName:string|undefined):Promise<{ er
 	else if (status===404) errors.push("group not found");
 	return 	{errors: errors, user: entry, status:status}
 }
+const addUserToGroup = async (id:string|undefined, username:string) => {
+	if (!id) return 400;
+	try {
+		const query = { _id: id };
+		let group = await Groups.findOne(query);
+		if (group) {
+			group.users.push(username);
+			await group.save()
+			return 201;
+		} return 404;
+	} catch (_) {
+		return 400;
+	}
+}
+
+const removeUserFromGroup = async (id:string|undefined, username:string) => {
+	if (!id) return 400;
+	try {
+		const query = { _id: id };
+		let group = await Groups.findOne(query);
+		if (group) {
+			let index = group.users.indexOf(username);
+			if (index === -1) return 404;
+			group.users.splice(index, 1);
+			await group.save()
+			return 201;
+		} return 404;
+	} catch (_) {
+		return 400;
+	}
+}
 
 // const initializeGroup = async (id: string, users:any[]) => {
 // 	let group = await Groups.findOne({ _id: id });
@@ -103,4 +134,4 @@ const updateGroup = async (id:string, displayName:string|undefined):Promise<{ er
 // 		}
 // 	} else return 404;
 // }
-export {updateUserStats, initializeUser, updateUser, updateGroup}
+export {updateUserStats, initializeUser, updateUser, updateGroup, addUserToGroup, removeUserFromGroup}

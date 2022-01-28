@@ -4,6 +4,9 @@ import {getUserData} from "./getWakatimeInfo";
 import {getUser} from "./getDatabaseInfo";
 import bcrypt from "bcrypt";
 import {getToken} from "./getWakatimeInfo";
+import {addUserToGroup} from "./updateDatabaseInfo";
+import env from "dotenv";
+env.config();
 
 const postUser = async (code:string, username:string, password:string, email:string) => {
 	const errors = [];
@@ -36,6 +39,10 @@ const postUser = async (code:string, username:string, password:string, email:str
 						stats: {}
 					});
 					await newUser.save(); //Saves branch to mongodb
+
+					let addUserSuccess = await addUserToGroup(process.env.COHORT_ID, username);
+					console.log(addUserSuccess);
+
 					return {success: true, response: newUser, errors: []};
 				} catch (e:any){
 					if (e.code == 11000) errors.push("Username or email already in use");
