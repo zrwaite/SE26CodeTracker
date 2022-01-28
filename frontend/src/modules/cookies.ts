@@ -15,9 +15,3 @@ const getCookie = (cname:string) => {
     }
     return "";
 }
-
-const logout = () => {
-    deleteCookie("name");
-    deleteCookie("token");
-    window.location.href= "../home";
-}
