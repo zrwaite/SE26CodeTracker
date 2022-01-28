@@ -134,7 +134,7 @@ const mergeGroupData = async (users:any[]) => {
 			if (!found) mergedStats.os.push({name:name, time:time});
 		})
 		user.stats.days.forEach((day:any) => {
-			let date = day.date;
+			let date = day.date.toLocaleDateString();
 			let time = day.time;
 			let found = false;
 			for (let i=0; i<mergedStats.days.length; i++){

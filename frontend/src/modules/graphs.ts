@@ -1,7 +1,7 @@
-
 const allDaysGraph = (id: string, days:any[], maxTime:number) => {
-	const graph = document.getElementById(id);
+	const graph:any = document.getElementById(id);
 	if (!graph) {console.error("graph not found"); return;}
+	graph.all = true;
 
 	let maxDayElem = document.getElementById('maxDay');
 	if (maxDayElem) maxDayElem.innerText=maxTime.toString();
@@ -43,6 +43,26 @@ const allDaysGraph = (id: string, days:any[], maxTime:number) => {
 		// newBar.style.height=`100%`;
 		fullBar.appendChild(newBar);
 		graph.appendChild(fullBar);
+	}
+}
+
+const reduceBarGraph = (id:string, numDays:number) => {
+	const graph:any = document.getElementById(id);
+	if (!graph) {console.error("graph not found"); return;}
+	const graphSections:any = document.querySelectorAll(`#${id}>div`)
+	if (!graphSections) {console.error("graphSections not found"); return;}
+
+	if (graphSections.length>numDays) {
+		if (graph.all) {
+			for (let i=0; i<graphSections.length - numDays; i++) 
+				graphSections[i].style.display="none";
+			graph.all=false;
+		}
+		else {
+			for (let i=0; i<graphSections.length - numDays; i++) 
+				graphSections[i].style.display="flex";
+			graph.all=true;
+		}
 	}
 }
 
