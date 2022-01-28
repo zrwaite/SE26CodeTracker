@@ -5,6 +5,17 @@ const renderStats = async () => {
 		const data = JSON.parse(json);
 		if (data.success) {
 			const result = data.response;
+			if (!result.initialized) {
+				const initializingSection = document.getElementById("initializingSection");
+				if (!initializingSection) return;
+				initializingSection.style.display = "block";
+				setTimeout(renderStats, 2000);
+				return;
+			} else {
+				const initializingSection = document.getElementById("initializingSection");
+				if (!initializingSection) return;
+				initializingSection.style.display = "none";
+			}
 			const days:any[] = result.stats.days;
 			const languages = result.stats.languages;
 			const editors = result.stats.editors;

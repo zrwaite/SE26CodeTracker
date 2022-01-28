@@ -43,7 +43,7 @@ footer{
 	}
 }
 
-@media only screen and (max-width: 20rem) {
+@media only screen and (max-width: 25rem) {
 	.footer p{
 		display:none;
 	}
