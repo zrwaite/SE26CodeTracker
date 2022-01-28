@@ -16,7 +16,6 @@ const deleteEntry = async (schema:any, query:object) => {
 
 const deleteUser = async (username:string) => {
 	let removeUser = await removeUserFromGroup(process.env.COHORT_ID,username); 
-	console.log("remove user", removeUser);
 	return await deleteEntry(Users, {username: username});
 }
 
