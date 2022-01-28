@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:2000";
+const baseURL = "http://insomnizac.xyz";
 const httpReq = async (url:string, token:boolean = false, method:string = "GET", params:object = {}) => {
     if (token && !getCookie("token")) {
         alert("invalid token");
