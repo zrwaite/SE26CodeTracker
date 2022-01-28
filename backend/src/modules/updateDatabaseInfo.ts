@@ -16,9 +16,38 @@ const updateUserStats = async (username:string) => {
 			await user.save();
 			return 201;
 		} catch (_) {
+			console.log(username, "user stats failed to be updated");
 			return 400;
 		}
-	} else return 404;
+	} else {
+		console.log(username, "user stats failed to be found");
+		return 404;
+	}
+}
+
+const updateGroupStats = async (id:string, users:any[]) => {
+	let group = await Groups.findOne({ _id: id });
+	if (group) {
+		try {
+			// let userList:any[] = [];
+			// group.users.forEach((username:string) => {
+			// 	let result = users.find((user) => {
+			// 		return user.username === username
+			// 	})
+			// 	if (result) userList.push(result);
+			// })
+			let mergedData = await mergeGroupData(users);
+			group.stats = mergedData;
+			await group.save();
+			return 201;
+		} catch (_) {
+			console.log(group.display_name, "group stats failed to be updated");
+			return 400;
+		}
+	} else {
+		console.log(group.display_name, "group stats failed to be found");
+		return 404;
+	}
 }
 
 const initializeUser = async (username: string) => {
@@ -114,24 +143,29 @@ const removeUserFromGroup = async (id:string|undefined, username:string) => {
 	}
 }
 
-// const initializeGroup = async (id: string, users:any[]) => {
-// 	let group = await Groups.findOne({ _id: id });
-// 	if (group) {
-// 		try {
-// 			let userList:any[] = [];
-// 			group.users.forEach((username:string) => {
-// 				let result = users.find((user) => {
-// 					return user.username === username
-// 				})
-// 				if (result) userList.push(result);
-// 			})
-// 			group.stats = await mergeGroupData(userList);
-// 			group.initialized = true;
-// 			await group.save();
-// 			return 201;
-// 		} catch (_) {
-// 			return 400;
-// 		}
-// 	} else return 404;
-// }
-export {updateUserStats, initializeUser, updateUser, updateGroup, addUserToGroup, removeUserFromGroup}
+const initializeGroup = async (id: string, users:any[]) => {
+	let group = await Groups.findOne({ _id: id });
+	if (group) {
+		try {
+			let userList:any[] = [];
+			group.users.forEach((username:string) => {
+				let result = users.find((user) => {
+					return user.username === username
+				})
+				if (result) userList.push(result);
+			})
+			let mergedData = await mergeGroupData(users);
+			group.stats = mergedData;
+			group.initialized = true;
+			await group.save();
+			return 201;
+		} catch (_) {
+			console.log(group.display_name, "group failed to be initialized");
+			return 400;
+		}
+	} else {
+		console.log(group.display_name, "group failed to be found");
+		return 404;
+	}
+}
+export {updateGroupStats, updateUserStats, initializeUser, updateUser, updateGroup, addUserToGroup, removeUserFromGroup, initializeGroup}
