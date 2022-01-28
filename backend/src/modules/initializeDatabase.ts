@@ -28,4 +28,4 @@ const initializeGroupStats = async (users:any) => {
 	})
 }
 
-export {initializeDatabase}
+export {initializeDatabase, initializeGroupStats}
