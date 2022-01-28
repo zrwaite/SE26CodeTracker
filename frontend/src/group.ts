@@ -1,6 +1,6 @@
 const renderGroupStats = async () => {
 	try {
-		const json = await httpReq(`/api/group?id=61e76892e7a49606acfb7de5`);
+		const json = await httpReq(`/api/group?id=61e76892e7a49606acfb7de5`, true);
 		if (!json) return;
 		const data = JSON.parse(json);
 		if (data.success) {

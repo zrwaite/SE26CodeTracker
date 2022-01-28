@@ -62,7 +62,7 @@ const tryContact = async () => {
 	contactTypeInput.readOnly = true;
 	emailInput.readOnly = true;
 	messageInput.readOnly = true;
-	let json = await httpReq("/function/contact ", "POST", {
+	let json = await httpReq("/function/contact ", false, "POST", {
 		email: email,
 		message: message,
 		contact_type: contactType

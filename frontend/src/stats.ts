@@ -1,6 +1,6 @@
 const renderStats = async () => {
 	try {
-		const json = await httpReq(`/api/user?username=${getCookie("username")}`);
+		const json = await httpReq(`/api/user?username=${getCookie("username")}`, true);
 		if (!json) return;
 		const data = JSON.parse(json);
 		if (data.success) {

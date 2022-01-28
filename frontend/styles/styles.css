@@ -20,6 +20,7 @@ body {
 	background-color: var(--primary-col);
 	position: relative;
   	min-height: 100vh;
+	min-width: 20rem;
 }
 main {
 	margin: 0 5rem;
