@@ -23,12 +23,14 @@
 	</div>
 	<section>
 		<div class="verticalFlex">
-			<h4>Email: <span id="userEmail"></span></h4>
+			<h4>Email:</h4>
+			<input id="email" type="email" name="email"/>
 			<hr>
 			<h4>Confirmation Code:</h4>
 			<input id="confirmationCode" type="text" name="confirmationCode"/>
 			<br/>
 			<label for="confirmationCode">Confirmation Code: </label>
+			<label for="email">email </label>
 			<button onclick="confirmEmail()">Submit</button>
 		</div>
 		<div id="emailConfirmationResult">
@@ -37,6 +39,5 @@
 	</section>
 	<footer id="footer"></footer>
 	<script>Footer("footer")</script>
-	<script>renderPageData()</script>
 </body>
 </html>
