@@ -36,7 +36,6 @@ const parseDayStats = async (day:any, startingStats:userStats = {
 	day.languages.forEach((language:apiStats)=>{
 		let name = language.name;
 		let time = language.total_seconds;
-		dayStats.time+=time;
 		let found = false;
 		for (let i=0; i<startingStats.languages.length; i++){
 			if (name != startingStats.languages[i].name) continue;
@@ -49,6 +48,7 @@ const parseDayStats = async (day:any, startingStats:userStats = {
 	day.operating_systems.forEach((os:apiStats)=>{
 		let name = os.name;
 		let time = os.total_seconds;
+		dayStats.time+=time;
 		let found = false;
 		for (let i=0; i<startingStats.os.length; i++){
 			if (name != startingStats.os[i].name) continue;
@@ -138,7 +138,7 @@ const mergeGroupData = async (users:any[]) => {
 			let time = day.time;
 			let found = false;
 			for (let i=0; i<mergedStats.days.length; i++){
-				if (date != mergedStats.days[i].date) continue;
+				if (date !== mergedStats.days[i].date) continue;
 				mergedStats.days[i].time += time;
 				found = true;
 				break;
@@ -148,5 +148,8 @@ const mergeGroupData = async (users:any[]) => {
 	});
 	return mergedStats;
 }
+/*
+startingStats
+*/
 
 export {createCodeStats, parseDayStats, mergeGroupData};

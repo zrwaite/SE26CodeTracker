@@ -16,6 +16,10 @@ const contactFormEmail = async (email:string, message:string, contactType:string
 		text += "Contact Zac\n"
 	} else errors.push("invalid contactForm");
 	if (errors.length === 0) {
+		html+= `<p>${message}</p>`;
+		html+=`<p>From:${email}</p>`
+		text+=message;
+		text+=`From: ${email}`
 		let sendMailSuccess = await sendMail([zacEmail], "Code Tracker Contact Form", html, text);
 		if (sendMailSuccess) return {success: true, errors: errors};	
 		errors.push("mail couldn't send");

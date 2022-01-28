@@ -7,6 +7,7 @@ const allDaysGraph = (id: string, days:any[], maxTime:number) => {
 	if (maxDayElem) maxDayElem.innerText=maxTime.toString();
 	else {console.error("maxDay not found"); return;}
 
+	days = days.sort((a,b) => ((new Date(a.date)) > (new Date(b.date))) ? 1 : ((new Date(a.date)) < (new Date(b.date)) ? -1 : 0));
 	for (let i=0; i<days.length; i++) {
 		let day = days[i];
 		let fullBar:any = document.createElement("div");
@@ -36,9 +37,9 @@ const allDaysGraph = (id: string, days:any[], maxTime:number) => {
 		let newBar = document.createElement("div");
 		let ratio = Math.round(1000*fullBar.time/maxTime)/1000;
 		newBar.style.height=`${9*ratio}rem`;
-		if (ratio<0.2) newBar.style.backgroundColor = 'red';
-		else if (ratio<0.4) newBar.style.backgroundColor = 'orange';
-		else if (ratio<0.6) newBar.style.backgroundColor = 'rgba(200, 220, 0)';
+		if (ratio<0.15) newBar.style.backgroundColor = 'red';
+		else if (ratio<0.25) newBar.style.backgroundColor = 'orange';
+		else if (ratio<0.4) newBar.style.backgroundColor = 'rgba(200, 220, 0)';
 		else newBar.style.backgroundColor = 'green';
 		// newBar.style.height=`100%`;
 		fullBar.appendChild(newBar);
@@ -111,6 +112,7 @@ const getColour = (name:string) => {
 		case "TypeScript": return "#0099ff";
 		case "JavaScript": return "#ecec13";
 		case "C": return "#666666";
+		case "C#": return "#9332bf";
 		case "JSON": return "#339933";
 		case "PHP": return "#9999ff";
 		case "Python": return "#0066cc";
@@ -118,7 +120,11 @@ const getColour = (name:string) => {
 		case "Docker": return "#1aa3ff";
 		case "SQL": return "#e6b800";
 		case "Java": return "#e60000";
+		case "Dart": return "rgb(23, 174, 255)";
+		case "SCSS": return "rgb(201, 85, 146)";
+		case "CSS": return "rgb(28, 49, 220)";
 		case "Rust": return "#ff5c33";
+		case "Racket": return "rgb(100, 13, 20)";
 		case "Markdown": return "#333333";
 		case "C++": return "rgb(83, 136, 200)";
 		case "Git Config": return "red";
@@ -127,6 +133,8 @@ const getColour = (name:string) => {
 		case "PhpStorm": return "rgb(182, 25, 183)";
 		case "CLion": return "rgb(32, 210, 110)";
 		case "PyCharm": return "rgb(70, 220, 90)";
+		case "Rider": return "rgb(184, 0, 74)";
+		case "Vim": return "rgb(18, 138, 39)";
 		case "Mac": return "rgb(150, 0, 167)";
 		case "Linux": return "rgb(223, 167, 20)";
 		case "Windows": return "#0099ff";

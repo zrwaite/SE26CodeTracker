@@ -72,7 +72,7 @@ const tryContact = async () => {
 		const data = JSON.parse(json);
 		console.log(data);
 		if (data.success) {
-			console.log(data);
+			alert("Your message has been received!");
 		} else if (data.success===false) {
 			data.errors.forEach((error:string) => {
 				contactUserError(error);
