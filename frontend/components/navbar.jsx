@@ -49,13 +49,24 @@ const Navbar = (id, type) => {
 			</a>
 		`
 	})
-	innerHtml += `
-		<a class="navItemRight" href="../settings">
-			<button class="navItem">
-				<img class="navIcon whiteShift" src="../images/settings.svg" alt="icon">
-			</button>
-		</a>
-	</div>
-	`
+	if (type==="home"){
+		innerHtml += `
+			<a class="navItemRight" href="../contact">
+				<button class="navItem">
+					<img class="navIcon whiteShift" src="../images/mail.svg" alt="icon">
+				</button>
+			</a>
+		</div>
+		`
+	} else {
+		innerHtml += `
+			<a class="navItemRight" href="../settings">
+				<button class="navItem">
+					<img class="navIcon whiteShift" src="../images/settings.svg" alt="icon">
+				</button>
+			</a>
+		</div>
+		`
+	} 
 	navbar.innerHTML = innerHtml
 }
