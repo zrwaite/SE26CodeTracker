@@ -10,7 +10,6 @@ const confirmEmail = async () => {
 	if (confirmationCode==='' || email==='') return;
 	confirmationCodeInput.readOnly = true;
 	emailInput.readOnly = true;
-
 	let json = await httpReq("/auth/confirmEmail", false, "POST", {
 		email: email,
 		confirmation_code: confirmationCode,
