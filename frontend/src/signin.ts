@@ -41,7 +41,7 @@ const trySignIn = async () => {
 	usernameInput.readOnly = true;
 	passwordInput.readOnly = true;
 
-	let json = await httpReq("/auth/signin", "POST", {
+	let json = await httpReq("/auth/signin", false, "POST", {
 		username: username,
 		password: password,
 	});

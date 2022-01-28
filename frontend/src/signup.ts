@@ -70,7 +70,7 @@ const trySignUp = async () => {
 	emailInput.readOnly = true;
 	codeInput.readOnly = true;
 	passwordInput.readOnly = true;
-	let json = await httpReq("/api/user", "POST", {
+	let json = await httpReq("/api/user", false, "POST", {
 		username: username,
 		password: password,
 		email: email,
