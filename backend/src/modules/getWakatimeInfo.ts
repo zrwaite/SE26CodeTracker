@@ -36,6 +36,12 @@ const getUserData = async (token: string) => {
 	}
 }
 const getCodeData = async (token: string, startDate: string, endDate: string) => {
+	let startDateObj:any = new Date(startDate);
+	let endDateObj:any = new Date(endDate);
+	if (endDateObj-startDateObj>25000000000) {
+		startDate = (new Date (endDateObj- 25000000000)).toLocaleDateString();
+	}
+
 	let apiLink = "https://wakatime.com/api/v1/users/current/summaries?timeout=15&writes_only=true";
 	apiLink += "&start="+startDate+"&end="+endDate;
 	let headers = { headers: {'Host': 'wakatime.com', 'Authorization': 'Bearer '+token}};
@@ -49,7 +55,7 @@ const getCodeData = async (token: string, startDate: string, endDate: string) =>
 		}
 		return codeStats;
 	} catch(e:any){
-		console.log("Error",e);
+		console.log("WAKATIME ERROR",e);
 		return false;
 	}
 }
