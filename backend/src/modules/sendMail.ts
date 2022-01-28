@@ -50,10 +50,10 @@ const sendMail = async (toEmails:[string], subject:string, html:string, text:str
 
 const emailConfirmation = async (confirmationCode:string, toEmail: string) => {
     const mailHtml = `
-                <h1>Validate your email <a href='http://localhost:3000/confirmEmail?email=${toEmail}'>here</a></h1>
+                <h1>Validate your email <a href='http://insomnizac.xyz/confirmEmail/?email=${toEmail}'>here</a></h1>
                 <p>Confirmation Code: ${confirmationCode}</p>`;
     const mailText = `
-                Validate your email here: http://localhost:3000/confirmEmail?email="${toEmail}"
+                Validate your email here: http://insomnizac.xyz/confirmEmail/?email="${toEmail}"
                 Confirmation Code: ${confirmationCode}`;
     sendMail([toEmail], "Validate Email - SE26 Code Tracker", mailHtml, mailText)
 	.then((success) => {return success}).catch((_) => {return false});

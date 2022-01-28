@@ -5,11 +5,11 @@ import {Users} from "../models/userSchema";
 
 const confirmEmail = async (req: Request, res: Response) => {
 	let result:responseInterface = new response();
-	let {success, params, errors} = await getBodyParams(req, ["username", "confirmation_code"]);
+	let {success, params, errors} = await getBodyParams(req, ["email", "confirmation_code"]);
 	if (success) {
-		const username = params[0];
+		const email = params[0];
 		const confirmationCode = params[1];
-		const query = { username: username };
+		const query = { email: email };
 		let user = await Users.findOne(query);
 		if (user) {
 			if (user.confirmation_code == confirmationCode) {

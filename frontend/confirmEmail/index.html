@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Code Tracker - Competitions</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../src/modules/http_request.js"></script>
+    <script src="../src/emailConfirmation.js"></script>
+	<script src="../src/modules/redirect.js"></script>
+	<script src="../src/modules/cookies.js"></script>
+	<link href="../styles/styles.css" rel="stylesheet" type="text/css" />
+	<link href="../styles/confirmEmail.css" rel="stylesheet" type="text/css" />
+	<link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<script src="../components/navbar.jsx"></script>
+	<script src="../components/footer.jsx"></script>
+</head>
+<body>
+	<nav id="navbar"></nav>
+	<script>Navbar("navbar")</script>
+	<div>
+		<h1>Confirm Email</h1>
+	</div>
+	<section>
+		<div class="verticalFlex">
+			<h4>Email: <span id="userEmail"></span></h4>
+			<hr>
+			<h4>Confirmation Code:</h4>
+			<input id="confirmationCode" type="text" name="confirmationCode"/>
+			<br/>
+			<label for="confirmationCode">Confirmation Code: </label>
+			<button onclick="confirmEmail()">Submit</button>
+		</div>
+		<div id="emailConfirmationResult">
+
+		</div>
+	</section>
+	<footer id="footer"></footer>
+	<script>Footer("footer")</script>
+	<script>renderPageData()</script>
+</body>
+</html>

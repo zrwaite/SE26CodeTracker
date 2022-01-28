@@ -5,6 +5,7 @@ import {getUser} from "./getDatabaseInfo";
 import bcrypt from "bcrypt";
 import {getToken} from "./getWakatimeInfo";
 import {addUserToGroup} from "./updateDatabaseInfo";
+import dailyCodeData from "../cronjobs/dailyCodeData"
 import env from "dotenv";
 env.config();
 
@@ -42,6 +43,7 @@ const postUser = async (code:string, username:string, password:string, email:str
 
 					let addUserSuccess = await addUserToGroup(process.env.COHORT_ID, username);
 					console.log(addUserSuccess);
+					dailyCodeData();
 
 					return {success: true, response: newUser, errors: []};
 				} catch (e:any){
