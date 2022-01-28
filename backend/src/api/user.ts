@@ -6,7 +6,7 @@ import {getUser} from "../modules/getDatabaseInfo";
 import {getBodyParams, getQueryParams} from "../modules/getParams";
 import {initializeUser, updateUser} from "../modules/updateDatabaseInfo";
 import {deleteUser} from "../modules/deleteDatabaseInfo";
-import {createToken} from "../auth/tokenFunctions";
+import {createToken, verifyUser, getToken} from "../auth/tokenFunctions";
 
 
 /* register controller */
@@ -16,13 +16,16 @@ export default class userController {
 		let {success, params, errors} = await getQueryParams(req, ["username"]);
 		if (success) {
 			const username = params[0];
-			const getUserResponse = await getUser(username);
-			result.status = getUserResponse.status;
-			if (result.status == 200) {
-				result.success = true;
-				result.response = getUserResponse.user;
-			}
-			else if (result.status == 404) result.errors.push("user not found");
+			let tokenResult = verifyUser(username, getToken(req.headers));
+			if (tokenResult.success) {
+				const getUserResponse = await getUser(username);
+				result.status = getUserResponse.status;
+				if (result.status == 200) {
+					result.success = true;
+					result.response = getUserResponse.user;
+				}
+				else if (result.status == 404) result.errors.push("user not found");
+			} else result.errors.push(tokenResult.error);
 		} else errors.forEach((error) => result.errors.push(error));
 		res.status(result.status).json(result); //Return whatever result remains
 	}
@@ -53,13 +56,16 @@ export default class userController {
 		let {success, params, errors} = await getQueryParams(req, ["username"]);
 		if (success) {
 			const username = params[0];
-			const updateUserResponse = await updateUser(username, req.body.anonymous, req.body.email_notifications);
-			result.status = updateUserResponse.status;
-			if (result.status == 201) {
-				result.success = true;
-				result.response = updateUserResponse.user;
-			}
-			else updateUserResponse.errors.forEach((error) => result.errors.push(error));
+			let tokenResult = verifyUser(username, getToken(req.headers));
+			if (tokenResult.success) {
+				const updateUserResponse = await updateUser(username, req.body.anonymous, req.body.email_notifications);
+				result.status = updateUserResponse.status;
+				if (result.status == 201) {
+					result.success = true;
+					result.response = updateUserResponse.user;
+				}
+				else updateUserResponse.errors.forEach((error) => result.errors.push(error));
+			} else result.errors.push(tokenResult.error);
 		} else errors.forEach((error) => result.errors.push(error));
 		res.status(result.status).json(result); //Return whatever result remains
 	}
@@ -68,10 +74,13 @@ export default class userController {
 		let {success, params, errors} = await getQueryParams(req, ["username"]);
 		if (success) {
 			const username = params[0];
-			result.status = await deleteUser(username);
-			if (result.status == 200) result.success = true;
-			else if (result.status == 404) result.errors.push("user not found");
-			else result.errors.push("deletion failed");
+			let tokenResult = verifyUser(username, getToken(req.headers));
+			if (tokenResult.success) {
+				result.status = await deleteUser(username);
+				if (result.status == 200) result.success = true;
+				else if (result.status == 404) result.errors.push("user not found");
+				else result.errors.push("deletion failed");
+			} else result.errors.push(tokenResult.error);
 		} else errors.forEach((error) => result.errors.push(error));
 		res.status(result.status).json(result); //Return whatever result remains
 	}
