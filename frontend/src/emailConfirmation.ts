@@ -1,29 +1,18 @@
-const getParameterByName = (name:string, url = window.location.href) => {
-    name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
-
-const renderPageData = () => {
-	let email = getParameterByName("email");
-	const emailSpan = document.getElementById('userEmail');
-	if (!emailSpan || !email) return;
-	emailSpan.innerText = email;
-}
-
 const confirmEmail = async () => {
 	const confirmationCodeInput:HTMLInputElement|null = document.querySelector("#confirmationCode");
+	const emailInput:HTMLInputElement|null = document.querySelector("#email");
 	let confirmationCode = "";
+	let email = "";
 	if (confirmationCodeInput) confirmationCode = confirmationCodeInput.value;
 	else return;
-	if (confirmationCode==='') return;
+	if (emailInput) email = emailInput.value;
+	else return;
+	if (confirmationCode==='' || email==='') return;
 	confirmationCodeInput.readOnly = true;
+	emailInput.readOnly = true;
 
 	let json = await httpReq("/auth/confirmEmail", false, "POST", {
-		email: getParameterByName("email"),
+		email: email,
 		confirmation_code: confirmationCode,
 	});
 	if (!json) alert("invalid request");
@@ -39,4 +28,5 @@ const confirmEmail = async () => {
 		} else console.error(json);
 	}
 	confirmationCodeInput.readOnly = false;
+	emailInput.readOnly = false;
 }
