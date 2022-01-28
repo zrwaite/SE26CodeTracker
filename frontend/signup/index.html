@@ -36,18 +36,14 @@
 			</div>
 			<div id="stepSection1" class="stepSection">
 				<hr>
-				<div>
+				<div class="verticalFlex">
 					<p>Click here to sign up:</p>
-					<a href="">
+					<a target="_blank" href="https://wakatime.com/signup">
 						<button id="stepButton1" class="wakatimeLogo">
 							<img src="../images/wakatime.svg" alt="wakatime"/>
 							<p class="wakatime">Wakatime</p>
 						</button>
 					</a>
-				</div>
-				<div>
-					<p>Select GitHub: </p>
-					<img height="20rem" src="../images/github_sign_up.png" alt="github sign up"/>
 				</div>
 				<p>Follow the steps provided</p>
 			</div>
@@ -63,18 +59,23 @@
 			</div>
 			<div id="stepSection2" class="stepSection">
 				<hr>
-				<div>
+				<div class="verticalFlex">
 					<p>Click here to get your code:</p>
-					<a target="_black" href="https://wakatime.com/oauth/authorize?client_id=EsqgZiw6kSDUlM40OntUARSy&response_type=code&scope=email,read_logged_time,read_stats,read_orgs&redirect_uri=https://wakatime.com/oauth/test">
+					<a target="_blank" href="https://wakatime.com/oauth/authorize?client_id=EsqgZiw6kSDUlM40OntUARSy&response_type=code&scope=email,read_logged_time,read_stats,read_orgs&redirect_uri=https://wakatime.com/oauth/test">
 						<button id="stepButton2" class="wakatimeLogo">
 							<img src="../images/wakatime.svg" alt="wakatime"/>
+							<p class="wakatime">Wakatime</p>
 						</button>
 					</a>
 				</div>
-				<p>Select connect wakatime account: </p>
-				<img src="../images/authorize.png" alt="authorize"/>
-				<p>Copy and paste code into step 3: </p>
-				<img src="../images/token.png" alt="token"/>
+				<div class="verticalFlex">
+					<p>Select connect wakatime account: </p>
+					<img src="../images/authorize.png" alt="authorize"/>
+				</div>
+				<div class="verticalFlex">
+					<p>Copy and paste code into step 3: </p>
+					<img src="../images/token.png" alt="token"/>
+				</div>
 			</div>
 		</section>
 
@@ -96,7 +97,9 @@
 				<input id="email" type="email"/>
 				<p>Access Code:</p>
 				<input id="code" type="text"/>
-				<button type="button" onclick="trySignUp()">Submit</button>
+				<div class="verticalFlex">
+					<button class="submitButton" type="button" onclick="trySignUp()">Submit</button>
+				</div>
 				<label for="username">Username</label>
 				<label for="password">Password</label>
 				<label for="email">Email</label>
