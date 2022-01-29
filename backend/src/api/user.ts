@@ -5,6 +5,7 @@ import {emailConfirmation} from "../modules/sendMail";
 import {getUser} from "../modules/getDatabaseInfo";
 import {getBodyParams, getQueryParams} from "../modules/getParams";
 import {initializeUser, updateUser} from "../modules/updateDatabaseInfo";
+import {initializeNewUser} from "../modules/initializeDatabase";
 import {deleteUser} from "../modules/deleteDatabaseInfo";
 import {createToken, verifyUser, getToken} from "../auth/tokenFunctions";
 
@@ -46,7 +47,7 @@ export default class userController {
 					token: createToken({username: postResult.response.username, authorized: true})
 				}
 				emailConfirmation(postResult.response.confirmation_code, email);
-				initializeUser(username);
+				initializeNewUser(username);
 			} else postResult.errors.forEach((error) => {result.errors.push(error)});
 		} else errors.forEach((param)=>{result.errors.push("missing "+param)});
 		res.status(result.status).json(result); //Return whatever result remains

@@ -2,9 +2,6 @@ import {Users} from "../models/userSchema";
 import {Groups} from "../models/groupSchema";
 import {getDailyCodeData, getAllCodeData} from "./getWakatimeInfo";
 import {parseDayStats, createCodeStats, mergeGroupData} from "./parseData";
-import {initializeGroupStats} from "./initializeDatabase";
-import {getUsers} from "./getDatabaseInfo";
-import {getUser, getGroup} from "./getDatabaseInfo";
 
 const updateUserStats = async (username:string) => {
 	const query = { username: username };
@@ -61,9 +58,6 @@ const initializeUser = async (username: string) => {
 			user.stats = await createCodeStats(codeData);
 			user.initialized = true;
 			await user.save();
-
-			initializeGroupStats(getUsers());
-
 			return 201;
 		} catch (_) {
 			return 400;

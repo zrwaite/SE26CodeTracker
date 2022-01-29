@@ -7,6 +7,17 @@ const initializeDatabase = async () => {
 	console.log(`database initialized`);
 }
 
+const initializeNewUser = async (username: string) => {
+	let status = await initializeUser(username);
+	if (status!==201) {
+		console.log(`Error initializing new user ${username}, status ${status}`);
+		return;
+	}
+	const {success, users} = await getUsers();
+	if (!success) return;
+	await initializeGroupStats(users);
+	console.log(`new user initialized`);
+}
 
 const initializeUserStats = async () => {
 	const {success, users} = await getUsers();
@@ -28,4 +39,4 @@ const initializeGroupStats = async (users:any) => {
 	})
 }
 
-export {initializeDatabase, initializeGroupStats}
+export {initializeDatabase, initializeNewUser, initializeGroupStats}
