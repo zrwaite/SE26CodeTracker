@@ -3,7 +3,7 @@ services:
   server: 
     env_file: "./backend/.env"
     build: ./
-    image: "zrwaite/codetracker:v3.6"
+    image: "zrwaite/codetracker:v3.9.1"
     ports: 
       - "8002:8002"
     
