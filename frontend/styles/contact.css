@@ -19,6 +19,19 @@
 .submitButton {
 	grid-column: 1/span 2;
 }
+.doubleIconButton>img{
+	margin: 0 0.5rem;
+}
+option, select, textarea{
+	font-size: 1.25rem;
+	font-family: mainFont, serif;
+}
+#email {
+	font-size: 1.25rem;
+}
+#contactTypeIcon{
+	height: 2rem;
+}
 
 @media only screen and (max-width: 40rem) {
 	.submitButton {
