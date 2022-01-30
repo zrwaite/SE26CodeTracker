@@ -1,4 +1,4 @@
-import {userStats, groupStats, dayObject} from "../models/codeStatsInterface"
+import {userStats, groupStats, dayObject, statObject} from "../models/codeStatsInterface"
 interface apiStats {
 	name:string;
 	total_seconds: number
@@ -18,7 +18,8 @@ const parseDayStats = async (day:any, startingStats:userStats = {
 	const currentDate:string = day.range.date;
 	const dayStats:dayObject = {
 		time: 0,
-		date: currentDate
+		date: currentDate,
+		languages: []
 	}
 	startingStats.day_time=0;
 	day.editors.forEach((editor:apiStats)=>{
@@ -43,6 +44,7 @@ const parseDayStats = async (day:any, startingStats:userStats = {
 			found = true;
 			break;
 		} 
+		dayStats.languages.push({name:name, time:time});
 		if (!found) startingStats.languages.push({name:name, time:time});
 	})
 	day.operating_systems.forEach((os:apiStats)=>{
@@ -143,7 +145,20 @@ const mergeGroupData = async (users:any[]) => {
 				found = true;
 				break;
 			} 
-			if (!found) mergedStats.days.push({date:date, time:time});
+			let languages:statObject[] = [];
+			day.languages.forEach((language:any)=>{
+				let dayLanguageName = language.name;
+				let dayLanguageTime = language.time;
+				let found = false;
+				for (let i=0; i<languages.length; i++){
+					if (dayLanguageName != languages[i].name) continue;
+					languages[i].time += dayLanguageTime;
+					found = true;
+					break;
+				} 
+				if (!found) languages.push({name:dayLanguageName, time:time});
+			})
+			if (!found) mergedStats.days.push({date:date, time:time, languages:languages});
 		})
 	});
 	return mergedStats;

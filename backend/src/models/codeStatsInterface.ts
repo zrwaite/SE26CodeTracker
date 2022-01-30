@@ -1,6 +1,7 @@
 interface dayObject {
 	date: string;
 	time: number;
+    languages: statObject[],
 }
 
 interface statObject {
