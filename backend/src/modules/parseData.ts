@@ -156,7 +156,7 @@ const mergeGroupData = async (users:any[]) => {
 					found = true;
 					break;
 				} 
-				if (!found) languages.push({name:dayLanguageName, time:time});
+				if (!found) languages.push({name:dayLanguageName, time:dayLanguageTime});
 			})
 			if (!found) mergedStats.days.push({date:date, time:time, languages:languages});
 		})
