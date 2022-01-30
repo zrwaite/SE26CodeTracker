@@ -9,18 +9,25 @@ const allDaysGraph = (id: string, days:any[], maxTime:number) => {
 
 	days = days.sort((a,b) => ((new Date(a.date)) > (new Date(b.date))) ? 1 : ((new Date(a.date)) < (new Date(b.date)) ? -1 : 0));
 	for (let i=0; i<days.length; i++) {
+		let details = document.getElementById("dayStatDetails");
+		if (!details) continue;
 		let day = days[i];
 		let fullBar:any = document.createElement("div");
 		let dateString = new Date(day.date);
 		dateString.setHours(0, 0, 0, 0);
 		dateString.setDate(dateString.getDate() + 1);
 		fullBar.date = dateString.toLocaleDateString();
+		let piGraphId = createDayPiGraph("dayStatsPiGraphSection", days[i].languages, dateString.toLocaleDateString());
 		fullBar.time=toHours(day.time);
 		fullBar.style.height="100%";
 		fullBar.onmouseout = function() {
 			let details = document.getElementById("dayStatDetails");
 			if (!details) return;
 			details.innerHTML = "<h6>Hover above for more info^</h6>";
+
+			let dayPiGraph = document.getElementById(piGraphId);
+			if (!dayPiGraph) return;
+			dayPiGraph.style.display = "none";
 		}; 
 		fullBar.onmouseover=function() {
 			let details = document.getElementById("dayStatDetails");
@@ -32,6 +39,10 @@ const allDaysGraph = (id: string, days:any[], maxTime:number) => {
 			details.innerHTML = '';
 			details.appendChild(dateText);
 			details.appendChild(timeText);
+
+			let dayPiGraph = document.getElementById(piGraphId);
+			if (!dayPiGraph) return;
+			dayPiGraph.style.display = "grid";
 		};
 
 		let newBar = document.createElement("div");
@@ -45,6 +56,36 @@ const allDaysGraph = (id: string, days:any[], maxTime:number) => {
 		fullBar.appendChild(newBar);
 		graph.appendChild(fullBar);
 	}
+}
+
+const createDayPiGraph = (parentId:string, list:any[], date:string) => {
+	let parent:HTMLElement|null = document.getElementById(parentId);
+	if (!parent) console.error("pigraph section not found");
+	date = date.replace("-", "").replace("-", "");
+	let id = `dayPiGraph${date}`
+	let newGraphContainer:any = document.createElement("div");
+	newGraphContainer.className = "statsSection dayPiGraphSection";
+	newGraphContainer.id = id;
+
+	let newPiGraphContainer:any = document.createElement("div");
+	newPiGraphContainer.className="piGraphContainer";
+
+	let newPiGraphTable:any = document.createElement("div");
+	newPiGraphTable.className = "piGraphTable";
+	newPiGraphTable.id = `languageTable${date}`;
+
+	let newPiGraph:any = document.createElement("div");
+	newPiGraph.className="piGraph";
+	newPiGraph.id = `languageGraph${date}`;
+
+	newPiGraphContainer.append(newPiGraph);
+	newGraphContainer.append(newPiGraphContainer);
+	newGraphContainer.append(newPiGraphTable);
+	if (parent) parent.append(newGraphContainer);
+
+	renderPiGraph(`languageGraph${date}`, list);
+	renderPiGraphTable(`languageTable${date}`, list);
+	return id;
 }
 
 const reduceBarGraph = (id:string, numDays:number) => {
@@ -93,7 +134,7 @@ const renderPiGraph = (id:string, list:any[]) => {
 
 const renderPiGraphTable = (id:string, list:any[]) => {
 	let table = document.getElementById(id);
-	if (!table) {console.error("table not found"); return;}
+	if (!table) {console.error("table not found"+id); return;}
 	list = list.sort((a,b) => (a.time < b.time) ? 1 : ((b.time < a.time) ? -1 : 0));
 	let totalHtml = "";
 	let colour="blue";
