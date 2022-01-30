@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+import statObjectSchema from "./statObjectSchema";
+
 //user schema that defines the entity
 const statsSchema = new Schema({
     week_winners: {
@@ -23,27 +25,19 @@ const statsSchema = new Schema({
         default: 0,
     },
 	editors: {
-        type: [{
-            name: String,
-            time: Number
-        }],
+        type: [statObjectSchema],
     },
     languages: {
-        type: [{
-            name: String,
-            time: Number
-        }],
+        type: [statObjectSchema],
     },
     os: {
-        type: [{
-            name: String,
-            time: Number
-        }],
+        type: [statObjectSchema],
     },
     days: {
         type: [{
             date: Date,
-            time: Number
+            time: Number,
+            languages: [statObjectSchema]
         }],
     },
 }, { timestamps: false, id: false, _id: false, minimize: false});
